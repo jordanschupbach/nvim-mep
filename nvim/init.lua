@@ -1096,4 +1096,16 @@ vim.api.nvim_create_user_command('ReloadFTPlugins', 'execute "source" glob($MYVI
 -- }}} User Commands
 
 
+
+-- {{{ Plugin mappings
+
+mymap('n', '<Space>ff', '<CMD>NvimTreeToggle<CR>')
+
+-- }}} Plugin mappings
+
+
+
+
+
+
 -- vim: foldmethod=marker
