@@ -1,5 +1,8 @@
 vim.bo.comments = ':---,:--'
 
+vim.cmd("echo 'Hello, world (lua)'")
+
+
 local lua_ls_cmd = 'lua-language-server'
 
 -- Check if lua-language-server is available
