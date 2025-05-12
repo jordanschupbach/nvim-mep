@@ -414,11 +414,6 @@ vim.api.nvim_create_user_command('ToggleTODO', toggle_todo, {})
 
 
 
-
-
-
-
-
 --- Open neorepl
 -- opens the neorepl in a new split
 ---@diagnostic disable-next-line: lowercase-global
