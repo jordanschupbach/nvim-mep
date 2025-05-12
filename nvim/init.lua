@@ -1097,5 +1097,6 @@ mymap('n', '<Space>ff', '<CMD>NvimTreeToggle<CR>')
 -- }}} Plugin mappings
 
 
+vim.cmd("colorscheme tokyonight-night")
 
 -- vim: foldmethod=marker

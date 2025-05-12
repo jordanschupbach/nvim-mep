@@ -104,59 +104,205 @@ vim.keymap.set(
   { desc = '[t]elescope lsp dynamic w[o]rkspace symbols' }
 )
 
-telescope.setup {
+
+-- local utilities = require 'utilities'
+local actions = require 'telescope.actions'
+-- local finders = require 'telescope.finders'
+-- local pickers = require 'telescope.pickers'
+local actions_state = require 'telescope.actions.state'
+
+---@diagnostic disable-next-line: unused-function
+local function file_exists(filename)
+  local file = io.open(filename, 'r')
+  if file then
+    io.close(file)
+    return true
+  else
+    return false
+  end
+end
+
+---@diagnostic disable-next-line: unused-local, unused-function
+local function on_project_selected(prompt_bufnr)
+  local entry = actions_state.get_selected_entry()
+  print("Hello from project selected")
+  actions.close(prompt_bufnr)
+  print(entry['value']:gsub("/+$", ""))
+  if entry['value']:gsub("/+$", ""):match("([^/]+)$") == "nvim-playground" then
+    vim.cmd('edit ' .. entry['value'] .. '/init.lua')
+  else
+    if file_exists('' .. entry['value'] .. '/README.org') then
+      vim.cmd('edit ' .. entry['value'] .. '/README.org')
+    else
+      vim.cmd('edit ' .. entry['value'] .. '/README.md')
+    end
+  end
+  -- Toggle the NvimTree buffer
+  -- vim.cmd 'split'
+  -- vim.cmd 'terminal'
+  -- vim.cmd 'Neotree toggle'
+  vim.cmd 'Neotree toggle'
+  -- vim.cmd 'Workspace LeftPanelToggle'
+  vim.cmd 'wincmd l'
+  vim.cmd('cd ' .. entry["value"])
+  vim.cmd 'SidebarNvimToggle'
+  if file_exists('' .. entry['value'] .. '/TODO.org') then
+    vim.cmd 'split'
+    vim.cmd('edit ' .. entry['value'] .. '/TODO.org')
+    vim.api.nvim_win_set_height(0, 8)
+    vim.cmd 'wincmd k'
+  end
+  -- vim.cmd('cd ')
+end
+
+local telescope = require("telescope")
+-- local word_actions = require("telescope-words.actions")
+
+require('telescope').setup {
   defaults = {
-    path_display = {
-      'truncate',
-    },
-    layout_strategy = 'vertical',
-    layout_config = layout_config,
     mappings = {
-      i = {
-        ['<C-q>'] = actions.send_to_qflist,
-        ['<C-l>'] = actions.send_to_loclist,
-        -- ['<esc>'] = actions.close,
-        ['<C-s>'] = actions.cycle_previewers_next,
-        ['<C-a>'] = actions.cycle_previewers_prev,
-      },
-      n = {
-        q = actions.close,
-      },
-    },
-    preview = {
-      treesitter = true,
-    },
-    history = {
-      path = vim.fn.stdpath('data') .. '/telescope_history.sqlite3',
-      limit = 1000,
-    },
-    color_devicons = true,
-    set_env = { ['COLORTERM'] = 'truecolor' },
-    prompt_prefix = '   ',
-    selection_caret = '  ',
-    entry_prefix = '  ',
-    initial_mode = 'insert',
-    vimgrep_arguments = {
-      'rg',
-      '-L',
-      '--color=never',
-      '--no-heading',
-      '--with-filename',
-      '--line-number',
-      '--column',
-      '--smart-case',
+      i = { ['<C-d>'] = require('telescope.actions').delete_buffer },
+      n = { ['<C-d>'] = require('telescope.actions').delete_buffer },
     },
   },
+  prompt_prefix = ' ',
+  selection_caret = '* ',
+  path_display = { 'smart' },
+  vimgrep_arguments = {
+    'rg',
+    '--color=never',
+    '--no-heading',
+    '--with-filename',
+    '--line-number',
+    '--column',
+    '--smart-case',
+    '--no-ignore',
+    '--hidden',
+  },
   extensions = {
+    fzf = {
+      fuzzy = true,
+      override_generic_sorter = true,
+      override_file_sorter = true,
+      case_mode = 'smart_case',
+    },
     fzy_native = {
       override_generic_sorter = false,
       override_file_sorter = true,
     },
+    project = {
+      hidden_files = true, -- default: false
+      theme = 'dropdown',
+      order_by = 'asc',
+      search_by = 'title',
+      sync_with_nvim_tree = false, -- default false
+      -- default for on_project_selected = find project files
+      on_project_selected = function(prompt_bufnr)
+        on_project_selected(prompt_bufnr)
+      end,
+    },
+
+   -- This configuration only affects this extension.
+    telescope_words = {
+
+      -- Define custom mappings. Default mappings are {} (empty).
+      mappings = {
+        -- n = {
+        --   ["<CR>"] = word_actions.replace_word_under_cursor,
+        -- },
+        -- i = {
+        --   ["<CR>"] = word_actions.replace_word_under_cursor,
+        -- },
+
+      },
+
+      -- Default pointers define the lexical relations listed under each definition,
+      -- see Pointer Symbols below.
+      -- Default is as below ("antonyms", "similar to" and "also see").
+      pointer_symbols = { "!", "&", "^" },
+
+      -- The number of characters entered before fuzzy searching is used. Raise this
+      -- if results are slow. Default is 3.
+      fzy_char_threshold = 3,
+
+      -- Choose the layout strategy. Default is as below.
+      layout_strategy = "horizontal",
+
+      -- And your layout config. Default is as below.
+      layout_config = { height = 0.75, width = 0.75, preview_width = 0.65 },
+    },
+
+
+
   },
 }
+-- require 'telescope'.load_extension('make')
+pcall(require('telescope').load_extension, 'fzf')
+pcall(require('telescope').load_extension, 'ultisnips')
+pcall(require('telescope').load_extension, 'project')
+pcall(require('telescope').load_extension, 'luasnip')
+pcall(require('telescope').load_extension, 'media_files')
+pcall(require('telescope').load_extension, 'thesaurus')
+-- pcall(require('telescope').load_extension, 'bookmarks')
 
+
+
+
+
+
+-- telescope.setup {
+--   defaults = {
+--     path_display = {
+--       'truncate',
+--     },
+--     layout_strategy = 'vertical',
+--     layout_config = layout_config,
+--     mappings = {
+--       i = {
+--         ['<C-q>'] = actions.send_to_qflist,
+--         ['<C-l>'] = actions.send_to_loclist,
+--         -- ['<esc>'] = actions.close,
+--         ['<C-s>'] = actions.cycle_previewers_next,
+--         ['<C-a>'] = actions.cycle_previewers_prev,
+--       },
+--       n = {
+--         q = actions.close,
+--       },
+--     },
+--     preview = {
+--       treesitter = true,
+--     },
+--     history = {
+--       path = vim.fn.stdpath('data') .. '/telescope_history.sqlite3',
+--       limit = 1000,
+--     },
+--     color_devicons = true,
+--     set_env = { ['COLORTERM'] = 'truecolor' },
+--     prompt_prefix = '   ',
+--     selection_caret = '  ',
+--     entry_prefix = '  ',
+--     initial_mode = 'insert',
+--     vimgrep_arguments = {
+--       'rg',
+--       '-L',
+--       '--color=never',
+--       '--no-heading',
+--       '--with-filename',
+--       '--line-number',
+--       '--column',
+--       '--smart-case',
+--     },
+--   },
+--   extensions = {
+--     fzy_native = {
+--       override_generic_sorter = false,
+--       override_file_sorter = true,
+--     },
+--   },
+-- }
+-- 
 telescope.load_extension('fzy_native')
--- telescope.load_extension('smart_history')
+-- -- telescope.load_extension('smart_history')
 
 
 
@@ -171,6 +317,7 @@ mymap('n', '/', '<CMD>Telescope current_buffer_fuzzy_find theme=ivy<CR>')
 mymap('n', '<Space>pf', '<CMD>Telescope find_files<CR>')
 mymap('n', '<Space>pr', '<CMD>Telescope live_grep<CR>')
 mymap('n', '<Space>po', '<CMD>Telescope project<CR>')
+
 
 
 --  { '<Space>bb', '<CMD>Telescope buffers<CR>',                             desc = 'Help Tags' },
