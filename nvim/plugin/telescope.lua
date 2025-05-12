@@ -157,3 +157,34 @@ telescope.setup {
 
 telescope.load_extension('fzy_native')
 -- telescope.load_extension('smart_history')
+
+
+
+local function mymap(mode, key, value)
+  vim.keymap.set(mode, key, value, { silent = true, remap = true })
+end
+
+mymap('n', '<Space>bb', '<CMD>Telescope buffers<CR>')
+mymap('n', '<Space>hh', '<CMD>Telescope help_tags<CR>')
+mymap('n', '<A-x>hh', '<CMD>Telescope commands<CR>')
+mymap('n', '/', '<CMD>Telescope current_buffer_fuzzy_find theme=ivy<CR>')
+mymap('n', '<Space>pf', '<CMD>Telescope find_files<CR>')
+mymap('n', '<Space>pr', '<CMD>Telescope live_grep<CR>')
+mymap('n', '<Space>po', '<CMD>Telescope project<CR>')
+
+
+--  { '<Space>bb', '<CMD>Telescope buffers<CR>',                             desc = 'Help Tags' },
+--  { '<Space>hh', '<CMD>Telescope help_tags<CR>',                           desc = 'Help Tags' },
+--  { '<A-x>',     '<CMD>Telescope commands<CR>',                            desc = 'Commands' },
+--  { '/',         '<CMD>Telescope current_buffer_fuzzy_find theme=ivy<CR>', desc = 'Buffer Search' },
+--  { '<Space>pf', '<CMD>Telescope find_files<CR>',                          desc = 'Files' },
+--  { '<Space>pr', '<CMD>Telescope live_grep<CR>',                           desc = 'Search' },
+--  { '<Space>po', '<CMD>Telescope project<CR>',                             desc = 'Open' },
+--  { '<Space>tf', '<CMD>Telescope find_files<CR>',                          desc = 'Files' },
+--  { '<Space>tr', '<CMD>Telescope live_grep<CR>',                           desc = 'Search (grep)' },
+--  { '<Space>to', '<CMD>Telescope project<CR>',                             desc = 'Projects' },
+--  { '<Space>tc', '<CMD>Telescope commands<CR>',                            desc = 'Commands' },
+--  { '<Space>th', '<CMD>Telescope help_tags<CR>',                           desc = 'Help' },
+--  { '<Space>t/', '<CMD>Telescope current_buffer_fuzzy_find theme=ivy<CR>', desc = 'Open' },
+--  { '<Space>td', '<CMD>Telescope diagnostics<CR>',                         desc = 'Diagnostics' },
+

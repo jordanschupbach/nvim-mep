@@ -1,5 +1,5 @@
 {
-  description = "Neovim derivation";
+  description = "MEP Neovim derivation";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -12,6 +12,7 @@
     #   url = "github:Cassin01/wf.nvim";
     #   flake = false;
     # };
+
   };
 
   outputs = inputs @ {
