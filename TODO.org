@@ -1,2 +1,6 @@
 * TODO Get installed by nixos
-* TODO Get telescope
+* TODO Get config for c++
+* TODO Get config for java
+* TODO Get config for python
+* TODO Get config for R
+* DONE Get telescope configured

@@ -45,6 +45,7 @@
           lua-language-server
           nil
           stylua
+          R
           luajitPackages.luacheck
           nvim-dev
         ];

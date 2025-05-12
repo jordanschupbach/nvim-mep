@@ -121,12 +121,12 @@ local function on_project_selected(prompt_bufnr)
   -- Toggle the NvimTree buffer
   -- vim.cmd 'split'
   -- vim.cmd 'terminal'
+  vim.cmd 'NvimTreeToggle'
   -- vim.cmd 'Neotree toggle'
-  vim.cmd 'Neotree toggle'
   -- vim.cmd 'Workspace LeftPanelToggle'
   vim.cmd 'wincmd l'
   vim.cmd('cd ' .. entry["value"])
-  vim.cmd 'SidebarNvimToggle'
+  -- vim.cmd 'SidebarNvimToggle'
   if file_exists('' .. entry['value'] .. '/TODO.org') then
     vim.cmd 'split'
     vim.cmd('edit ' .. entry['value'] .. '/TODO.org')
