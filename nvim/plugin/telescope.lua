@@ -1,12 +1,30 @@
+-- {{{ Include guard
+
 if vim.g.did_load_telescope_plugin then
   return
 end
 vim.g.did_load_telescope_plugin = true
 
+-- }}} Include guard
+
+-- {{{ Imports
 local telescope = require('telescope')
 local actions = require('telescope.actions')
 
 local builtin = require('telescope.builtin')
+
+-- local utilities = require 'utilities'
+local actions = require 'telescope.actions'
+-- local finders = require 'telescope.finders'
+-- local pickers = require 'telescope.pickers'
+local actions_state = require 'telescope.actions.state'
+
+local telescope = require("telescope")
+
+-- }}} imports
+
+-- {{{ Utility functions
+
 
 local layout_config = {
   vertical = {
@@ -69,47 +87,10 @@ local function fuzzy_grep_current_file_type()
   grep_current_file_type(fuzzy_grep)
 end
 
-vim.keymap.set('n', '<leader>tp', function()
-  builtin.find_files()
-end, { desc = '[t]elescope find files - ctrl[p] style' })
-vim.keymap.set('n', '<M-p>', builtin.oldfiles, { desc = '[telescope] old files' })
-vim.keymap.set('n', '<C-g>', builtin.live_grep, { desc = '[telescope] live grep' })
-vim.keymap.set('n', '<leader>tf', fuzzy_grep, { desc = '[t]elescope [f]uzzy grep' })
-vim.keymap.set('n', '<M-f>', fuzzy_grep_current_file_type, { desc = '[telescope] fuzzy grep filetype' })
-vim.keymap.set('n', '<M-g>', live_grep_current_file_type, { desc = '[telescope] live grep filetype' })
-vim.keymap.set(
-  'n',
-  '<leader>t*',
-  grep_string_current_file_type,
-  { desc = '[t]elescope grep current string [*] in current filetype' }
-)
-vim.keymap.set('n', '<leader>*', builtin.grep_string, { desc = '[telescope] grep current string [*]' })
-vim.keymap.set('n', '<leader>tg', project_files, { desc = '[t]elescope project files [g]' })
-vim.keymap.set('n', '<leader>tc', builtin.quickfix, { desc = '[t]elescope quickfix list [c]' })
-vim.keymap.set('n', '<leader>tq', builtin.command_history, { desc = '[t]elescope command history [q]' })
-vim.keymap.set('n', '<leader>tl', builtin.loclist, { desc = '[t]elescope [l]oclist' })
-vim.keymap.set('n', '<leader>tr', builtin.registers, { desc = '[t]elescope [r]egisters' })
-vim.keymap.set('n', '<leader>tbb', builtin.buffers, { desc = '[t]elescope [b]uffers [b]' })
-vim.keymap.set(
-  'n',
-  '<leader>tbf',
-  builtin.current_buffer_fuzzy_find,
-  { desc = '[t]elescope current [b]uffer [f]uzzy find' }
-)
-vim.keymap.set('n', '<leader>td', builtin.lsp_document_symbols, { desc = '[t]elescope lsp [d]ocument symbols' })
-vim.keymap.set(
-  'n',
-  '<leader>to',
-  builtin.lsp_dynamic_workspace_symbols,
-  { desc = '[t]elescope lsp dynamic w[o]rkspace symbols' }
-)
 
 
--- local utilities = require 'utilities'
-local actions = require 'telescope.actions'
--- local finders = require 'telescope.finders'
--- local pickers = require 'telescope.pickers'
-local actions_state = require 'telescope.actions.state'
+
+
 
 ---@diagnostic disable-next-line: unused-function
 local function file_exists(filename)
@@ -155,8 +136,9 @@ local function on_project_selected(prompt_bufnr)
   -- vim.cmd('cd ')
 end
 
-local telescope = require("telescope")
--- local word_actions = require("telescope-words.actions")
+-- }}} Utility functions
+
+-- {{{ Setup
 
 require('telescope').setup {
   defaults = {
@@ -236,6 +218,11 @@ require('telescope').setup {
 
   },
 }
+
+-- }}} Setup
+
+-- {{{ Load extensions
+
 -- require 'telescope'.load_extension('make')
 pcall(require('telescope').load_extension, 'fzf')
 pcall(require('telescope').load_extension, 'ultisnips')
@@ -244,11 +231,65 @@ pcall(require('telescope').load_extension, 'luasnip')
 pcall(require('telescope').load_extension, 'media_files')
 pcall(require('telescope').load_extension, 'thesaurus')
 -- pcall(require('telescope').load_extension, 'bookmarks')
+telescope.load_extension('fzy_native')
 
+-- }}} Load extensions
 
+-- {{{ mappings
 
+local function mymap(mode, key, value)
+  vim.keymap.set(mode, key, value, { silent = true, remap = true })
+end
 
+mymap('n', '<Space>bb', '<CMD>Telescope buffers<CR>')
+mymap('n', '<Space>hh', '<CMD>Telescope help_tags<CR>')
+mymap('n', '<A-x>hh', '<CMD>Telescope commands<CR>')
+mymap('n', '/', '<CMD>Telescope current_buffer_fuzzy_find theme=ivy<CR>')
+mymap('n', '<Space>pf', '<CMD>Telescope find_files<CR>')
+mymap('n', '<Space>pr', '<CMD>Telescope live_grep<CR>')
+mymap('n', '<Space>po', '<CMD>Telescope project<CR>')
 
+-- }}} mappings
+
+-- {{{ Old mappings
+vim.keymap.set('n', '<leader>tp', function()
+  builtin.find_files()
+end, { desc = '[t]elescope find files - ctrl[p] style' })
+vim.keymap.set('n', '<M-p>', builtin.oldfiles, { desc = '[telescope] old files' })
+vim.keymap.set('n', '<C-g>', builtin.live_grep, { desc = '[telescope] live grep' })
+vim.keymap.set('n', '<leader>tf', fuzzy_grep, { desc = '[t]elescope [f]uzzy grep' })
+vim.keymap.set('n', '<M-f>', fuzzy_grep_current_file_type, { desc = '[telescope] fuzzy grep filetype' })
+vim.keymap.set('n', '<M-g>', live_grep_current_file_type, { desc = '[telescope] live grep filetype' })
+vim.keymap.set(
+  'n',
+  '<leader>t*',
+  grep_string_current_file_type,
+  { desc = '[t]elescope grep current string [*] in current filetype' }
+)
+vim.keymap.set('n', '<leader>*', builtin.grep_string, { desc = '[telescope] grep current string [*]' })
+vim.keymap.set('n', '<leader>tg', project_files, { desc = '[t]elescope project files [g]' })
+vim.keymap.set('n', '<leader>tc', builtin.quickfix, { desc = '[t]elescope quickfix list [c]' })
+vim.keymap.set('n', '<leader>tq', builtin.command_history, { desc = '[t]elescope command history [q]' })
+vim.keymap.set('n', '<leader>tl', builtin.loclist, { desc = '[t]elescope [l]oclist' })
+vim.keymap.set('n', '<leader>tr', builtin.registers, { desc = '[t]elescope [r]egisters' })
+vim.keymap.set('n', '<leader>tbb', builtin.buffers, { desc = '[t]elescope [b]uffers [b]' })
+vim.keymap.set(
+  'n',
+  '<leader>tbf',
+  builtin.current_buffer_fuzzy_find,
+  { desc = '[t]elescope current [b]uffer [f]uzzy find' }
+)
+vim.keymap.set('n', '<leader>td', builtin.lsp_document_symbols, { desc = '[t]elescope lsp [d]ocument symbols' })
+vim.keymap.set(
+  'n',
+  '<leader>to',
+  builtin.lsp_dynamic_workspace_symbols,
+  { desc = '[t]elescope lsp dynamic w[o]rkspace symbols' }
+)
+
+-- }}} Old mappings
+
+-- {{{ Old config
 
 -- telescope.setup {
 --   defaults = {
@@ -301,37 +342,5 @@ pcall(require('telescope').load_extension, 'thesaurus')
 --   },
 -- }
 -- 
-telescope.load_extension('fzy_native')
--- -- telescope.load_extension('smart_history')
 
-
-
-local function mymap(mode, key, value)
-  vim.keymap.set(mode, key, value, { silent = true, remap = true })
-end
-
-mymap('n', '<Space>bb', '<CMD>Telescope buffers<CR>')
-mymap('n', '<Space>hh', '<CMD>Telescope help_tags<CR>')
-mymap('n', '<A-x>hh', '<CMD>Telescope commands<CR>')
-mymap('n', '/', '<CMD>Telescope current_buffer_fuzzy_find theme=ivy<CR>')
-mymap('n', '<Space>pf', '<CMD>Telescope find_files<CR>')
-mymap('n', '<Space>pr', '<CMD>Telescope live_grep<CR>')
-mymap('n', '<Space>po', '<CMD>Telescope project<CR>')
-
-
-
---  { '<Space>bb', '<CMD>Telescope buffers<CR>',                             desc = 'Help Tags' },
---  { '<Space>hh', '<CMD>Telescope help_tags<CR>',                           desc = 'Help Tags' },
---  { '<A-x>',     '<CMD>Telescope commands<CR>',                            desc = 'Commands' },
---  { '/',         '<CMD>Telescope current_buffer_fuzzy_find theme=ivy<CR>', desc = 'Buffer Search' },
---  { '<Space>pf', '<CMD>Telescope find_files<CR>',                          desc = 'Files' },
---  { '<Space>pr', '<CMD>Telescope live_grep<CR>',                           desc = 'Search' },
---  { '<Space>po', '<CMD>Telescope project<CR>',                             desc = 'Open' },
---  { '<Space>tf', '<CMD>Telescope find_files<CR>',                          desc = 'Files' },
---  { '<Space>tr', '<CMD>Telescope live_grep<CR>',                           desc = 'Search (grep)' },
---  { '<Space>to', '<CMD>Telescope project<CR>',                             desc = 'Projects' },
---  { '<Space>tc', '<CMD>Telescope commands<CR>',                            desc = 'Commands' },
---  { '<Space>th', '<CMD>Telescope help_tags<CR>',                           desc = 'Help' },
---  { '<Space>t/', '<CMD>Telescope current_buffer_fuzzy_find theme=ivy<CR>', desc = 'Open' },
---  { '<Space>td', '<CMD>Telescope diagnostics<CR>',                         desc = 'Diagnostics' },
-
+-- }}} Old config
