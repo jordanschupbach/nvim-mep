@@ -38,6 +38,17 @@
           inputs.gen-luarc.overlays.default
         ];
       };
+
+      buildInputs = with pkgs; [
+        lua-language-server
+        nil
+        stylua
+        luajitPackages.luacheck
+        nvim-dev
+        R
+      ];
+
+
       shell = pkgs.mkShell {
         name = "nvim-devShell";
         buildInputs = with pkgs; [
@@ -45,9 +56,9 @@
           lua-language-server
           nil
           stylua
-          R
           luajitPackages.luacheck
           nvim-dev
+          R
         ];
         shellHook = ''
           # symlink the .luarc.json generated in the overlay

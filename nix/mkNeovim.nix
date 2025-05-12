@@ -14,7 +14,9 @@ with lib;
     # NVIM_APPNAME - Defaults to 'nvim' if not set.
     # If set to something else, this will also rename the binary.
     appName ? null,
-    plugins ? [], # List of plugins
+    plugins ? [
+    R
+    ], # List of plugins
     # List of dev plugins (will be bootstrapped) - useful for plugin developers
     # { name = <plugin-name>; url = <git-url>; }
     devPlugins ? [],
