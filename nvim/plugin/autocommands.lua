@@ -89,13 +89,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
     keymap.set('n', '<space>rn', vim.lsp.buf.rename, desc('lsp [r]e[n]ame'))
     keymap.set('n', '<space>wq', vim.lsp.buf.workspace_symbol, desc('lsp [w]orkspace symbol [q]'))
     keymap.set('n', '<space>dd', vim.lsp.buf.document_symbol, desc('lsp [dd]ocument symbol'))
-    keymap.set('n', '<M-CR>', vim.lsp.buf.code_action, desc('[lsp] code action'))
-    keymap.set('n', '<M-l>', vim.lsp.codelens.run, desc('[lsp] run code lens'))
+    -- keymap.set('n', '<M-CR>', vim.lsp.buf.code_action, desc('[lsp] code action'))
+    -- keymap.set('n', '<M-l>', vim.lsp.codelens.run, desc('[lsp] run code lens'))
     keymap.set('n', '<space>cr', vim.lsp.codelens.refresh, desc('lsp [c]ode lenses [r]efresh'))
     keymap.set('n', 'gr', vim.lsp.buf.references, desc('lsp [g]et [r]eferences'))
-    keymap.set('n', '<space>f', function()
-      vim.lsp.buf.format { async = true }
-    end, desc('[lsp] [f]ormat buffer'))
+    -- keymap.set('n', '<space>f', function()
+    --   vim.lsp.buf.format { async = true }
+    -- end, desc('[lsp] [f]ormat buffer'))
     if client and client.server_capabilities.inlayHintProvider then
       keymap.set('n', '<space>h', function()
         local current_setting = vim.lsp.inlay_hint.is_enabled { bufnr = bufnr }
