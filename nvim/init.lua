@@ -135,6 +135,7 @@ end
 mymap('n', 'g:', '<CMD>term<CR>')
 
 mymap('n', '<Space>tn', '<CMD>lua toggle_number()<CR>')
+
 mymap('n', '<Space>tt', '<CMD>lua toggle_todo()<CR>')
 
 
@@ -1098,5 +1099,7 @@ mymap('n', '<Space>ff', '<CMD>NvimTreeToggle<CR>')
 
 
 vim.cmd("colorscheme tokyonight-night")
+
+mymap('n', '<A-l>', '<CMD>wincmd l<CR>')
 
 -- vim: foldmethod=marker
