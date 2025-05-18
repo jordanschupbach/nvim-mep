@@ -3,7 +3,9 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
+
     gen-luarc.url = "github:mrcjkb/nix-gen-luarc-json";
 
     # Add bleeding-edge plugins here.
@@ -18,6 +20,7 @@
   outputs = inputs @ {
     self,
     nixpkgs,
+    nixpkgs-unstable,
     flake-utils,
     ...
   }: let
@@ -38,6 +41,7 @@
           inputs.gen-luarc.overlays.default
         ];
       };
+
       shell = pkgs.mkShell {
         name = "nvim-devShell";
         buildInputs = with pkgs; [

@@ -125,6 +125,7 @@ local function on_project_selected(prompt_bufnr)
   -- vim.cmd 'Neotree toggle'
   -- vim.cmd 'Workspace LeftPanelToggle'
   vim.cmd 'wincmd l'
+  vim.print('about to cd ' .. entry["value"]) -- test out
   vim.cmd('cd ' .. entry["value"])
   -- vim.cmd 'SidebarNvimToggle'
   if file_exists('' .. entry['value'] .. '/TODO.org') then

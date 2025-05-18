@@ -15,7 +15,9 @@ with lib;
     # If set to something else, this will also rename the binary.
     appName ? null,
     plugins ? [
-    R
+      R
+      # ruby
+      # nodejs
     ], # List of plugins
     # List of dev plugins (will be bootstrapped) - useful for plugin developers
     # { name = <plugin-name>; url = <git-url>; }
