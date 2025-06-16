@@ -87,6 +87,7 @@ with final.pkgs.lib; let
     # language servers, etc.
     lua-language-server
     R
+    git
     gcc
     gfortran
     nil # nix LSP

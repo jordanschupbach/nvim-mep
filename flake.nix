@@ -48,6 +48,7 @@
           # Tools for Lua and Nix development, useful for editing files in this repo
           lua-language-server
           nil
+          git
           stylua
           luajitPackages.luacheck
           nvim-dev
