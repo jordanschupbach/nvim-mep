@@ -25,7 +25,8 @@ with lib;
     # Regexes for config files to ignore, relative to the nvim directory.
     # e.g. [ "^plugin/neogit.lua" "^ftplugin/.*.lua" ]
     ignoreConfigRegexes ? [],
-    extraPackages ? [], # Extra runtime dependencies (e.g. ripgrep, ...)
+    # Extra runtime dependencies (e.g. ripgrep, ...)
+    extraPackages ? [ ripgrep ], 
     # The below arguments can typically be left as their defaults
     # Additional lua packages (not plugins), e.g. from luarocks.org.
     # e.g. p: [p.jsregexp]
