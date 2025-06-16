@@ -16,6 +16,7 @@ with lib;
     appName ? null,
     plugins ? [
       R
+      ripgrep
       # ruby
       # nodejs
     ], # List of plugins
