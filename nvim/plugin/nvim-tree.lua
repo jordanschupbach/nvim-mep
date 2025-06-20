@@ -23,4 +23,5 @@ require("nvim-tree").setup({
   filters = {
     dotfiles = true,
   },
+  sync_root_with_cwd = true,
 })

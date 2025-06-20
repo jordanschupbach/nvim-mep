@@ -35,6 +35,8 @@ with final.pkgs.lib; let
     # eyeliner-nvim # Highlights unique characters for f/F and t/T motions | https://github.com/jinh0/eyeliner.nvim
     # lualine-nvim # Status line | https://github.com/nvim-lualine/lualine.nvim/
     # nvim-cmp (autocompletion) and extensions
+    # nvim-unception # Prevent nested neovim sessions | nvim-unception
+
     aerial-nvim # https://github.com/stevearc/aerial.nvim
     cmp-buffer # current buffer as completion source | https://github.com/hrsh7th/cmp-buffer/
     cmp-cmdline # cmp command line suggestions
@@ -63,7 +65,6 @@ with final.pkgs.lib; let
     nvim-treesitter-textobjects # https://github.com/nvim-treesitter/nvim-treesitter-textobjects/
     nvim-treesitter.withAllGrammars
     nvim-ts-context-commentstring # https://github.com/joosepalviste/nvim-ts-context-commentstring/
-    nvim-unception # Prevent nested neovim sessions | nvim-unception
     nvim-web-devicons
     plenary-nvim
     smart-splits-nvim #

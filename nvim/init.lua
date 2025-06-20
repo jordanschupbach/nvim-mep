@@ -225,8 +225,6 @@ mymap('n', '<A-9>', ':tabn9<CR>')
 mymap('n', '<Space>qq', '<CMD>wa<CR><CMD>qa!<CR>')
 mymap('n', '<Space>rr', '<CMD>luafile $MYVIMRC<CR><CMD>ReloadFTPlugins<CR><CMD>echo "Reloaded config"<CR>')
 mymap('n', '<Space>tgc', '<CMD>Telescope git_commits<CR>')
--- mymap('n', '<A-return>', '<CMD>SlimeSend<CR>')
--- mymap('v', '<A-return>', '<CMD>SlimeSend<CR>')
 -- These only work in gvim.... :(
 mymap('n', '<C-tab>', '<CMD>tabnext<CR>')
 mymap('n', '<C-S-tab>', '<CMD>tabprevious<CR>')
@@ -1101,5 +1099,10 @@ mymap('n', '<Space>ff', '<CMD>NvimTreeToggle<CR>')
 vim.cmd("colorscheme tokyonight-night")
 
 mymap('n', '<A-l>', '<CMD>wincmd l<CR>')
+
+
+mymap('n', '<A-return>', '<CMD>SlimeSend<CR>')
+mymap('v', '<A-return>', '<CMD>SlimeSend<CR>')
+
 
 -- vim: foldmethod=marker

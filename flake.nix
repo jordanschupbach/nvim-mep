@@ -5,7 +5,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
-
     gen-luarc.url = "github:mrcjkb/nix-gen-luarc-json";
 
     # Add bleeding-edge plugins here.
