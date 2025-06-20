@@ -11,32 +11,30 @@ local opt = vim.o
 -- See :h <option> to see what the options do
 
 -- Search down into subfolders
-opt.path = vim.o.path .. '**'
 
-opt.number = true
-opt.relativenumber = true
+opt.cmdheight = 0
 opt.cursorline = true
-opt.lazyredraw = true
-opt.showmatch = true -- Highlight matching parentheses, etc
-opt.incsearch = true
-opt.hlsearch = true
-
-opt.spell = true
-opt.spelllang = 'en'
-
 opt.expandtab = true
-opt.tabstop = 2
-opt.softtabstop = 2
-opt.shiftwidth = 2
 opt.foldenable = true
 opt.history = 2000
+opt.hlsearch = true
+opt.incsearch = true
+opt.lazyredraw = true
 opt.nrformats = 'bin,hex' -- 'octal'
-opt.undofile = true
-opt.splitright = true
+opt.number = true
+opt.path = vim.o.path .. '**'
+opt.relativenumber = true
+opt.shiftwidth = 2
+opt.showmatch = true -- Highlight matching parentheses, etc
+opt.softtabstop = 2
+opt.spell = true
+opt.spelllang = 'en'
 opt.splitbelow = true
-opt.cmdheight = 0
+opt.splitright = true
+opt.tabstop = 2
+opt.undofile = true
 
-opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+-- opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 opt.colorcolumn = '100'
 
 -- Configure Neovim diagnostic messages
@@ -1095,14 +1093,10 @@ mymap('n', '<Space>ff', '<CMD>NvimTreeToggle<CR>')
 
 -- }}} Plugin mappings
 
-
 vim.cmd("colorscheme tokyonight-night")
 
 mymap('n', '<A-l>', '<CMD>wincmd l<CR>')
-
-
 mymap('n', '<A-return>', '<CMD>SlimeSend<CR>')
 mymap('v', '<A-return>', '<CMD>SlimeSend<CR>')
-
 
 -- vim: foldmethod=marker
