@@ -1,0 +1,6 @@
+
+build:
+  bear -- g++ -o main main.cpp
+
+run:
+  ./main

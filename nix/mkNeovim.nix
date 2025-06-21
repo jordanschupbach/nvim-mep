@@ -17,6 +17,7 @@ with lib;
     plugins ? [
       R
       ripgrep
+      libclang
       # ruby
       # nodejs
     ], # List of plugins

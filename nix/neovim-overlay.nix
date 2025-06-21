@@ -16,6 +16,7 @@ with final.pkgs.lib; let
   pkgs-locked = inputs.nixpkgs.legacyPackages.${pkgs.system};
 
   # This is the helper function that builds the Neovim derivation.
+
   mkNeovim = pkgs.callPackage ./mkNeovim.nix {
       inherit (pkgs-locked) wrapNeovimUnstable neovimUtils;
     };
@@ -28,15 +29,21 @@ with final.pkgs.lib; let
   #   optional = <true|false>; # Default: false
   #   ...
   # }
+
+
+
   all-plugins = with pkgs.vimPlugins; [
+
     # plugins from nixpkgs go in here.
     # https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=vimPlugins
+
 
     # eyeliner-nvim # Highlights unique characters for f/F and t/T motions | https://github.com/jinh0/eyeliner.nvim
     # lualine-nvim # Status line | https://github.com/nvim-lualine/lualine.nvim/
     # nvim-cmp (autocompletion) and extensions
     # nvim-unception # Prevent nested neovim sessions | nvim-unception
 
+    copilot-vim # https://github.com/github/copilot.vim/
     aerial-nvim # https://github.com/stevearc/aerial.nvim
     cmp-buffer # current buffer as completion source | https://github.com/hrsh7th/cmp-buffer/
     cmp-cmdline # cmp command line suggestions
@@ -88,6 +95,7 @@ with final.pkgs.lib; let
     # language servers, etc.
     lua-language-server
     R
+    libclang
     git
     gcc
     gfortran

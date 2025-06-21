@@ -1,0 +1,14 @@
+[
+  {
+    "arguments": [
+      "/nix/store/4apajimszc47rxwcpvc3g3rj2icinl71-gcc-wrapper-13.3.0/bin/g++",
+      "-c",
+      "-o",
+      "main",
+      "main.cpp"
+    ],
+    "directory": "/home/jordan/git_repos/nvim-mep/playground/cpp",
+    "file": "/home/jordan/git_repos/nvim-mep/playground/cpp/main.cpp",
+    "output": "/home/jordan/git_repos/nvim-mep/playground/cpp/main"
+  }
+]
