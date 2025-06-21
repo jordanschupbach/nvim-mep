@@ -3,6 +3,10 @@ vim.loader.enable()
 local cmd = vim.cmd
 local opt = vim.o
 
+
+-- {{{ Prior config
+
+
 -- <leader> key. Defaults to `\`. Some people prefer space.
 -- The default leader is '\'. Some people prefer <space>. Uncomment this if you do, too.
 -- vim.g.mapleader = ' '
@@ -92,6 +96,8 @@ cmd.packadd('cfilter') -- Allows filtering the quickfix list with :cfdo
 -- let sqlite.lua (which some plugins depend on) know where to find sqlite
 vim.g.sqlite_clib_path = require('luv').os_getenv('LIBSQLITE')
 
+
+-- }}} Prior config
 
 -- {{{ Plugin Free Key mappings
 
@@ -230,52 +236,6 @@ mymap('n', '<C-S-tab>', '<CMD>tabprevious<CR>')
 -- }}} Base Key mappings
 
 -- {{{ General Options
-
--- {{{ Statusline active/not_active behavior
-vim.cmd('highlight StatusLine guifg=#FF33FF guibg=#00FFFFBB')     -- Active buffer colors
--- vim.cmd('highlight StatusLineNC guifg=#888888 guibg=#DFDFF1')     --  guibg=#000000'Inactive buffer colors
-vim.cmd('highlight StatusLineNC guifg=#888888 guibg=#88888888')   --  guibg=#000000'Inactive buffer colors
-vim.cmd('highlight StatusLineActive guifg=#FF33FF guibg=#003366') -- Different color for active buffer
-
--- Set highlight for window separators
-vim.cmd('highlight WinSeparatorActive guifg=#FF33FF') -- Color for active window separator
-vim.cmd('highlight WinSeparatorNC guifg=#444444')     -- Color for inactive window separators
-
--- Function to update all status lines and separators
-function UpdateAll()
-  local current_win = vim.api.nvim_get_current_win()
-  -- Update status line colors
-  for _, win in ipairs(vim.api.nvim_list_wins()) do
-    -- local width = vim.fn.winwidth(win)
-    -- local status_line = string.rep("─", width)
-    -- Update the status line based on window focus
-    if win == current_win then
-      -- vim.api.nvim_set_option_value('statusline', '%#StatusLineActive#' .. status_line, { win = win })
-      vim.api.nvim_set_option_value('winhighlight', 'WinSeparator:WinSeparatorActive', { win = win })
-    else
-      -- vim.api.nvim_set_option_value('statusline', '%#StatusLineNC#' .. status_line, { win = win })
-      vim.api.nvim_set_option_value('winhighlight', 'WinSeparator:WinSeparatorNC', { win = win })
-    end
-  end
-end
-
--- Autocommand to refresh status lines and separators on resize
-vim.api.nvim_create_autocmd("VimResized", { callback = UpdateAll })
--- Autocommand to update status lines and separators on window focus changes
-vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, { callback = UpdateAll })
-vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, { callback = UpdateAll })
-
--- Initial setup to set status lines and separators for all windows
-UpdateAll()
-
-vim.cmd('highlight EndOfBuffer guifg=#881188') -- Customize color as needed
-
--- }}} Statusline active/not_active behavior
-
-vim.opt.shiftwidth = 2
-vim.opt.showtabline = 2
-vim.opt.tabstop = 2
-vim.opt.clipboard = 'unnamedplus'
 vim.g.slime_target = 'neovim'
 
 vim.g.mapleader = " "
@@ -284,6 +244,9 @@ vim.g.maplocalleader = ";"
 -- -- Leader keys
 --
 -- -- Globals
+vim.g['gtest#gtest_command'] = './build/tests/tests'
+vim.g['test#cpp#runner'] = 'ctest'
+vim.g['test#cpp#catch2#bin_dir'] = '../build/tests/'
 vim.g.gui_font_face = 'UbuntuMono Nerd Font Mono - Bold'
 vim.g.gui_font_size = 12
 vim.g.mapleader = " "
@@ -294,10 +257,13 @@ vim.g.minimap_width = 2
 vim.g.python_host_program = '/usr/bin/python'
 
 -- Opts
+-- vim.opt.splitright = true
+
 vim.opt.backspace = { 'eol', 'start', 'indent' }
 vim.opt.backup = false
 vim.opt.belloff = 'all'
 vim.opt.breakindent = true
+vim.opt.clipboard = 'unnamedplus'
 vim.opt.cmdheight = 2
 vim.opt.colorcolumn = '120'
 vim.opt.completeopt = { 'menuone', 'noselect' }
@@ -305,42 +271,36 @@ vim.opt.conceallevel = 0
 vim.opt.cursorline = true
 vim.opt.expandtab = true
 vim.opt.fileencoding = 'utf-8'
--- vim.opt.fillchars = { horiz = '━', horizup = '┻', horizdown = '┳', vert = '┃', vertleft = '┫', vertright = '┣', verthoriz = '╋', }
-vim.opt.fillchars = {
-  horiz = '━',
-  horizup = '┻',
-  horizdown = '┳',
-  vert = '┃',
-  vertleft = '┫',
-  vertright = '┣',
-  verthoriz =
-  '╋',
-}
+vim.opt.fillchars = { stl	= '━', stlnc	 = '━', horiz = '━', horizup = '┻', horizdown = '┳', vert = '┃', vertleft = '┫', vertright = '┣', verthoriz = '╋', }
+vim.opt.statusline = ""
 vim.opt.foldmethod = 'marker'
 vim.opt.formatoptions:append 'rn1'
 vim.opt.formatoptions:remove 'oa2'
-vim.opt.hlsearch = false
 vim.opt.hlsearch = true
 vim.opt.ignorecase = true
 vim.opt.incsearch = false
 vim.opt.joinspaces = false
 vim.opt.laststatus = 2
+vim.opt.laststatus = 2  -- Always show the status line
+vim.opt.statusline = "%f %y %m %r %=%-14.(%l,%c%V%) %P"  -- Example status line
 vim.opt.list = true
 vim.opt.listchars = { tab = '»·', trail = '·', extends = '↪', precedes = '↩', }
 vim.opt.mouse = 'a'
 vim.opt.number = false
 vim.opt.pumblend = 0
 vim.opt.pumheight = 15
--- vim.opt.relativenumber = false
+vim.opt.relativenumber = false
 vim.opt.scrolloff = 5
+vim.opt.shiftwidth = 2
+vim.opt.showtabline = 2
 vim.opt.sidescrolloff = 8
 vim.opt.smartcase = true
 vim.opt.smartindent = true
 vim.opt.spell = false
 vim.opt.spelllang = 'en_us'
 vim.opt.splitbelow = true
--- vim.opt.splitright = true
 vim.opt.swapfile = false
+vim.opt.tabstop = 2
 vim.opt.termguicolors = true
 vim.opt.timeout = true
 vim.opt.timeoutlen = 300
@@ -354,9 +314,7 @@ vim.wildmode = { 'full', 'longest', 'lastused' }
 vim.wildoptions = 'pum'
 vim.wo.number = false
 vim.wo.signcolumn = 'yes'
-vim.g['gtest#gtest_command'] = './build/tests/tests'
-vim.g['test#cpp#runner'] = 'ctest'
-vim.g['test#cpp#catch2#bin_dir'] = '../build/tests/'
+
 
 -- }}} General Options
 
@@ -1098,5 +1056,57 @@ vim.cmd("colorscheme tokyonight-night")
 mymap('n', '<A-l>', '<CMD>wincmd l<CR>')
 mymap('n', '<A-return>', '<CMD>SlimeSend<CR>')
 mymap('v', '<A-return>', '<CMD>SlimeSend<CR>')
+
+print("An even newer welcome")
+
+
+-- {{{ Statusline active/not_active behavior
+-- vim.cmd('highlight StatusLineNC guifg=#888888 guibg=#DFDFF1')     --  guibg=#000000'Inactive buffer colors
+vim.cmd('highlight StatusLine guifg=#FF33FF guibg=#00FFFFBB')     -- Active buffer colors
+vim.cmd('highlight StatusLineNC guifg=#888888 guibg=#88888888')   --  guibg=#000000'Inactive buffer colors
+vim.cmd('highlight StatusLineActive guifg=#FF33FF guibg=#003366') -- Different color for active buffer
+vim.cmd('highlight WinSeparatorActive guifg=#FF33FF') -- Color for active window separator
+vim.cmd('highlight WinSeparatorNC guifg=#444444')     -- Color for inactive window separators
+
+-- Function to update all status lines and separators
+function UpdateAll()
+  local current_win = vim.api.nvim_get_current_win()
+
+  vim.cmd('highlight StatusLine guifg=#FF33FF guibg=#00FFFFBB')     -- Active buffer colors
+  vim.cmd('highlight StatusLineNC guifg=#888888 guibg=#88888888')   --  guibg=#000000'Inactive buffer colors
+  vim.cmd('highlight StatusLineActive guifg=#FF33FF guibg=#003366') -- Different color for active buffer
+  vim.cmd('highlight WinSeparatorActive guifg=#FF33FF') -- Color for active window separator
+  vim.cmd('highlight WinSeparatorNC guifg=#444444')     -- Color for inactive window separators
+
+  -- Update status line colors
+  for _, win in ipairs(vim.api.nvim_list_wins()) do
+    -- local width = vim.fn.winwidth(win)
+    -- local status_line = string.rep("─", width)
+    -- Update the status line based on window focus
+    if win == current_win then
+      -- vim.api.nvim_set_option_value('statusline', '%#StatusLineActive#' .. status_line, { win = win })
+      vim.api.nvim_set_option_value('winhighlight', 'WinSeparator:WinSeparatorActive', { win = win })
+
+
+    else
+      -- vim.api.nvim_set_option_value('statusline', '%#StatusLineNC#' .. status_line, { win = win })
+      vim.api.nvim_set_option_value('winhighlight', 'WinSeparator:WinSeparatorNC', { win = win })
+    end
+  end
+end
+
+-- Autocommand to refresh status lines and separators on resize
+vim.api.nvim_create_autocmd("VimResized", { callback = UpdateAll })
+-- Autocommand to update status lines and separators on window focus changes
+vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, { callback = UpdateAll })
+vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, { callback = UpdateAll })
+
+-- Initial setup to set status lines and separators for all windows
+UpdateAll()
+
+vim.cmd('highlight EndOfBuffer guifg=#881188') -- Customize color as needed
+
+-- }}} Statusline active/not_active behavior
+
 
 -- vim: foldmethod=marker
