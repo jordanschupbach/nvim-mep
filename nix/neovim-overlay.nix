@@ -96,6 +96,8 @@ with final.pkgs.lib; let
     lua-language-server
     R
     libclang
+    cmake
+    gnumake
     git
     gcc
     gfortran

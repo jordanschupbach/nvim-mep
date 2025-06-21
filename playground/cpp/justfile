@@ -1,6 +1,10 @@
 
 build:
-  bear -- g++ -o main main.cpp
+  cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+  cmake --build build
 
 run:
-  ./main
+  ./build/simpleProgram
+
+clean:
+  rm -rf build/
