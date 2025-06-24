@@ -145,6 +145,7 @@ end
 
 -- {{{ Setup
 
+local project_actions = require("telescope._extensions.project.actions")
 require('telescope').setup {
   defaults = {
     mappings = {
