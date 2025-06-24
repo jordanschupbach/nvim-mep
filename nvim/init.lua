@@ -1054,8 +1054,15 @@ mymap('n', '<Space>ff', '<CMD>NvimTreeToggle<CR>')
 vim.cmd("colorscheme tokyonight-night")
 
 mymap('n', '<A-l>', '<CMD>wincmd l<CR>')
+
+
+wrapped_slime = function()
+  vim.cmd("sleep 10m")      -- Adjust the sleep as necessary
+  vim.cmd("'<,'>SlimeSend") -- Send to Slime
+end
+
 mymap('n', '<A-return>', '<CMD>SlimeSend<CR>')
-mymap('v', '<A-return>', '<CMD>SlimeSend<CR>')
+mymap('v', '<A-return>', ':lua wrapped_slime()<CR>', { noremap = true, silent = true })
 
 print("An even newer welcome")
 

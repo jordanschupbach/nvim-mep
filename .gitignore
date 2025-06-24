@@ -2,6 +2,7 @@
 result
 .direnv
 .luarc.json
+**/compile_commands.json
 ./compile_commands.json
 ./playground/cpp/compile_commands.json
 **/build
