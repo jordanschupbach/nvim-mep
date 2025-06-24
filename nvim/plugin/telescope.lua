@@ -106,9 +106,9 @@ end
 ---@diagnostic disable-next-line: unused-local, unused-function
 local function on_project_selected(prompt_bufnr)
   local entry = actions_state.get_selected_entry()
-  print("Hello from project selected")
+  -- print("Hello from project selected")
   actions.close(prompt_bufnr)
-  print(entry['value']:gsub("/+$", ""))
+  -- print(entry['value']:gsub("/+$", ""))
   if entry['value']:gsub("/+$", ""):match("([^/]+)$") == "nvim-playground" then
     vim.cmd('edit ' .. entry['value'] .. '/init.lua')
   else
@@ -127,6 +127,10 @@ local function on_project_selected(prompt_bufnr)
   vim.cmd 'wincmd l'
   -- vim.print('about to cd ' .. entry["value"]) -- test out
   vim.cmd('cd ' .. entry["value"])
+  vim.cmd('split')
+  vim.cmd 'wincmd j'
+  vim.cmd 'term'
+  vim.cmd 'wincmd k'
   -- vim.cmd 'SidebarNvimToggle'
   if file_exists('' .. entry['value'] .. '/TODO.org') then
     vim.cmd 'split'
