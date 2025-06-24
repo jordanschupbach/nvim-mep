@@ -130,13 +130,13 @@ local function on_project_selected(prompt_bufnr)
   vim.cmd('split')
   vim.cmd 'wincmd j'
   vim.cmd 'term'
+  vim.api.nvim_win_set_height(0, 8)
   vim.cmd 'wincmd k'
   -- vim.cmd 'SidebarNvimToggle'
   if file_exists('' .. entry['value'] .. '/TODO.org') then
-    vim.cmd 'split'
+    vim.cmd 'vsplit'
     vim.cmd('edit ' .. entry['value'] .. '/TODO.org')
-    vim.api.nvim_win_set_height(0, 8)
-    vim.cmd 'wincmd k'
+    vim.cmd 'wincmd h'
   end
   -- vim.cmd('cd ')
 end
