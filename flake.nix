@@ -51,6 +51,7 @@
           nil
           git
           stylua
+          nnn
           luajitPackages.luacheck
           nvim-dev
         ];
