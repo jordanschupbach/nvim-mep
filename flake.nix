@@ -52,7 +52,7 @@
           git
           stylua
           nnn
-          nerd-fonts
+          nerd-fonts.ubuntu
           luajitPackages.luacheck
           nvim-dev
         ];
