@@ -1,7 +1,7 @@
 
 -- https://github.com/rebelot/heirline.nvim
 
-local mycolors = require 'misenplacecolors.colors'
+local mycolors = require 'user.misenplacecolors.colors'
 
 local ju = require 'jutils'
 
