@@ -284,6 +284,7 @@ vim.opt.joinspaces = false
 vim.opt.laststatus = 2
 vim.opt.laststatus = 2  -- Always show the status line
 vim.opt.statusline = "%f %y %m %r %=%-14.(%l,%c%V%) %P"  -- Example status line
+vim.opt.statusline = ""
 vim.opt.list = true
 vim.opt.listchars = { tab = '»·', trail = '·', extends = '↪', precedes = '↩', }
 vim.opt.mouse = 'a'
