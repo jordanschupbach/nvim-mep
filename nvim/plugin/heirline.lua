@@ -1,3 +1,147 @@
+
+-- https://github.com/rebelot/heirline.nvim
+
+local mycolors = require 'misenplacecolors.colors'
+
+local ju = require 'jutils'
+
+local function get_window_with_cursor_in_tab(tabpage_number)
+  local current_tabpage = vim.fn.tabpagenr()
+  local original_tabpage = current_tabpage
+  local windows = vim.fn.gettabwininfo(tabpage_number)
+  local current_window = -1
+  for _, win in ipairs(windows) do
+    if win.winnr == vim.fn.winnr() then
+      current_window = win.winnr
+      break
+    end
+  end
+  vim.fn.settabwin(original_tabpage)
+  return current_window
+end
+
+function get_buffer_with_cursor_in_tab(tabpage_number)
+  local original_tabpage = vim.fn.tabpagenr()
+  local tab_count = vim.fn.tabpagenr '$'
+
+  if tabpage_number < 1 or tabpage_number > tab_count then
+    return -1
+  end
+
+  local winnr_before = vim.fn.winnr()
+  vim.cmd('tabnext ' .. tabpage_number)
+  local winnr_after = vim.fn.winnr()
+
+  if winnr_before == winnr_after then
+    vim.cmd('tabnext ' .. original_tabpage)
+    return -1
+  end
+
+  local current_buffer = vim.fn.bufnr '#'
+
+  vim.cmd('tabnext ' .. original_tabpage)
+  return current_buffer
+end
+
+local function filepath_to_filename(filepath)
+  if filepath == nil then
+    return nil
+  end
+  local separator = package.config:sub(1, 1) -- Get the platform-specific directory separator
+  local parts = {}
+
+  for part in string.gmatch(filepath, '[^' .. separator .. ']+') do
+    table.insert(parts, part)
+  end
+
+  return parts[#parts] -- Return the last part (the filename)
+end
+
+local function get_active_buffer_in_tabpage(tabpage_handle)
+  -- Get the current window handle in the specified tabpage
+  local current_win = vim.fn.win_getid(tabpage_handle)
+
+  if current_win == -1 then
+    -- Tab not found or tab is empty
+    return nil
+  end
+
+  -- Get the buffer handle associated with the current window
+  local active_buffer = vim.fn.winbufnr(current_win)
+
+  return active_buffer
+end
+
+local function bufs_in_tab(tabpage)
+  tabpage = tabpage or 0
+  local buf_set = {}
+  -- local win = get_window_with_cursor_in_tab(tabpage)
+  -- -- local success, win = pcall(get_window_with_cursor_in_tab, tabpage)
+  -- -- if success then
+  --   local bufnr = get_buffer_with_cursor_in_tab(tabpage)
+  --   -- local bufnr = vim.api.nvim_win_get_buf(win)
+  --   buf_set[bufnr] = true
+  --   return buf_set
+  -- -- else
+  -- --   return { 1 }
+  -- -- end
+
+  local success, wins = pcall(vim.api.nvim_tabpage_list_wins, tabpage)
+  -- local success, wins = pcall(vim.fn.tabpagewinnr, tabpage)
+  -- if success then
+  --   return vim.api.nvim_win_get_buf(wins)
+
+  -- if success then
+  --     local bufnr = get_active_buffer_in_tabpage(tabpage)
+  --     buf_set[bufnr] = true
+  --     return buf_set
+  if success then
+    for _, winid in ipairs(wins) do
+      local bufnr = vim.api.nvim_win_get_buf(winid)
+      buf_set[bufnr] = true
+    end
+    return buf_set
+  else
+    return { 1 }
+  end
+end
+
+-- local function get_active_buffer_in_tab(tab_number)
+--   -- Set the specified tabpage as the current tab
+--   local current_tab = vim.fn.tabpagenr()
+--   vim.cmd('tabnext ' .. tab_number)
+--
+--   -- Get the current window in the specified tab
+--   local current_win = vim.api.nvim_get_current_win()
+--
+--   -- Get the active buffer handle from the current window
+--   local active_buffer = vim.api.nvim_win_get_buf(current_win)
+--
+--   vim.cmd('tabnext ' .. current_tab)
+--   return active_buffer
+-- end
+
+local function get_active_buffer_in_tab(tab_number)
+  -- Get the current window handle in the specified tab
+  local current_win = vim.fn.tabpagewinnr(tab_number)
+
+  if current_win == -1 then
+    -- Tab not found or tab is empty
+    return nil
+  end
+
+  -- Get the buffer handle associated with the current window
+  local active_buffer = vim.fn.winbufnr(current_win)
+
+  return active_buffer
+end
+
+function get_first_key(table)
+  for key, _ in pairs(table) do
+    return key
+  end
+end
+
 local conditions = require 'heirline.conditions'
 local utils = require 'heirline.utils'
 
