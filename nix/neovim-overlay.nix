@@ -108,7 +108,7 @@ with final.pkgs.lib; let
     R
     nnn
     nerd-fonts.ubuntu
-    nerd-fonts.mono
+    nerd-fonts.ubuntu-mono
     rPackages.callr
     rPackages.languageserver
 
