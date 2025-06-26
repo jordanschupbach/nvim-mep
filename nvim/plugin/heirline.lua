@@ -1695,8 +1695,8 @@ local DefaultStatusline = {
 
   { NotificationButton },
   { StatusLineSpace },
-  { PomodoroButtonOne },
-  { PomodoroButtonTwo },
+  -- { PomodoroButtonOne },
+  -- { PomodoroButtonTwo },
   { StatusLineSeparator },
 
   { StatusLineSpace },
