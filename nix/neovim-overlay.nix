@@ -106,6 +106,7 @@ with final.pkgs.lib; let
     nil # nix LSP
     libxml2
     R
+    nnn
     rPackages.callr
     rPackages.languageserver
 
