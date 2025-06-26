@@ -1931,7 +1931,7 @@ local WinBars = {
 -- {{{ Setup Heirline
 
 require('heirline').setup {
-  statusline = StatusLines,
+  -- statusline = StatusLines,
   winbar = WinBars,
   tabline = TabLine,
   opts = {
