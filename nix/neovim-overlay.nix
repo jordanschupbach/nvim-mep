@@ -107,6 +107,7 @@ with final.pkgs.lib; let
     libxml2
     R
     nnn
+    nerdfonts
     rPackages.callr
     rPackages.languageserver
 
