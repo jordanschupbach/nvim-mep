@@ -1114,7 +1114,6 @@ vim.cmd('highlight EndOfBuffer guifg=#881188') -- Customize color as needed
 
 -- }}} Statusline active/not_active behavior
 
-vim.opt.statusline = ""
 
-vim.opt.statusline = "%f %= %P"
+vim.opt.statusline = " %= (%l,%c%V%)"
 -- vim: foldmethod=marker
