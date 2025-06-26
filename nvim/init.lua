@@ -1115,6 +1115,7 @@ vim.cmd('highlight EndOfBuffer guifg=#881188') -- Customize color as needed
 -- }}} Statusline active/not_active behavior
 
 
-vim.opt.statusline = "%f %= %l"
-vim.opt.statusline = "%=%-14.(%l,%c%V%) %P"  -- Example status line
--- vim: foldmethod=marker
+-- vim.opt.statusline = "%l/%3L:%2c %= %P"  -- Example status line
+-- vim.opt.statusline = " %= %P"  -- Example status line
+vim.opt.statusline = " %= %l/%3L"  -- Example status line
+vim.opt.statusline = "%="  -- Example status line
