@@ -1933,7 +1933,7 @@ local WinBars = {
 require('heirline').setup {
   -- statusline = StatusLines,
   winbar = WinBars,
-  tabline = TabLine,
+  -- tabline = TabLine,
   opts = {
     colors = colors,
   },
