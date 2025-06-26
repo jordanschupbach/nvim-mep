@@ -107,7 +107,7 @@ with final.pkgs.lib; let
     libxml2
     R
     nnn
-    nerd-fonts.ubuntu
+    nerd-fonts.JetBrainsMono
     rPackages.callr
     rPackages.languageserver
 
