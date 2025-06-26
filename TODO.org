@@ -1,6 +1,6 @@
-* TODO Get installed by nixos
-* TODO Get basic devshell for c++
-* TODO Get basic devshell for java
-* TODO Get basic devshell for python
-* TODO Get basic devshell for R
+* TODO Get installed by nixos (done?)
+* TODO Create basic devshell for c++
+* TODO Create basic devshell for java
+* TODO Create basic devshell for python
+* TODO Create basic devshell for R
 * DONE Get telescope configured

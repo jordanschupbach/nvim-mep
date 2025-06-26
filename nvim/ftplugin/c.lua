@@ -1,13 +1,11 @@
 
 
-vim.cmd("echo 'Hello, world (cpp)'")
 
 local root_files = {
   '.git',
 }
 
 
-print('About to start clangd?')
 vim.lsp.start {
   name = 'cpp',
   root_dir = vim.fs.dirname(vim.fs.find(root_files, { upward = true })[1]),

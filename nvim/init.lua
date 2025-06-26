@@ -1,8 +1,9 @@
 vim.loader.enable()
 
+-- {{{ aliases
 local cmd = vim.cmd
 local opt = vim.o
-
+-- }}} aliases
 
 -- {{{ Prior config
 
@@ -1052,7 +1053,7 @@ mymap('n', '<Space>gg', '<CMD>Neogit<CR>')
 
 -- }}} Plugin mappings
 
-
+-- {{{ misc inbox
 vim.cmd("colorscheme tokyonight-night")
 mymap('n', '<A-l>', '<CMD>wincmd l<CR>')
 wrapped_slime = function()
@@ -1062,7 +1063,7 @@ end
 mymap('n', '<A-return>', '<CMD>SlimeSend<CR>')
 mymap('v', '<A-return>', ':lua wrapped_slime()<CR>', { noremap = true, silent = true })
 print("An even newer welcome")
-
+-- }}} misc inbox
 
 -- {{{ Statusline active/not_active behavior
 -- vim.cmd('highlight StatusLineNC guifg=#888888 guibg=#DFDFF1')     --  guibg=#000000'Inactive buffer colors
@@ -1111,6 +1112,5 @@ UpdateAll()
 vim.cmd('highlight EndOfBuffer guifg=#881188') -- Customize color as needed
 
 -- }}} Statusline active/not_active behavior
-
 
 -- vim: foldmethod=marker
