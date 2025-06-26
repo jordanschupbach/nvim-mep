@@ -53,6 +53,7 @@ with final.pkgs.lib; let
     cmp-nvim-lua # neovim lua API as completion source | https://github.com/hrsh7th/cmp-nvim-lua/
     cmp-path # file paths as completion source | https://github.com/hrsh7th/cmp-path/
     cmp_luasnip # snippets autocompletion extension for nvim-cmp | https://github.com/saadparwaiz1/cmp_luasnip/
+    dashboard-nvim # https://github.com/nvimdev/dashboard-nvim/
     diffview-nvim # https://github.com/sindrets/diffview.nvim/
     gitsigns-nvim # https://github.com/lewis6991/gitsigns.nvim/
     lspkind-nvim # vscode-like LSP pictograms | https://github.com/onsails/lspkind.nvim/
