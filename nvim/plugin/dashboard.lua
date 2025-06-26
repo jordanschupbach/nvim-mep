@@ -25,7 +25,7 @@ local bannertext = {
   '       "$e..         .$`                                "*RNeed*"               ',
   'MiseEnPlace',
   '',
-  '',
+  'Press <space> to open which-key',
   '',
   '',
 }
