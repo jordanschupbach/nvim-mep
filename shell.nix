@@ -7,6 +7,7 @@
      packages = with pkgs; [
        cowsay
        lolcat
+       libxml2
      ];
 
     GREETING = "Hello, Nix!";

@@ -1,3 +1,4 @@
+* TODO Get libxml2 in environment?
 * TODO Get installed by nixos (done?)
 * TODO Create basic devshell for c++
 * TODO Create basic devshell for java

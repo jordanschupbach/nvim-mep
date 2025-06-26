@@ -97,7 +97,6 @@ with final.pkgs.lib; let
   extraPackages = with pkgs; [
     # language servers, etc.
     lua-language-server
-    R
     libclang
     cmake
     gnumake
@@ -105,6 +104,11 @@ with final.pkgs.lib; let
     gcc
     gfortran
     nil # nix LSP
+    libxml2
+    R
+    rPackages.callr
+    rPackages.languageserver
+
   ];
 in {
   # This is the neovim derivation
