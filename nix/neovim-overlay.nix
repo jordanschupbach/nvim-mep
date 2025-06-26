@@ -43,6 +43,7 @@ with final.pkgs.lib; let
     # nvim-cmp (autocompletion) and extensions
     # nvim-unception # Prevent nested neovim sessions | nvim-unception
 
+    heirline-nvim # https://github.com/rebelot/heirline.nvim/
     copilot-vim # https://github.com/github/copilot.vim/
     aerial-nvim # https://github.com/stevearc/aerial.nvim
     cmp-buffer # current buffer as completion source | https://github.com/hrsh7th/cmp-buffer/
