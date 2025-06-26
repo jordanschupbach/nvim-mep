@@ -108,6 +108,7 @@ with final.pkgs.lib; let
     R
     nnn
     nerd-fonts.ubuntu
+    nerd-fonts.mono
     rPackages.callr
     rPackages.languageserver
 
