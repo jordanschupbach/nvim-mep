@@ -56,6 +56,8 @@
           nerd-fonts.ubuntu-mono
           luajitPackages.luacheck
           nvim-dev
+          rPackages.callr
+          rPackages.languageserver
         ];
         shellHook = ''
           # symlink the .luarc.json generated in the overlay
