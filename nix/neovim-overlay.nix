@@ -92,7 +92,7 @@ with final.pkgs.lib; let
     zen-mode-nvim
 
     flash-nvim
-    # nvim-luadev
+    nvim-luadev
     # focus-nvim
     # todo-comments-nvim
     # # neorg
