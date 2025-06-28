@@ -609,6 +609,8 @@ ls.add_snippets("nix", {
   -- {{{ Module
   s("module", {
     t({
+      "# https://nix.dev/tutorials/module-system/index.html",
+      "{lib, ...}:",
       "{",
       "  imports = [",
       "    # Paths to other modules.",

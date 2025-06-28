@@ -22,8 +22,8 @@ nix run "github:jordanschupbach/nvim-mep"
 
 ```nix
 nixpkgs.overlays = [
-    # replace <nvim-mep> with the name you chose
-    <nvim-mep>.overlays.default
+  # replace <nvim-mep> with the name you chose
+  <nvim-mep>.overlays.default
 ];
 ```
 
@@ -31,9 +31,9 @@ You can then add the overlay's output(s) to the `systemPackages`:
 
 ```nix
 environment.systemPackages = with pkgs; [
-    nvim-pkg
+  nvim-pkg
 ];
-``
+```
 
 ### :penguin: Non-NixOS
 
