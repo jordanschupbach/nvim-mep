@@ -62,7 +62,7 @@ with final.pkgs.lib; let
           owner = "al1-ce";
           repo = "just.nvim";
           rev = "14e2c95b2b988bb265da3ee0d546c1ec176dd6e1";
-          hash = "";
+          hash = "sha256-gdgBeNx3npks16Px01oLX7HjyNtCyIqvCbpZsbLVkUM=";
         };
       };
 
