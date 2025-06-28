@@ -91,10 +91,9 @@ with final.pkgs.lib; let
     # nvim-cmp (autocompletion) and extensions
     # nvim-unception # Prevent nested neovim sessions | nvim-unception
 
-    lsp-progress-nvim # https://github.com/linrongbin16/lsp-progress.nvim
-    heirline-nvim # https://github.com/rebelot/heirline.nvim/
-    copilot-vim # https://github.com/github/copilot.vim/
     aerial-nvim # https://github.com/stevearc/aerial.nvim
+    asyncrun-vim
+    blink-cmp
     cmp-buffer # current buffer as completion source | https://github.com/hrsh7th/cmp-buffer/
     cmp-cmdline # cmp command line suggestions
     cmp-cmdline-history # cmp command line history suggestions
@@ -103,19 +102,27 @@ with final.pkgs.lib; let
     cmp-nvim-lua # neovim lua API as completion source | https://github.com/hrsh7th/cmp-nvim-lua/
     cmp-path # file paths as completion source | https://github.com/hrsh7th/cmp-path/
     cmp_luasnip # snippets autocompletion extension for nvim-cmp | https://github.com/saadparwaiz1/cmp_luasnip/
+    copilot-vim # https://github.com/github/copilot.vim/
     dashboard-nvim # https://github.com/nvimdev/dashboard-nvim/
     diffview-nvim # https://github.com/sindrets/diffview.nvim/
+    flash-nvim
+    focus-nvim
+    focus-nvim # https://github.com/nvim-focus/focus.nvim
+    friendly-snippets
     gitsigns-nvim # https://github.com/lewis6991/gitsigns.nvim/
-    lspkind-nvim # vscode-like LSP pictograms | https://github.com/onsails/lspkind.nvim/
-    luasnip # snippets | https://github.com/l3mon4d3/luasnip/
-    oil-nvim # https://github.com/stevearc/oil.nvim
+    heirline-nvim # https://github.com/rebelot/heirline.nvim/
     kanagawa-nvim # https://github.com/rebelot/kanagawa.nvim
+    lsp-progress-nvim # https://github.com/linrongbin16/lsp-progress.nvim
+    lspkind-nvim # vscode-like LSP pictograms | https://github.com/onsails/lspkind.nvim/
+    luasnip
+    luasnip # snippets | https://github.com/l3mon4d3/luasnip/
     melange-nvim # https://github.com/savq/melange-nvim
-    text-case-nvim # https://github.com/johmsalas/text-case.nvim
     neogit # https://github.com/TimUntersberger/neogit/
     nerdtree #
-    focus-nvim # https://github.com/nvim-focus/focus.nvim
+    nvim-bqf
     nvim-cmp # https://github.com/hrsh7th/nvim-cmp
+    nvim-highlight-colors
+    nvim-luadev
     nvim-navic # Add LSP location to lualine | https://github.com/SmiteshP/nvim-navic
     nvim-surround # https://github.com/kylechui/nvim-surround/
     nvim-tree-lua #
@@ -124,6 +131,8 @@ with final.pkgs.lib; let
     nvim-treesitter.withAllGrammars
     nvim-ts-context-commentstring # https://github.com/joosepalviste/nvim-ts-context-commentstring/
     nvim-web-devicons
+    oil-nvim # https://github.com/stevearc/oil.nvim
+    other-nvim
     plenary-nvim
     smart-splits-nvim #
     sqlite-lua
@@ -131,27 +140,19 @@ with final.pkgs.lib; let
     telescope-fzy-native-nvim # https://github.com/nvim-telescope/telescope-fzy-native.nvim
     telescope-nvim # https://github.com/nvim-telescope/telescope.nvim/
     telescope-project-nvim
+    telescope-ultisnips-nvim
+    text-case-nvim # https://github.com/johmsalas/text-case.nvim
+    todo-comments-nvim
     tokyonight-nvim
+    ultisnips
     vim-fugitive # https://github.com/tpope/vim-fugitive/
     vim-repeat
     vim-slime
-    # vim-unimpaired # predefined ] and [ navigation keymaps | https://github.com/tpope/vim-unimpaired/
     which-key-nvim
     zen-mode-nvim
 
-    ultisnips
-    flash-nvim
-    nvim-luadev
-    focus-nvim
-    todo-comments-nvim
-    asyncrun-vim
     # # neorg
-    friendly-snippets
-    nvim-bqf
-    nvim-highlight-colors
-    luasnip
-    blink-cmp
-    telescope-ultisnips-nvim
+    # vim-unimpaired # predefined ] and [ navigation keymaps | https://github.com/tpope/vim-unimpaired/
 
     EasyGrep
     TelescopeLuasnip
