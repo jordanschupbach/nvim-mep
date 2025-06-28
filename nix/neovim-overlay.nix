@@ -51,7 +51,7 @@ with final.pkgs.lib; let
         src = pkgs.fetchFromGitHub {
           owner = "benfowler";
           repo = "telescope-luasnip";
-          ref = "main";
+          rev = "main";
           hash = "";
         };
       };
