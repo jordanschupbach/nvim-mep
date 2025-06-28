@@ -1067,7 +1067,8 @@ wrapped_slime = function()
 end
 mymap('n', '<A-return>', '<CMD>SlimeSend<CR>')
 mymap('v', '<A-return>', ':lua wrapped_slime()<CR>')
-print("An even newer welcome")
+
+mymap('v', '<Space>yy', ':Telescope luasnip<CR>')
 -- }}} misc inbox
 
 -- {{{ Statusline active/not_active behavior
