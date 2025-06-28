@@ -151,6 +151,7 @@ with final.pkgs.lib; let
     which-key-nvim
     zen-mode-nvim
     render-markdown-nvim
+    markdown-preview-nvim
 
     # # neorg
     # vim-unimpaired # predefined ] and [ navigation keymaps | https://github.com/tpope/vim-unimpaired/
