@@ -1052,6 +1052,10 @@ vim.api.nvim_create_user_command('ReloadFTPlugins', 'execute "source" glob($MYVI
 mymap('n', '<Space>ff', '<CMD>NvimTreeToggle<CR>')
 mymap('n', '<Space>gg', '<CMD>Neogit<CR>')
 
+
+
+
+
 -- }}} Plugin mappings
 
 -- {{{ misc inbox
