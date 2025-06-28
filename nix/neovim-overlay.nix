@@ -150,6 +150,7 @@ with final.pkgs.lib; let
     vim-slime
     which-key-nvim
     zen-mode-nvim
+    render-markdown-nvim
 
     # # neorg
     # vim-unimpaired # predefined ] and [ navigation keymaps | https://github.com/tpope/vim-unimpaired/
