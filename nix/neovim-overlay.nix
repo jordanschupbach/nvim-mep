@@ -97,8 +97,8 @@ with final.pkgs.lib; let
     todo-comments-nvim
     asyncrun-vim
     # # neorg
-    # friendly-snippets
-    # nvim-bqf
+    friendly-snippets
+    nvim-bqf
 
 
   ];
