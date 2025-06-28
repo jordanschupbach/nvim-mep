@@ -15,7 +15,7 @@ local modified_defaults = {
       context = 'test' },
 
     { pattern = '/include/(.*)/(.*).hpp',
-      target = '/examples/%1/%2_ex.cpp',
+      target = '/examples/source/%1/%2_ex.cpp',
       context = 'example' },
 
     { pattern = '/include/(.*)/(.*).hpp',
@@ -35,7 +35,7 @@ local modified_defaults = {
       context = 'test' },
 
     { pattern = '/source/(.*)/(.*).cpp',
-      target = '/examples/%1/%2_ex.cpp',
+      target = '/examples/source/%1/%2_ex.cpp',
       context = 'example' },
 
     { pattern = '/source/(.*)/(.*).cpp',
@@ -60,7 +60,7 @@ local modified_defaults = {
 
     {
       pattern = '/tests/(.*)/(.*)_tests.cpp',
-      target = '/examples/%1/%2_ex.cpp',
+      target = '/examples/source/%1/%2_ex.cpp',
       context = 'example'
     },
 
@@ -88,7 +88,7 @@ local modified_defaults = {
 
     {
       pattern = '/include/(.*)/(.*)_impl.hpp',
-      target = '/examples/%1/%2_ex.cpp',
+      target = '/examples/source/%1/%2_ex.cpp',
       context = 'example'
     },
 
