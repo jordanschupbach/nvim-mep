@@ -101,6 +101,7 @@ with final.pkgs.lib; let
     nvim-bqf
     nvim-highlight-colors
     luasnip
+    blink-cmp
 
 
   ];
