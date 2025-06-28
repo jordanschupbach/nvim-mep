@@ -66,6 +66,16 @@ with final.pkgs.lib; let
         };
       };
 
+    JsFunc = pkgs.vimUtils.buildVimPlugin {
+        name = "just-nvim";
+        src = pkgs.fetchFromGitHub {
+          owner = "al1-ce";
+          repo = "jsfunc.nvim";
+          rev = "ed968840ade89f1d0c95513852a145dca1fe7916";
+          hash = "";
+        };
+      };
+
 
   in
 
@@ -146,6 +156,7 @@ with final.pkgs.lib; let
     EasyGrep
     TelescopeLuasnip
     JustNvim
+    JsFunc
 
   ];
 
