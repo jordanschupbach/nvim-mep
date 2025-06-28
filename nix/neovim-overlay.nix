@@ -56,6 +56,16 @@ with final.pkgs.lib; let
         };
       };
 
+    JustNvim = pkgs.vimUtils.buildVimPlugin {
+        name = "just-nvim";
+        src = pkgs.fetchFromGitHub {
+          owner = "al1-ce";
+          repo = "just.nvim";
+          rev = "14e2c95b2b988bb265da3ee0d546c1ec176dd6e1";
+          hash = "";
+        };
+      };
+
 
   in
 
@@ -135,7 +145,7 @@ with final.pkgs.lib; let
 
     EasyGrep
     TelescopeLuasnip
-
+    JustNvim
 
   ];
 
