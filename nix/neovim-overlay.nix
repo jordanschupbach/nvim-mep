@@ -67,7 +67,7 @@ with final.pkgs.lib; let
       };
 
     JsFunc = pkgs.vimUtils.buildVimPlugin {
-        name = "just-nvim";
+        name = "jsfunc-nvim";
         src = pkgs.fetchFromGitHub {
           owner = "al1-ce";
           repo = "jsfunc.nvim";
