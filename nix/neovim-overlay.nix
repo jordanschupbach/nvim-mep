@@ -52,7 +52,7 @@ with final.pkgs.lib; let
           owner = "benfowler";
           repo = "telescope-luasnip.nvim";
           rev = "07a2a2936a7557404c782dba021ac0a03165b343";
-          hash = "";
+          hash = "sha256-9XsV2hPjt05q+y5FiSbKYYXnznDKYOsDwsVmfskYd3M=";
         };
       };
 
