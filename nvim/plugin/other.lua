@@ -6,57 +6,41 @@ local modified_defaults = {
 
     -- {{{ from include
 
-    {
-      pattern = '/include/(.*)/(.*).hpp',
+    { pattern = '/include/(.*)/(.*).hpp',
       target = '/source/%1/%2.cpp',
-      context = 'source'
-    },
+      context = 'source' },
 
-    {
-      pattern = '/include/(.*)/(.*).hpp',
+    { pattern = '/include/(.*)/(.*).hpp',
       target = '/tests/%1/%2_tests.cpp',
-      context = 'test'
-    },
+      context = 'test' },
 
-    {
-      pattern = '/include/(.*)/(.*).hpp',
-      target = '/source/%1/%2_ex.cpp',
-      context = 'example'
-    },
+    { pattern = '/include/(.*)/(.*).hpp',
+      target = '/examples/%1/%2_ex.cpp',
+      context = 'example' },
 
-    {
-      pattern = '/include/(.*)/(.*).hpp',
+    { pattern = '/include/(.*)/(.*).hpp',
       target = '/include/%1/%2_impl.hpp',
-      context = 'impl'
-    },
+      context = 'impl' },
 
     -- }}} from include
 
     -- {{{ from source
 
-    {
-      pattern = '/source/(.*)/(.*).cpp',
+    { pattern = '/source/(.*)/(.*).cpp',
       target = '/include/%1/%2.cpp',
-      context = 'include'
-    },
+      context = 'include' },
 
-    {
-      pattern = '/source/(.*)/(.*).cpp',
+    { pattern = '/source/(.*)/(.*).cpp',
       target = '/tests/%1/%2_tests.cpp',
-      context = 'test'
-    },
+      context = 'test' },
 
-    {
-      pattern = '/source/(.*)/(.*).cpp',
-      target = '/source/%1/%2_ex.cpp',
-      context = 'example'
-    },
+    { pattern = '/source/(.*)/(.*).cpp',
+      target = '/examples/%1/%2_ex.cpp',
+      context = 'example' },
 
-    {
-      pattern = '/source/(.*)/(.*).cpp',
+    { pattern = '/source/(.*)/(.*).cpp',
       target = '/include/%1/%2_impl.hpp',
-      context = 'impl'
-    },
+      context = 'impl' },
 
     -- }}} from source
 
@@ -76,7 +60,7 @@ local modified_defaults = {
 
     {
       pattern = '/tests/(.*)/(.*)_tests.cpp',
-      target = '/source/%1/%2_ex.cpp',
+      target = '/examples/%1/%2_ex.cpp',
       context = 'example'
     },
 
@@ -104,7 +88,7 @@ local modified_defaults = {
 
     {
       pattern = '/include/(.*)/(.*)_impl.hpp',
-      target = '/source/%1/%2_ex.cpp',
+      target = '/examples/%1/%2_ex.cpp',
       context = 'example'
     },
 
