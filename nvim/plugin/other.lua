@@ -2,7 +2,31 @@
 local modified_defaults = {
 
   -- by default there are no mappings enabled
-  mappings = {},
+  mappings = {
+
+    -- {{{ from hpp
+
+    {
+      pattern = '/include/(.*)/(.*).hpp',
+      target = '/source/%2.cpp',
+      context = 'source'
+    },
+
+    {
+      pattern = '/include/(.*)/(.*).hpp',
+      target = '/test/source/%2_tests.cpp',
+      context = 'test'
+    },
+
+    {
+      pattern = '/include/(.*)/(.*).hpp',
+      target = '/source/%2_example.cpp',
+      context = 'example'
+    },
+
+    -- }}} from hpp
+
+  },
 
   -- -- default transformers
   -- transformers = {
