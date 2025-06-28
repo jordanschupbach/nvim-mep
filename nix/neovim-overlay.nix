@@ -99,6 +99,8 @@ with final.pkgs.lib; let
     # # neorg
     friendly-snippets
     nvim-bqf
+    vim-better-whitespace
+    nvim-highlight-colors
 
 
   ];
