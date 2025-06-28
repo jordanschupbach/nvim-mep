@@ -1069,6 +1069,7 @@ mymap('n', '<A-return>', '<CMD>SlimeSend<CR>')
 mymap('v', '<A-return>', ':lua wrapped_slime()<CR>')
 
 mymap('n', '<Space>yy', ':Telescope luasnip<CR>')
+mymap('n', '<Space><Space>', ':JustSelect<CR>')
 -- }}} misc inbox
 
 -- {{{ Statusline active/not_active behavior

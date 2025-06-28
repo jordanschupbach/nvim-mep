@@ -1,3 +1,5 @@
+build:
+  nix build
 
 run args:
   nix run . -- {{args}}
