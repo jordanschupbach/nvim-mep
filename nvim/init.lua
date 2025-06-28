@@ -95,7 +95,7 @@ cmd.filetype('plugin', 'indent', 'on')
 cmd.packadd('cfilter') -- Allows filtering the quickfix list with :cfdo
 
 -- let sqlite.lua (which some plugins depend on) know where to find sqlite
-vim.g.sqlite_clib_path = require('luv').os_getenv('LIBSQLITE')
+-- vim.g.sqlite_clib_path = require('luv').os_getenv('LIBSQLITE')
 
 
 -- }}} Prior config
@@ -927,8 +927,8 @@ slime_send_make_run = function()
   vim.api.nvim_call_function('slime#send', { 'make run\n' })
 end
 
-slime_send = function(cmd)
-  vim.api.nvim_call_function('slime#send', { cmd .. '\n' })
+slime_send = function(command)
+  vim.api.nvim_call_function('slime#send', { command .. '\n' })
 end
 
 say_hello = function()
@@ -1066,7 +1066,7 @@ wrapped_slime = function()
   vim.cmd("'<,'>SlimeSend") -- Send to Slime
 end
 mymap('n', '<A-return>', '<CMD>SlimeSend<CR>')
-mymap('v', '<A-return>', ':lua wrapped_slime()<CR>', { noremap = true, silent = true })
+mymap('v', '<A-return>', ':lua wrapped_slime()<CR>')
 print("An even newer welcome")
 -- }}} misc inbox
 
