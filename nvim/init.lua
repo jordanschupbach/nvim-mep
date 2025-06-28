@@ -1052,8 +1052,9 @@ vim.api.nvim_create_user_command('ReloadFTPlugins', 'execute "source" glob($MYVI
 mymap('n', '<Space>ff', '<CMD>NvimTreeToggle<CR>')
 mymap('n', '<Space>gg', '<CMD>Neogit kind=vsplit<CR>')
 
-
-
+mymap('n', '<Space>oo', '<CMD>Other<CR>')
+mymap('n', '<Space>ov', '<CMD>OtherVSplit<CR>')
+mymap('n', '<Space>os', '<CMD>OtherSplit<CR>')
 
 
 -- }}} Plugin mappings
