@@ -4,13 +4,13 @@ local modified_defaults = {
   -- by default there are no mappings enabled
   mappings = {},
 
-  -- default transformers
-  transformers = {
-    camelToKebap = require("other-nvim").transformers.camelToKebap,
-    kebapToCamel = require("other-nvim").transformers.kebapToCamel,
-    pluralize = require("other-nvim").transformers.pluralize,
-    singularize = require("other-nvim").transformers.singularize,
-  },
+  -- -- default transformers
+  -- transformers = {
+  --   camelToKebap = transformers.camelToKebap,
+  --   kebapToCamel = transformers.kebapToCamel,
+  --   pluralize = transformers.pluralize,
+  --   singularize = transformers.singularize,
+  -- },
 
   -- Should the window show files which do not exist yet based on
   -- pattern matching. Selecting the files will create the file.
