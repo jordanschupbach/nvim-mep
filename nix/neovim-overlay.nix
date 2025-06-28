@@ -105,6 +105,18 @@ with final.pkgs.lib; let
     blink-cmp
     telescope-ultisnips-nvim
 
+    pkgs.vimUtils.buildVimPlugin {
+        name = "vim-easygrep";
+        src = pkgs.fetchFromGitHub {
+          owner = "dkprice";
+          repo = "vim-easygrep";
+          rev = "d0c36a77cc63c22648e792796b1815b44164653a";
+          hash = "sha256-bL33/S+caNmEYGcMLNCanFZyEYUOUmSsedCVBn4tV3g=";
+        };
+      }
+
+
+
   ];
 
   extraPackages = with pkgs; [
