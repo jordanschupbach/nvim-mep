@@ -115,7 +115,7 @@ with final.pkgs.lib; let
     vim-fugitive # https://github.com/tpope/vim-fugitive/
     vim-repeat
     vim-slime
-    vim-unimpaired # predefined ] and [ navigation keymaps | https://github.com/tpope/vim-unimpaired/
+    # vim-unimpaired # predefined ] and [ navigation keymaps | https://github.com/tpope/vim-unimpaired/
     which-key-nvim
     zen-mode-nvim
 
