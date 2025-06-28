@@ -72,7 +72,7 @@ with final.pkgs.lib; let
           owner = "al1-ce";
           repo = "jsfunc.nvim";
           rev = "ed968840ade89f1d0c95513852a145dca1fe7916";
-          hash = "";
+          hash = "sha256-qQAGTI0BieXI6F/qWNmiQVVVxmTwHQ9vlMendflkAxs=";
         };
       };
 
