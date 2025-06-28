@@ -102,7 +102,7 @@ with final.pkgs.lib; let
     nvim-highlight-colors
     luasnip
     blink-cmp
-
+    telecope-ultisnips
 
   ];
 
