@@ -570,6 +570,44 @@ ls.add_snippets("tex", {
 
 -- }}} tex snippets
 
+-- {{{ CPP snippets
+ls.add_snippets("cpp", {
+
+  s("ponce", {
+    t({ "#pragma once" }),
+  }),
+
+  s("iostream", {
+    t({ "#include <iostream>" }),
+  }),
+
+  s("memory", {
+    t({ "#include <memory>" }),
+  }),
+
+  s("helloworld", {
+    t({
+      "#include <iostream>",
+      "",
+      "int main(void) {",
+      "  std::cout<< \"Hello World!\"<<std::endl;",
+      "  return 0;",
+      "}"
+    }),
+  }),
+
+
+
+
+
+}, {
+  key = "java",
+})
+-- }}} Java snippets
+
+
+
+
 -- {{{ autotrigger snippets?
 -- set type to "autosnippets" for adding autotriggered snippets.
 ls.add_snippets("all", {
@@ -586,7 +624,7 @@ ls.add_snippets("all", {
 -- in a lua file: search lua-, then c-, then all-snippets.
 ls.filetype_extend("lua", { "c" })
 -- in a cpp file: search c-snippets, then all-snippets only (no cpp-snippets!!).
-ls.filetype_set("cpp", { "c" })
+ls.filetype_set("cpp", { "c", "cpp" })
 require("luasnip.loaders.from_vscode").load({ include = { "python" } })      -- Load only python snippets
 require("luasnip.loaders.from_vscode").load({ paths = { "./my-snippets" } }) -- Load snippets from my-snippets folder
 require("luasnip.loaders.from_vscode").lazy_load()                           -- You can pass { paths = "./my-snippets/"} as well
