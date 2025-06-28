@@ -93,7 +93,7 @@ with final.pkgs.lib; let
 
     flash-nvim
     nvim-luadev
-    # focus-nvim
+    focus-nvim
     # todo-comments-nvim
     # # neorg
     # asyncrun-vim
