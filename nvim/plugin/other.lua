@@ -8,20 +8,26 @@ local modified_defaults = {
 
     {
       pattern = '/include/(.*)/(.*).hpp',
-      target = '/source/%2.cpp',
+      target = '/source/%1/%2.cpp',
       context = 'source'
     },
 
     {
       pattern = '/include/(.*)/(.*).hpp',
-      target = '/test/source/%2_tests.cpp',
+      target = '/tests/%1/%2_tests.cpp',
       context = 'test'
     },
 
     {
       pattern = '/include/(.*)/(.*).hpp',
-      target = '/source/%2_example.cpp',
+      target = '/source/%1/%2_ex.cpp',
       context = 'example'
+    },
+
+    {
+      pattern = '/include/(.*)/(.*).hpp',
+      target = '/include/%1/%2_impl.hpp',
+      context = 'impl'
     },
 
     -- }}} from hpp
