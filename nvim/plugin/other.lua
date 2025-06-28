@@ -4,7 +4,7 @@ local modified_defaults = {
   -- by default there are no mappings enabled
   mappings = {
 
-    -- {{{ from hpp
+    -- {{{ from include
 
     {
       pattern = '/include/(.*)/(.*).hpp',
@@ -30,7 +30,91 @@ local modified_defaults = {
       context = 'impl'
     },
 
-    -- }}} from hpp
+    -- }}} from include
+
+    -- {{{ from source
+
+    {
+      pattern = '/source/(.*)/(.*).cpp',
+      target = '/include/%1/%2.cpp',
+      context = 'include'
+    },
+
+    {
+      pattern = '/source/(.*)/(.*).cpp',
+      target = '/tests/%1/%2_tests.cpp',
+      context = 'test'
+    },
+
+    {
+      pattern = '/source/(.*)/(.*).cpp',
+      target = '/source/%1/%2_ex.cpp',
+      context = 'example'
+    },
+
+    {
+      pattern = '/source/(.*)/(.*).cpp',
+      target = '/include/%1/%2_impl.hpp',
+      context = 'impl'
+    },
+
+    -- }}} from source
+
+    -- {{{ from tests
+
+    {
+      pattern = '/tests/(.*)/(.*)_tests.cpp',
+      target = '/include/%1/%2.cpp',
+      context = 'include'
+    },
+
+    {
+      pattern = '/tests/(.*)/(.*)_tests.cpp',
+      target = '/source/%1/%2.cpp',
+      context = 'source'
+    },
+
+    {
+      pattern = '/tests/(.*)/(.*)_tests.cpp',
+      target = '/source/%1/%2_ex.cpp',
+      context = 'example'
+    },
+
+    {
+      pattern = '/tests/(.*)/(.*)_tests.cpp',
+      target = '/include/%1/%2_impl.hpp',
+      context = 'impl'
+    },
+
+    -- }}} from tests
+
+    -- {{{ from impl
+
+    {
+      pattern = '/include/(.*)/(.*)_impl.hpp',
+      target = '/source/%1/%2.cpp',
+      context = 'source'
+    },
+
+    {
+      pattern = '/include/(.*)/(.*)_impl.hpp',
+      target = '/tests/%1/%2_tests.cpp',
+      context = 'test'
+    },
+
+    {
+      pattern = '/include/(.*)/(.*)_impl.hpp',
+      target = '/source/%1/%2_ex.cpp',
+      context = 'example'
+    },
+
+    {
+      pattern = '/include/(.*)/(.*)_impl.hpp',
+      target = '/include/%1/%2.hpp',
+      context = 'include'
+    },
+
+    -- }}} from tests
 
   },
 
