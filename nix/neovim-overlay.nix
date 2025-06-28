@@ -96,7 +96,6 @@ with final.pkgs.lib; let
     focus-nvim
     todo-comments-nvim
     neorg
-    orgmode
     asyncrun-vim
     friendly-snippets
     nvim-bqf
