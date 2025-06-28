@@ -92,13 +92,13 @@ with final.pkgs.lib; let
     zen-mode-nvim
 
     flash-nvim
-    nvim-luadev
-    focus-nvim
-    todo-comments-nvim
-    neorg
-    asyncrun-vim
-    friendly-snippets
-    nvim-bqf
+    # nvim-luadev
+    # focus-nvim
+    # todo-comments-nvim
+    # # neorg
+    # asyncrun-vim
+    # friendly-snippets
+    # nvim-bqf
 
 
   ];
