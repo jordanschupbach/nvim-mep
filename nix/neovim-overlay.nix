@@ -94,9 +94,9 @@ with final.pkgs.lib; let
     flash-nvim
     nvim-luadev
     focus-nvim
-    # todo-comments-nvim
+    todo-comments-nvim
+    asyncrun-vim
     # # neorg
-    # asyncrun-vim
     # friendly-snippets
     # nvim-bqf
 
