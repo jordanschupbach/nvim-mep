@@ -4,6 +4,7 @@
 with final.pkgs.lib; let
   pkgs = final;
 
+
   # Use this to create a plugin from a flake input
   mkNvimPlugin = src: pname:
     pkgs.vimUtils.buildVimPlugin {
@@ -32,7 +33,22 @@ with final.pkgs.lib; let
 
 
 
-  all-plugins = with pkgs.vimPlugins; [
+  all-plugins = 
+  let
+
+    EasyGrep = pkgs.vimUtils.buildVimPlugin {
+        name = "vim-easygrep";
+        src = pkgs.fetchFromGitHub {
+          owner = "dkprice";
+          repo = "vim-easygrep";
+          rev = "d0c36a77cc63c22648e792796b1815b44164653a";
+          hash = "sha256-bL33/S+caNmEYGcMLNCanFZyEYUOUmSsedCVBn4tV3g=";
+        };
+      };
+  in
+
+
+  with pkgs.vimPlugins; [
 
     # plugins from nixpkgs go in here.
     # https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=vimPlugins
@@ -105,19 +121,11 @@ with final.pkgs.lib; let
     blink-cmp
     telescope-ultisnips-nvim
 
-    pkgs.vimUtils.buildVimPlugin {
-        name = "vim-easygrep";
-        src = pkgs.fetchFromGitHub {
-          owner = "dkprice";
-          repo = "vim-easygrep";
-          rev = "d0c36a77cc63c22648e792796b1815b44164653a";
-          hash = "sha256-bL33/S+caNmEYGcMLNCanFZyEYUOUmSsedCVBn4tV3g=";
-        };
-      }
-
+    EasyGrep
 
 
   ];
+
 
   extraPackages = with pkgs; [
     # language servers, etc.
