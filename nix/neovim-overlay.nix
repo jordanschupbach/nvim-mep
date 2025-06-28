@@ -47,11 +47,11 @@ with final.pkgs.lib; let
       };
 
     TelescopeLuasnip = pkgs.vimUtils.buildVimPlugin {
-        name = "telescope-luasnip";
+        name = "telescope-luasnip-nvim";
         src = pkgs.fetchFromGitHub {
           owner = "benfowler";
-          repo = "telescope-luasnip";
-          rev = "07a2a29";
+          repo = "telescope-luasnip.nvim";
+          rev = "07a2a2936a7557404c782dba021ac0a03165b343";
           hash = "";
         };
       };
