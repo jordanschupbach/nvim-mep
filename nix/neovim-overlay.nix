@@ -91,6 +91,15 @@ with final.pkgs.lib; let
     which-key-nvim
     zen-mode-nvim
 
+    nvim-luadev
+    focus-nvim
+    todo-comments-nvim
+    neorg
+    orgmode
+    asyncrun-vim
+    friendly-snippets
+    nvim-bqf
+
 
   ];
 

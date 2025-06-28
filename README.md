@@ -33,7 +33,7 @@ You can then add the overlay's output(s) to the `systemPackages`:
 environment.systemPackages = with pkgs; [
     nvim-pkg
 ];
-```
+``
 
 ### :penguin: Non-NixOS
 
