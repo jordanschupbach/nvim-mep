@@ -91,6 +91,7 @@ with final.pkgs.lib; let
     which-key-nvim
     zen-mode-nvim
 
+    ultisnips
     flash-nvim
     nvim-luadev
     focus-nvim
