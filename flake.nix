@@ -66,6 +66,11 @@
           # allow quick iteration of lua configs
           ln -Tfns $PWD/nvim ~/.config/nvim-dev
         '';
+        commands = [
+          {
+            name = "enter-shell";
+            command = "exec ${pkgs.bashInteractive}/bin/bash";
+          }];
       };
     in {
       packages = rec {
