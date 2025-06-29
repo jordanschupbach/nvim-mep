@@ -1055,6 +1055,7 @@ mymap('n', '<Space>gg', '<CMD>Neogit kind=vsplit<CR>')
 mymap('n', '<Space>oo', '<CMD>Other<CR>')
 mymap('n', '<Space>ov', '<CMD>OtherVSplit<CR>')
 mymap('n', '<Space>os', '<CMD>OtherSplit<CR>')
+mymap('n', '<Space>aa', '<CMD>AerialToggle<CR>')
 
 
 -- }}} Plugin mappings
