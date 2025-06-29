@@ -147,6 +147,7 @@ local function on_project_selected(prompt_bufnr)
       vim.cmd('edit ' .. entry['value'] .. '/justfile')
       vim.cmd('AerialToggle')
       vim.cmd 'wincmd h'
+      vim.cmd 'wincmd h'
     end
   end
   -- vim.cmd('cd ')
