@@ -139,6 +139,9 @@ local function on_project_selected(prompt_bufnr)
     if file_exists('' .. entry['value'] .. '/justfile') then
       vim.cmd 'split'
       vim.cmd('edit ' .. entry['value'] .. '/justfile')
+      vim.cmd('AerialToggle')
+      vim.cmd 'wincmd h'
+      vim.cmd 'wincmd h'
     end
     vim.cmd 'wincmd h'
   else
