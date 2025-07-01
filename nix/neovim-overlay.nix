@@ -183,8 +183,8 @@ with final.pkgs.lib; let
     rPackages.callr
     ghc
     rPackages.languageserver
-    haskellPackages.hmatrix
-    haskellPackages.hmatrix-gsl
+    # haskellPackages.hmatrix
+    # haskellPackages.hmatrix-gsl
 
   ];
 in {
