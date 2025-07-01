@@ -176,11 +176,15 @@ with final.pkgs.lib; let
     nil # nix LSP
     libxml2
     R
+    python
     nnn
     nerd-fonts.ubuntu
     nerd-fonts.ubuntu-mono
     rPackages.callr
+    ghc
     rPackages.languageserver
+    haskellPackages.hmatrix
+    haskellPackages.hmatrix-gsl
 
   ];
 in {
