@@ -176,7 +176,7 @@ with final.pkgs.lib; let
     nil # nix LSP
     libxml2
     R
-    python
+    python314
     nnn
     nerd-fonts.ubuntu
     nerd-fonts.ubuntu-mono

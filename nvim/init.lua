@@ -1,3 +1,4 @@
+
 vim.loader.enable()
 
 -- {{{ aliases
@@ -255,6 +256,7 @@ vim.g.maplocalleader = ','
 vim.g.minimap_auto_start = 0
 vim.g.minimap_auto_start_win_enter = 1
 vim.g.minimap_width = 2
+-- TODO: check this exists in nix
 vim.g.python_host_program = '/usr/bin/python'
 
 -- Opts
