@@ -152,6 +152,7 @@ with final.pkgs.lib; let
     zen-mode-nvim
     render-markdown-nvim
     markdown-preview-nvim
+    jupytext-nvim
 
     # # neorg
     # vim-unimpaired # predefined ] and [ navigation keymaps | https://github.com/tpope/vim-unimpaired/
@@ -177,6 +178,7 @@ with final.pkgs.lib; let
     libxml2
     R
     python314
+
     nnn
     nerd-fonts.ubuntu
     nerd-fonts.ubuntu-mono
@@ -186,8 +188,6 @@ with final.pkgs.lib; let
     rPackages.languageserver
     haskellPackages.hmatrix
     haskellPackages.hmatrix-gsl
-    python313
-    python313Packages.jupytext
 
   ];
 in {
