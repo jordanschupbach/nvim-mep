@@ -56,6 +56,7 @@
           nnn
           nerd-fonts.ubuntu
           nerd-fonts.ubuntu-mono
+          fish
           luajitPackages.luacheck
           nvim-dev
           rPackages.callr

@@ -180,11 +180,14 @@ with final.pkgs.lib; let
     nnn
     nerd-fonts.ubuntu
     nerd-fonts.ubuntu-mono
+    fish
     rPackages.callr
     ghc
     rPackages.languageserver
     haskellPackages.hmatrix
     haskellPackages.hmatrix-gsl
+    python313
+    python313Packages.jupytext
 
   ];
 in {
