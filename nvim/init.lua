@@ -172,6 +172,22 @@ mymap('t', '<Space>wl', '<CMD>wincmd l<CR>')
 mymap('n', '<A-S-l>', "<CMD>lua require('smart-splits').resize_right()<CR>")
 mymap('t', '<A-S-l>', "<CMD>lua require('smart-splits').resize_right()<CR>")
 
+
+
+mymap('n', '<A-C-h>', "<CMD>lua require('smart-splits').swap_buf_left()<CR>")
+mymap('t', '<A-C-h>', "<CMD>lua require('smart-splits').swap_buf_left()<CR>")
+
+mymap('n', '<A-C-l>', "<CMD>lua require('smart-splits').swap_buf_right()<CR>")
+mymap('t', '<A-C-l>', "<CMD>lua require('smart-splits').swap_buf_right()<CR>")
+
+mymap('n', '<A-C-j>', "<CMD>lua require('smart-splits').swap_buf_down()<CR>")
+mymap('t', '<A-C-j>', "<CMD>lua require('smart-splits').swap_buf_down()<CR>")
+
+mymap('n', '<A-C-k>', "<CMD>lua require('smart-splits').swap_buf_up()<CR>")
+mymap('t', '<A-C-k>', "<CMD>lua require('smart-splits').swap_buf_up()<CR>")
+
+
+
 -- Window left
 mymap('n', '<A-h>', '<CMD>wincmd h<CR>')
 mymap('t', '<A-h>', '<CMD>wincmd h<CR>')
