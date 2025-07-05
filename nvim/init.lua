@@ -174,17 +174,6 @@ mymap('t', '<A-S-l>', "<CMD>lua require('smart-splits').resize_right()<CR>")
 
 
 
-mymap('n', '<A-C-h>', "<CMD>lua require('smart-splits').swap_buf_left()<CR>")
-mymap('t', '<A-C-h>', "<CMD>lua require('smart-splits').swap_buf_left()<CR>")
-
-mymap('n', '<A-C-l>', "<CMD>lua require('smart-splits').swap_buf_right()<CR>")
-mymap('t', '<A-C-l>', "<CMD>lua require('smart-splits').swap_buf_right()<CR>")
-
-mymap('n', '<A-C-j>', "<CMD>lua require('smart-splits').swap_buf_down()<CR>")
-mymap('t', '<A-C-j>', "<CMD>lua require('smart-splits').swap_buf_down()<CR>")
-
-mymap('n', '<A-C-k>', "<CMD>lua require('smart-splits').swap_buf_up()<CR>")
-mymap('t', '<A-C-k>', "<CMD>lua require('smart-splits').swap_buf_up()<CR>")
 
 
 
@@ -1146,3 +1135,15 @@ vim.cmd('highlight EndOfBuffer guifg=#881188') -- Customize color as needed
 -- vim.opt.statusline = " %= %P"  -- Example status line
 vim.opt.statusline = " %= %l/%3L"  -- Example status line
 vim.opt.statusline = "%="  -- Example status line
+
+
+mymap('n', '<A-C-h>', "<CMD>lua require('smart-splits').swap_buf_left()<CR>")
+mymap('t', '<A-C-h>', "<CMD>lua require('smart-splits').swap_buf_left()<CR>")
+mymap('n', '<A-C-l>', "<CMD>lua require('smart-splits').swap_buf_right()<CR>")
+mymap('t', '<A-C-l>', "<CMD>lua require('smart-splits').swap_buf_right()<CR>")
+mymap('n', '<A-C-j>', "<CMD>lua require('smart-splits').swap_buf_down()<CR>")
+mymap('t', '<A-C-j>', "<CMD>lua require('smart-splits').swap_buf_down()<CR>")
+mymap('n', '<A-C-k>', "<CMD>lua require('smart-splits').swap_buf_up()<CR>")
+mymap('t', '<A-C-k>', "<CMD>lua require('smart-splits').swap_buf_up()<CR>")
+
+
