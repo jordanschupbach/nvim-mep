@@ -11,7 +11,7 @@ local modified_defaults = {
       context = 'source' },
 
     { pattern = '/include/(.*)/(.*).hpp',
-      target = '/tests/%1/%2_tests.cpp',
+      target = '/tests/source/%1/%2_tests.cpp',
       context = 'test' },
 
     { pattern = '/include/(.*)/(.*).hpp',
@@ -31,7 +31,7 @@ local modified_defaults = {
       context = 'include' },
 
     { pattern = '/source/(.*)/(.*).cpp',
-      target = '/tests/%1/%2_tests.cpp',
+      target = '/tests/source/%1/%2_tests.cpp',
       context = 'test' },
 
     { pattern = '/source/(.*)/(.*).cpp',
@@ -82,7 +82,7 @@ local modified_defaults = {
 
     {
       pattern = '/include/(.*)/(.*)_impl.hpp',
-      target = '/tests/%1/%2_tests.cpp',
+      target = '/tests/source/%1/%2_tests.cpp',
       context = 'test'
     },
 
