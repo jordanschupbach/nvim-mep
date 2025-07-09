@@ -178,6 +178,7 @@ with final.pkgs.lib; let
     libxml2
     R
     python314
+    texliveFull
 
     nnn
     nerd-fonts.ubuntu
