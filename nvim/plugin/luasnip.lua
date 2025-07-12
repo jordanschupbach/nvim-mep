@@ -632,6 +632,7 @@ ls.add_snippets("nix", {
       "  };",
       "}",
     }),
+  }),
   -- }}} Module
 
   s("basic-shell", {
