@@ -649,9 +649,7 @@ ls.add_snippets("nix", {
     }),
   }),
 
-
-
-  s("basic-shell", {
+  s("basic-flake", {
     t({
       '{',
       '  description = "A basic flake";',
@@ -678,17 +676,6 @@ ls.add_snippets("nix", {
       '}',
     }),
   }),
-
-
-
-
-
-
-
-
-
-
-
 
 
 }, {
