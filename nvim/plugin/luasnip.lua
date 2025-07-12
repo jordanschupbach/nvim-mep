@@ -634,10 +634,19 @@ ls.add_snippets("nix", {
     }),
   -- }}} Module
 
-
-
+  s("basic-shell", {
+    t({
+      '# my-env shell',
+      'with import <nixpkgs> { };',
+      '',
+      'mkShell {',
+      '  name = "my-env";',
+      '  packages = [',
+      '    hello',
+      '  ];',
+      '}',
+    }),
   }),
-
 
 }, {
   key = "nix",
@@ -661,6 +670,7 @@ ls.add_snippets("all", {
   key = "all_auto",
 })
 -- }}} autotrigger snippets?
+
 
 -- {{{ load snippets
 -- in a lua file: search lua-, then c-, then all-snippets.
