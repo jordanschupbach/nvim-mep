@@ -1152,14 +1152,14 @@ mymap('t', '<A-C-k>', "<CMD>lua require('smart-splits').swap_buf_up()<CR>")
 
 
 
--- {{{ Fortran filetype detection
-vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
-    pattern = "*.f90",
-    callback = function()
-        vim.bo.filetype = "fortran"
-    end,
-})
--- }}} Fortran filetype detection
+-- -- {{{ Fortran filetype detection
+-- vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
+--     pattern = "*.f90",
+--     callback = function()
+--         vim.bo.filetype = "fortran"
+--     end,
+-- })
+-- -- }}} Fortran filetype detection
 
 
 
