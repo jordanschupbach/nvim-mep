@@ -48,6 +48,7 @@
         name = "nvim-devShell";
         buildInputs = with pkgs; [
           # Tools for Lua and Nix development, useful for editing files in this repo
+          hello
           bashInteractive
           lua-language-server
           nil

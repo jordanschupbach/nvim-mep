@@ -205,7 +205,26 @@ end
 
 -- {{{ All snippets
 
+
 ls.add_snippets("all", {
+
+  -- NOTE: Maybe this should go to .envrc snippet?
+
+  -- {{{ envrc
+  s("envrc", {
+    t({
+
+      "# shellcheck shell=bash",
+      "if ! has nix_direnv_version || ! nix_direnv_version 3.1.0; then",
+      "  source_url 'https://raw.githubusercontent.com/nix-community/nix-direnv/3.1.0/direnvrc' 'sha256-yMJ2OVMzrFaDPn7q8nCBZFRYpL/f0RcHzhmw/i6btJM='",
+      "fi",
+      "use flake",
+
+    }),
+  }),
+  -- }}} envrc
+
+  -- {{{ fn
   -- trigger is `fn`, second argument to snippet-constructor are the nodes to insert into the buffer on expansion.
   s("fn", {
     -- Simple static text.
@@ -225,6 +244,9 @@ ls.add_snippets("all", {
     i(0),
     t({ "", "}" }),
   }),
+  -- }}} fn
+
+  -- {{{ class 
   s("class", {
     -- Choice: Switch between two different Nodes, first parameter is its position, second a list of nodes.
     c(1, {
@@ -256,6 +278,9 @@ ls.add_snippets("all", {
     i(0),
     t({ "", "}" }),
   }),
+  -- }}} class 
+
+  -- {{{ fmt1
   -- Alternative printf-like notation for defining snippets. It uses format
   -- string with placeholders similar to the ones used with Python's .format().
   s(
@@ -266,6 +291,10 @@ ls.add_snippets("all", {
       title = c(1, { t("Mr."), t("Ms.") }),
     })
   ),
+
+  -- }}} fmt1
+
+  -- {{{ fmt2
   -- To escape delimiters use double them, e.g. `{}` -> `{{}}`.
   -- Multi-line format strings by default have empty first/last line removed.
   -- Indent common to all lines is also removed. Use the third `opts` argument
@@ -286,6 +315,10 @@ ls.add_snippets("all", {
       }
     )
   ),
+
+  -- }}} fmt2
+
+  -- {{{ fmt3
   -- Empty placeholders are numbered automatically starting from 1 or the last
   -- value of a numbered placeholder. Named placeholders do not affect numbering.
   s(
@@ -296,15 +329,34 @@ ls.add_snippets("all", {
       a = t("A"),
     })
   ),
+
+  -- }}} fmt3
+
+  -- {{{ fmt4
+
   -- The delimiters can be changed from the default `{}` to something else.
   s("fmt4", fmt("foo() { return []; }", i(1, "x"), { delimiters = "[]" })),
+
+  -- }}} fmt4
+
+  -- {{{ fmt5
+
   -- `fmta` is a convenient wrapper that uses `<>` instead of `{}`.
   s("fmt5", fmta("foo() { return <>; }", i(1, "x"))),
   -- By default all args must be used. Use strict=false to disable the check
+
+  -- }}} fmt5
+
+  -- {{{ fmt6
+
   s(
     "fmt6",
     fmt("use {} only", { t("this"), t("not this") }, { strict = false })
   ),
+
+  -- }}} fmt6
+
+  -- {{{ novel
   -- Use a dynamicNode to interpolate the output of a
   -- function (see date_input above) into the initial
   -- value of an insertNode.
@@ -313,6 +365,10 @@ ls.add_snippets("all", {
     d(1, date_input, {}, { user_args = { "%A, %B %d of %Y" } }),
     t(" and the clocks were striking thirteen."),
   }),
+
+  -- }}} novel
+
+  -- {{{ lspsyn
   -- Parsing snippets: First parameter: Snippet-Trigger, Second: Snippet body.
   -- Placeholders are parsed into choices with 1. the placeholder text(as a snippet) and 2. an empty string.
   -- This means they are not SELECTed like in other editors/Snippet engines.
@@ -320,6 +376,9 @@ ls.add_snippets("all", {
     "lspsyn",
     "Wow! This ${1:Stuff} really ${2:works. ${3:Well, a bit.}}"
   ),
+  -- }}} lspsyn
+
+  -- {{{ te
 
   -- When wordTrig is set to false, snippets may also expand inside other words.
   ls.parser.parse_snippet(
@@ -327,8 +386,11 @@ ls.add_snippets("all", {
     "${1:cond} ? ${2:true} : ${3:false}"
   ),
 
-  -- When regTrig is set, trig is treated like a pattern, this snippet will expand after any number.
+  -- }}} te
+
   ls.parser.parse_snippet({ trig = "%d", regTrig = true }, "A Number!!"),
+  -- {{{  cond
+  -- When regTrig is set, trig is treated like a pattern, this snippet will expand after any number.
   -- Using the condition, it's possible to allow expansion only in specific cases.
   s("cond", {
     t("will only expand in c-style comments"),
@@ -339,6 +401,8 @@ ls.add_snippets("all", {
       return line_to_cursor:match("%s*//")
     end,
   }),
+
+  -- }}}  cond
   -- there's some built-in conditions in "luasnip.extras.conditions.expand" and "luasnip.extras.conditions.show".
   s("cond2", {
     t("will only expand at the beginning of the line"),
@@ -602,9 +666,8 @@ ls.add_snippets("cpp", {
 })
 -- }}} Cpp snippets
 
--- {{{ CPP snippets
+-- {{{ nix snippets
 ls.add_snippets("nix", {
-
 
   -- {{{ Module
   s("module", {
@@ -635,6 +698,7 @@ ls.add_snippets("nix", {
   }),
   -- }}} Module
 
+  -- {{{ basic-shell
   s("basic-shell", {
     t({
       '# my-env shell',
@@ -648,7 +712,9 @@ ls.add_snippets("nix", {
       '}',
     }),
   }),
+  -- }}} basic-shell
 
+  -- {{{ basic flake
   s("basic-flake", {
     t({
       '{',
@@ -677,6 +743,7 @@ ls.add_snippets("nix", {
     }),
   }),
 
+  -- }}} basic flake
 
 }, {
   key = "nix",
