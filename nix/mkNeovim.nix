@@ -15,21 +15,45 @@ with lib;
     # If set to something else, this will also rename the binary.
     appName ? null,
     plugins ? [
+
       R
-      ripgrep
       libclang
       libxml2
+      rPackages.callr
+      rPackages.languageserver
+      rPackages.languageserversetup
+      ripgrep
+
       # ruby
       # nodejs
     ], # List of plugins
     # List of dev plugins (will be bootstrapped) - useful for plugin developers
     # { name = <plugin-name>; url = <git-url>; }
-    devPlugins ? [],
+    devPlugins ? [
+
+      R
+      libclang
+      libxml2
+      rPackages.callr
+      rPackages.languageserver
+      rPackages.languageserversetup
+      ripgrep
+
+    ],
     # Regexes for config files to ignore, relative to the nvim directory.
     # e.g. [ "^plugin/neogit.lua" "^ftplugin/.*.lua" ]
     ignoreConfigRegexes ? [],
     # Extra runtime dependencies (e.g. ripgrep, ...)
-    extraPackages ? [ ripgrep libxml2], 
+    extraPackages ? [ 
+      R
+      libclang
+      libxml2
+      rPackages.callr
+      rPackages.languageserver
+      rPackages.languageserversetup
+      ripgrep
+      libxml2
+      ], 
       
     # The below arguments can typically be left as their defaults
     # Additional lua packages (not plugins), e.g. from luarocks.org.
