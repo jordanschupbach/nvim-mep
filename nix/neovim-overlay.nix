@@ -167,24 +167,24 @@ with final.pkgs.lib; let
 
   extraPackages = 
   let
-    R-with-my-packages = pkgs.rWrapper.override{ packages = with pkgs.rPackages; [ 
-      snakecase 
-      lme4 
-      languageserver 
-      lintr 
-    ]; };
+    # R-with-my-packages = pkgs.rWrapper.override{ packages = with pkgs.rPackages; [ 
+    #   snakecase 
+    #   lme4 
+    #   languageserver 
+    #   lintr 
+    # ]; };
   in
 
   with pkgs; [
     # language servers, etc.
-    cava
+    # cava
 
-    rWrapper
-    R-with-my-packages
+    # rWrapper
+    # R-with-my-packages
     # R
 
-    R
-    rPackages.languageserver
+    # R
+    # rPackages.languageserver
 
     bash-language-server
     cmake

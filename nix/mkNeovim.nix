@@ -22,7 +22,7 @@ with lib;
       # R
       # rPackages.callr
       # rPackages.languageserver
-      cava
+      # cava
       libclang
       libxml2
       ripgrep
