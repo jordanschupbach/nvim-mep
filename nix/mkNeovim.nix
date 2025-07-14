@@ -22,6 +22,7 @@ with lib;
       # R
       # rPackages.callr
       # rPackages.languageserver
+      cava
       libclang
       libxml2
       ripgrep
@@ -52,6 +53,7 @@ with lib;
       # R
       # rPackages.languageserver
       # libclang
+      cava
       libxml2
       # rPackages.callr
       # ripgrep

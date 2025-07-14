@@ -177,6 +177,7 @@ with final.pkgs.lib; let
 
   with pkgs; [
     # language servers, etc.
+    cava
 
     rWrapper
     R-with-my-packages
