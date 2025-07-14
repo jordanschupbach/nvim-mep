@@ -182,6 +182,10 @@ with final.pkgs.lib; let
     rWrapper
     R-with-my-packages
     # R
+
+    R
+    rPackages.languageserver
+
     bash-language-server
     cmake
     fish
