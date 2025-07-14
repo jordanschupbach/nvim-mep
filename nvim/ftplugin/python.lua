@@ -11,6 +11,7 @@ local root_files = {
 }
 
 
+
 vim.lsp.start {
   name = 'jedi',
   root_dir = vim.fs.dirname(vim.fs.find(root_files, { upward = true })[1]),
@@ -19,8 +20,5 @@ vim.lsp.start {
   filetypes = { 'python' },
   capabilities = require('user.lsp').make_client_capabilities(),
 }
-
-
-
 
 
