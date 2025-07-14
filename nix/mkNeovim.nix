@@ -1,3 +1,4 @@
+
 # Function for creating a Neovim derivation
 {
   lib,
@@ -31,13 +32,13 @@ with lib;
     # { name = <plugin-name>; url = <git-url>; }
     devPlugins ? [
 
-      R
-      libclang
-      libxml2
-      rPackages.callr
-      rPackages.languageserver
-      rPackages.languageserversetup
-      ripgrep
+      # R
+      # libclang
+      # libxml2
+      # rPackages.callr
+      # rPackages.languageserver
+      # rPackages.languageserversetup
+      # ripgrep
 
     ],
     # Regexes for config files to ignore, relative to the nvim directory.
@@ -45,14 +46,14 @@ with lib;
     ignoreConfigRegexes ? [],
     # Extra runtime dependencies (e.g. ripgrep, ...)
     extraPackages ? [ 
-      R
-      libclang
-      libxml2
-      rPackages.callr
-      rPackages.languageserver
-      rPackages.languageserversetup
-      ripgrep
-      libxml2
+      # R
+      # libclang
+      # libxml2
+      # rPackages.callr
+      # rPackages.languageserver
+      # rPackages.languageserversetup
+      # ripgrep
+      # libxml2
       ], 
       
     # The below arguments can typically be left as their defaults
