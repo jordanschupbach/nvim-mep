@@ -177,17 +177,19 @@ with final.pkgs.lib; let
     nil # nix LSP
     libxml2
     R
+    rPackages.languageserver
+    rPackages.languageserversetup
     python312
     python312Packages.python-lsp-server
+    python312Packages.numpy
     texliveFull
-
+    typescript-language-server
     nnn
     nerd-fonts.ubuntu
     nerd-fonts.ubuntu-mono
     fish
     rPackages.callr
     ghc
-    rPackages.languageserver
     haskellPackages.hmatrix
     haskellPackages.hmatrix-gsl
 
