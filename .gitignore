@@ -8,5 +8,5 @@ result
 **/build
 *.o
 *.hi
-**/playground
+# **/playground
 

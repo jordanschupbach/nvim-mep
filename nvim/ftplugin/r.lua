@@ -32,6 +32,26 @@ local root_files = {
   -- TODO: Add more root files specific to R projects
 }
 
+
+
+-- TODO: refactor into R
+
+-- from python 
+-- require'lspconfig'.pylsp.setup{
+--   settings = {
+--     pylsp = {
+--       plugins = {
+--         pycodestyle = {
+--           ignore = {'W391'},
+--           maxLineLength = 100
+--         }
+--       }
+--     }
+--   }
+-- }
+
+
+
 vim.lsp.start {
   name = 'r',
   root_dir = vim.fs.dirname(vim.fs.find(root_files, { upward = true })[1]),
