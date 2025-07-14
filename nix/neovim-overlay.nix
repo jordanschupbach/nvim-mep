@@ -168,7 +168,6 @@ with final.pkgs.lib; let
   extraPackages = with pkgs; [
     # language servers, etc.
     lua-language-server
-    python313Packages.jedi
     libclang
     cmake
     gnumake
@@ -179,6 +178,7 @@ with final.pkgs.lib; let
     libxml2
     R
     python313
+    python313Packages.python-lsp-server
     texliveFull
 
     nnn
