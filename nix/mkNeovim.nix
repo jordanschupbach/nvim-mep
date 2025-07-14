@@ -10,6 +10,8 @@
   wrapNeovimUnstable,
   neovimUtils,
 }:
+
+
 with lib;
   {
     # NVIM_APPNAME - Defaults to 'nvim' if not set.
@@ -18,11 +20,10 @@ with lib;
     plugins ? [
 
       R
-      libclang
-      libxml2
       rPackages.callr
       rPackages.languageserver
-      rPackages.languageserversetup
+      libclang
+      libxml2
       ripgrep
       pkg-config
 
@@ -35,10 +36,10 @@ with lib;
       # pkgs.libxml2
 
       # R
+      # rPackages.languageserver
       # libclang
       # libxml2
       # rPackages.callr
-      # rPackages.languageserver
       # rPackages.languageserversetup
       # ripgrep
 
@@ -49,11 +50,10 @@ with lib;
     # Extra runtime dependencies (e.g. ripgrep, ...)
     extraPackages ? [ 
       R
+      rPackages.languageserver
       # libclang
       libxml2
       # rPackages.callr
-      rPackages.languageserver
-      rPackages.languageserversetup
       # ripgrep
       # libxml2
       ], 

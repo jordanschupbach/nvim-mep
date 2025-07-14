@@ -62,11 +62,12 @@
           fish
           luajitPackages.luacheck
           nvim-dev
-          R
-          rPackages.callr
-          rPackages.languageserver
-          rPackages.languageserversetup
 
+          # NOTE: adding here did work
+          # R
+          # rPackages.callr
+          # rPackages.languageserver
+          # rPackages.languageserversetup
 
         ];
         nativeBuildInputs = with pkgs; [
