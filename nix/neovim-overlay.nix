@@ -177,8 +177,8 @@ with final.pkgs.lib; let
     nil # nix LSP
     libxml2
     R
-    python313
-    python313Packages.python-lsp-server
+    python312
+    python312Packages.python-lsp-server
     texliveFull
 
     nnn
