@@ -1,6 +1,6 @@
 
 
-vim.lsp.enable('bashls')
+-- vim.lsp.enable('bashls')
 
 vim.lsp.start {
   name = 'bashls',
