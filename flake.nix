@@ -60,8 +60,10 @@
           fish
           luajitPackages.luacheck
           nvim-dev
+          R
           rPackages.callr
           rPackages.languageserver
+          rPackages.languageserversetup
         ];
         shellHook = ''
           # symlink the .luarc.json generated in the overlay

@@ -51,7 +51,7 @@ with lib;
       # libxml2
       # rPackages.callr
       # rPackages.languageserver
-      # rPackages.languageserversetup
+      rPackages.languageserversetup
       # ripgrep
       # libxml2
       ], 
