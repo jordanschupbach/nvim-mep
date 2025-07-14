@@ -48,11 +48,11 @@ with lib;
     ignoreConfigRegexes ? [],
     # Extra runtime dependencies (e.g. ripgrep, ...)
     extraPackages ? [ 
-      # R
+      R
       # libclang
       libxml2
       # rPackages.callr
-      # rPackages.languageserver
+      rPackages.languageserver
       rPackages.languageserversetup
       # ripgrep
       # libxml2
