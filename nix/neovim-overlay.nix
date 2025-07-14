@@ -167,31 +167,33 @@ with final.pkgs.lib; let
 
   extraPackages = with pkgs; [
     # language servers, etc.
-    lua-language-server
-    libclang
+
+    R
+    bash-language-server
     cmake
-    gnumake
-    git
+    fish
     gcc
     gfortran
-    nil # nix LSP
-    libxml2
-    R
-    rPackages.languageserver
-    rPackages.languageserversetup
-    python312
-    python312Packages.python-lsp-server
-    python312Packages.numpy
-    texliveFull
-    typescript-language-server
-    nnn
-    nerd-fonts.ubuntu
-    nerd-fonts.ubuntu-mono
-    fish
-    rPackages.callr
     ghc
+    git
+    gnumake
     haskellPackages.hmatrix
     haskellPackages.hmatrix-gsl
+    libclang
+    libxml2
+    lua-language-server
+    nerd-fonts.ubuntu
+    nerd-fonts.ubuntu-mono
+    nil # nix LSP
+    nnn
+    python312
+    python312Packages.numpy
+    python312Packages.python-lsp-server
+    rPackages.callr
+    rPackages.languageserver
+    rPackages.languageserversetup
+    texliveFull
+    typescript-language-server
 
   ];
 in {
