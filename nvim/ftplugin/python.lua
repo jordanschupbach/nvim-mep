@@ -11,6 +11,7 @@ local root_files = {
 }
 
 
+require'lspconfig'.jedi_language_server.setup{}
 
 vim.lsp.start {
   name = 'jedi',
