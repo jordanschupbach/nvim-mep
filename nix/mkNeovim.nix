@@ -19,9 +19,9 @@ with lib;
     appName ? null,
     plugins ? [
 
-      R
-      rPackages.callr
-      rPackages.languageserver
+      # R
+      # rPackages.callr
+      # rPackages.languageserver
       libclang
       libxml2
       ripgrep
@@ -49,8 +49,8 @@ with lib;
     ignoreConfigRegexes ? [],
     # Extra runtime dependencies (e.g. ripgrep, ...)
     extraPackages ? [ 
-      R
-      rPackages.languageserver
+      # R
+      # rPackages.languageserver
       # libclang
       libxml2
       # rPackages.callr
