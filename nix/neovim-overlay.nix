@@ -165,10 +165,22 @@ with final.pkgs.lib; let
   ];
 
 
-  extraPackages = with pkgs; [
+  extraPackages = 
+  let
+    R-with-my-packages = pkgs.rWrapper.override{ packages = with pkgs.rPackages; [ 
+      snakecase 
+      lme4 
+      languageserver 
+      lintr 
+    ]; };
+  in
+
+  with pkgs; [
     # language servers, etc.
 
-    R
+    rWrapper
+    R-with-my-packages
+    # R
     bash-language-server
     cmake
     fish
@@ -186,12 +198,13 @@ with final.pkgs.lib; let
     nerd-fonts.ubuntu-mono
     nil # nix LSP
     nnn
+    pkg-config
     python312
     python312Packages.numpy
     python312Packages.python-lsp-server
-    rPackages.callr
-    rPackages.languageserver
-    rPackages.languageserversetup
+    # rPackages.callr
+    # rPackages.languageserver
+    # rPackages.languageserversetup
     texliveFull
     typescript-language-server
 

@@ -1,13 +1,3 @@
 
 
 print("hello, world")
-
-
-
-
-
-
-
-
-
-

@@ -47,7 +47,9 @@
       shell = pkgs.mkShell {
         name = "nvim-devShell";
         buildInputs = with pkgs; [
+
           # Tools for Lua and Nix development, useful for editing files in this repo
+          libxml2
           hello
           bashInteractive
           lua-language-server
@@ -64,6 +66,11 @@
           rPackages.callr
           rPackages.languageserver
           rPackages.languageserversetup
+
+
+        ];
+        nativeBuildInputs = with pkgs; [
+            pkg-config
         ];
         shellHook = ''
           # symlink the .luarc.json generated in the overlay

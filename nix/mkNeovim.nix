@@ -24,6 +24,7 @@ with lib;
       rPackages.languageserver
       rPackages.languageserversetup
       ripgrep
+      pkg-config
 
       # ruby
       # nodejs
@@ -31,6 +32,7 @@ with lib;
     # List of dev plugins (will be bootstrapped) - useful for plugin developers
     # { name = <plugin-name>; url = <git-url>; }
     devPlugins ? [
+      # pkgs.libxml2
 
       # R
       # libclang
@@ -48,7 +50,7 @@ with lib;
     extraPackages ? [ 
       # R
       # libclang
-      # libxml2
+      libxml2
       # rPackages.callr
       # rPackages.languageserver
       rPackages.languageserversetup
