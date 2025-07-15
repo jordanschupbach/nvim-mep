@@ -1084,6 +1084,38 @@ mymap('v', '<A-x>', ':Telescope commands<CR>')
 
 mymap('n', '<Space>yy', ':Telescope luasnip<CR>')
 mymap('n', '<Space><Space>', ':JustSelect<CR>')
+
+
+mymap('n', '<C-1>', ':tabn 1<CR>')
+mymap('n', '<C-2>', ':tabn 2<CR>')
+mymap('n', '<C-3>', ':tabn 3<CR>')
+mymap('n', '<C-4>', ':tabn 4<CR>')
+mymap('n', '<C-5>', ':tabn 5<CR>')
+mymap('n', '<C-6>', ':tabn 6<CR>')
+mymap('n', '<C-7>', ':tabn 7<CR>')
+mymap('n', '<C-8>', ':tabn 8<CR>')
+mymap('n', '<C-9>', ':tabn 9<CR>')
+
+mymap('v', '<C-1>', ':tabn 1<CR>')
+mymap('v', '<C-2>', ':tabn 2<CR>')
+mymap('v', '<C-3>', ':tabn 3<CR>')
+mymap('v', '<C-4>', ':tabn 4<CR>')
+mymap('v', '<C-5>', ':tabn 5<CR>')
+mymap('v', '<C-6>', ':tabn 6<CR>')
+mymap('v', '<C-7>', ':tabn 7<CR>')
+mymap('v', '<C-8>', ':tabn 8<CR>')
+mymap('v', '<C-9>', ':tabn 9<CR>')
+
+mymap('t', '<C-1>', ':tabn 1<CR>')
+mymap('t', '<C-2>', ':tabn 2<CR>')
+mymap('t', '<C-3>', ':tabn 3<CR>')
+mymap('t', '<C-4>', ':tabn 4<CR>')
+mymap('t', '<C-5>', ':tabn 5<CR>')
+mymap('t', '<C-6>', ':tabn 6<CR>')
+mymap('t', '<C-7>', ':tabn 7<CR>')
+mymap('t', '<C-8>', ':tabn 8<CR>')
+mymap('t', '<C-9>', ':tabn 9<CR>')
+
 -- }}} misc inbox
 
 -- {{{ Statusline active/not_active behavior
