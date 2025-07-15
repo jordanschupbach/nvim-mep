@@ -1152,6 +1152,40 @@ mymap('t', '<A-C-k>', "<CMD>lua require('smart-splits').swap_buf_up()<CR>")
 
 
 
+-- {{{ tab bindings
+
+mymap('n', '<C-1>', "<CMD>tabn 1<CR>")
+mymap('n', '<C-2>', "<CMD>tabn 2<CR>")
+mymap('n', '<C-3>', "<CMD>tabn 3<CR>")
+mymap('n', '<C-4>', "<CMD>tabn 4<CR>")
+mymap('n', '<C-5>', "<CMD>tabn 5<CR>")
+mymap('n', '<C-6>', "<CMD>tabn 6<CR>")
+mymap('n', '<C-7>', "<CMD>tabn 7<CR>")
+mymap('n', '<C-8>', "<CMD>tabn 8<CR>")
+mymap('n', '<C-9>', "<CMD>tabn 9<CR>")
+
+mymap('v', '<C-1>', "<CMD>tabn 1<CR>")
+mymap('v', '<C-2>', "<CMD>tabn 2<CR>")
+mymap('v', '<C-3>', "<CMD>tabn 3<CR>")
+mymap('v', '<C-4>', "<CMD>tabn 4<CR>")
+mymap('v', '<C-5>', "<CMD>tabn 5<CR>")
+mymap('v', '<C-6>', "<CMD>tabn 6<CR>")
+mymap('v', '<C-7>', "<CMD>tabn 7<CR>")
+mymap('v', '<C-8>', "<CMD>tabn 8<CR>")
+mymap('v', '<C-9>', "<CMD>tabn 9<CR>")
+
+mymap('t', '<C-1>', "<CMD>tabn 1<CR>")
+mymap('t', '<C-2>', "<CMD>tabn 2<CR>")
+mymap('t', '<C-3>', "<CMD>tabn 3<CR>")
+mymap('t', '<C-4>', "<CMD>tabn 4<CR>")
+mymap('t', '<C-5>', "<CMD>tabn 5<CR>")
+mymap('t', '<C-6>', "<CMD>tabn 6<CR>")
+mymap('t', '<C-7>', "<CMD>tabn 7<CR>")
+mymap('t', '<C-8>', "<CMD>tabn 8<CR>")
+mymap('t', '<C-9>', "<CMD>tabn 9<CR>")
+
+-- }}} tab bindings
+
 -- -- {{{ Fortran filetype detection
 -- vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
 --     pattern = "*.f90",

@@ -9,7 +9,7 @@ then had all of my neovim configurations added to it.
 If you have Nix installed (with [flakes](https://wiki.nixos.org/wiki/Flakes) enabled),
 you can test drive this by running:
 
-```console
+```sh
 nix run "github:jordanschupbach/nvim-mep"
 ```
 
