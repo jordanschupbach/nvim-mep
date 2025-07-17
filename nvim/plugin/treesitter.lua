@@ -86,9 +86,9 @@ configs.setup {
   },
 }
 
-require('treesitter-context').setup {
-  max_lines = 3,
-}
+-- require('treesitter-context').setup {
+--   max_lines = 3,
+-- }
 
 require('ts_context_commentstring').setup()
 
