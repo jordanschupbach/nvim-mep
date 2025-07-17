@@ -642,6 +642,42 @@ ls.add_snippets("cpp", {
     t({ "#pragma once" }),
   }),
 
+  s("javatocpp", {
+    t({
+      "Consider the code java code above.",
+      "Can you help me write it to its equivalent c++ code?",
+      "Can you separate it into a header file and a source file?",
+      "Also, can you provide a full working example?",
+      "Also, can you write unit tests using doctest for the public api?",
+    }), }),
+
+
+  s("charmassumptions", {
+    t({
+      "You can assume the following assumptions and additional requirements:",
+      "",
+      "Assumptions:",
+      " - for xml api things, you can assume I have an api that closely follows, except prefixes with Xml (i.e. xml api known from java: XmlDocument, XmlNode, XmlElement, XmlAttribute, XmlText, XmlComment, ...)",
+      " - assume objects with types unknown to you are defined somewhere else just place an include placeholder (commented)",
+      "",
+      "Requirements",
+      " - use #pragma once instead of include guards",
+      " - use shared_ptr to wrap any output and input for unknown (to you) types",
+      " - wrap source and header in the charm namespace ",
+    }), }),
+
+
+  s("charmentity", {
+    t({
+      "#include <charm/aiestate/cem/entity/entity.hpp>",
+    }), }),
+
+  s("charmxml", {
+    t({
+      "#include <charm/xml/xml.hpp>",
+    }), }),
+
+
   s("iostream", {
     t({ "#include <iostream>" }),
   }),
