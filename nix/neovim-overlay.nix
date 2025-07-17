@@ -186,6 +186,7 @@ with final.pkgs.lib; let
     # R
     # rPackages.languageserver
 
+    tree-sitter
     bash-language-server
     cmake
     fish

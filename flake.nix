@@ -49,6 +49,7 @@
         buildInputs = with pkgs; [
 
           # Tools for Lua and Nix development, useful for editing files in this repo
+          tree-sitter
           libxml2
           hello
           bashInteractive
@@ -71,6 +72,7 @@
 
         ];
         nativeBuildInputs = with pkgs; [
+            tree-sitter
             pkg-config
         ];
         shellHook = ''
