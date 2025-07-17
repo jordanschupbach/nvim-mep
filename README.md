@@ -1,5 +1,6 @@
 # NVim-MEP
 
+
 NVim-MiseEnPlace (MEP) is my personal Neovim configuration.
 This repo started using `kickstart-nix.nvim` as a template and
 then had all of my neovim configurations added to it.
