@@ -126,6 +126,7 @@ with final.pkgs.lib; let
     nvim-navic # Add LSP location to lualine | https://github.com/SmiteshP/nvim-navic
     nvim-surround # https://github.com/kylechui/nvim-surround/
     nvim-tree-lua #
+    nvim-treesitter
     # nvim-treesitter-parsers.cpp
     # nvim-treesitter-parsers.lua
     # nvim-treesitter-parsers.R
