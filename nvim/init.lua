@@ -346,6 +346,20 @@ end
 vim.api.nvim_create_user_command('ToggleNumber', toggle_number, {})
 
 
+vim.api.nvim_create_user_command('RunJust', function()
+  local file = vim.fn.expand("%:p")
+  local filename = vim.fn.fnamemodify(file, ":t")
+  local example_name = filename:gsub("^prefix_cpp_", ""):gsub("%.cpp$", "")
+  local command = string.format("just run example %s_cpp", example_name)
+  -- Set the make program and run make
+  vim.cmd("setlocal makeprg=" .. command)
+  vim.cmd("make")
+end, {})
+
+
+
+
+
 ---@diagnostic disable-next-line: lowercase-global
 function toggle_todo()
   local todo_buffer_name = 'TODO.org'
