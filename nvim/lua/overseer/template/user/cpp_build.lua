@@ -10,11 +10,6 @@ return {
       args = { "run", "example", example_name .. "_cpp"  },
       components = { 
         { "on_output_quickfix", open = true },
-        {
-          on_exit = function()
-            vim.cmd("norm G")  -- Scroll to the bottom of the buffer
-          end,
-        },
         "default" },
     }
   end,
