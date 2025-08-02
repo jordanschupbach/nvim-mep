@@ -367,23 +367,26 @@ local mycolors = {
 -- 󰧞󰧟󰦥󰝦󰝥
 --                󰄯 󰄰 󰄱 󰎍 󰏝 󰑊 󰐾 
 local Tabpage = {
-    -- provider = function(self)
-    --     -- return "%" .. self.tabnr .. "T " -- .. self.tabpage .. " %T"
-    -- end,
+
     provider = function(self)
-        if not self.is_active then
-            return " "
-        else
-            return " "
-        end
+        return "%" .. self.tabnr .. "T " -- .. self.tabpage .. " %T"
     end,
 
-  on_click = {
-    callback = function(self)
-      vim.cmd('tabn ' .. self.tabpage)
-    end,
-    name = 'Tabpage',
-  },
+    -- provider = function(self)
+    --     if not self.is_active then
+    --         return " "
+    --     else
+    --         return " "
+    --     end
+    -- end,
+
+  -- on_click = {
+  --   callback = function(self)
+  --     vim.cmd('tabn ' .. self.tabpage)
+  --   end,
+  --   name = 'Tabpage',
+  -- },
+
     hl = function(self)
         return "TabLine"
         -- if not self.is_active then
