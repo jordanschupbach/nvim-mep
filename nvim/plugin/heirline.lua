@@ -392,11 +392,11 @@ local TabpageNew = {
   provider = " + ", -- what format is this?
   on_click = {
     callback = function()
-      vim.cmd('tabn')
+      vim.cmd('tabnew')
     end,
     name = 'TabpageNew',
   },
-    hl = "TabLine",
+  hl = "TabLine",
 }
 
 local TabPages = {
