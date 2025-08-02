@@ -2,9 +2,8 @@
 # Function for creating a Neovim derivation
 { lib, stdenv, sqlite, git, neovim-unwrapped, wrapNeovimUnstable, neovimUtils, }:
 
+with lib; {
 
-with lib;
-  {
     # NVIM_APPNAME - Defaults to 'nvim' if not set.
     # If set to something else, this will also rename the binary.
     appName ? null,

@@ -1,8 +1,10 @@
 build:
   nix build
 
-run args:
-  nix run . -- {{args}}
+run:
+  nix develop --command cmake -S ./playground/cpp/ -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+  nix develop --command cmake --build build
+  build/simpleProgram
 
 try:
   nix run . -- ./README.md # --repair 
