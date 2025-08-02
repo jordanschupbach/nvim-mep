@@ -6,7 +6,7 @@ return {
     local filename = vim.fn.fnamemodify(file, ":t")
     local example_name = filename:gsub("^prefix_cpp_", ""):gsub("%.cpp$", "")
     return {
-      cmd = { "sh", "-c", "TARGET=" .. example_name .. "_cpp" .. " just run" },
+      cmd = { "just run example " .. example_name .. "_cpp" },
       components = { { "on_output_quickfix", open = true }, "default" },
     }
   end,
