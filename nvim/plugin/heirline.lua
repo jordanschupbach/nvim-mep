@@ -378,12 +378,18 @@ local Tabpage = {
 }
 
 local TabpageClose = {
-    provider = "%999X x %X", -- what format is this?
-    hl = "TabLine",
+  provider = " x ", -- what format is this?
+  on_click = {
+    callback = function()
+      vim.cmd('tabc')
+    end,
+    name = 'TelescopeButton',
+  },
+  hl = "TabLine",
 }
 
 local TabpageNew = {
-    provider = "%999X + %X", -- what format is this?
+  provider = " + ", -- what format is this?
   on_click = {
     callback = function()
       vim.cmd('tabn')
