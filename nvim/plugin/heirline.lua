@@ -379,11 +379,12 @@ local Tabpage = {
         end
     end,
     hl = function(self)
-        if not self.is_active then
-            return "TabLine"
-        else
-            return "TabLineSel"
-        end
+        return "TabLine"
+        -- if not self.is_active then
+        --     return "TabLine"
+        -- else
+        --     return "TabLineSel"
+        -- end
     end,
 }
 
