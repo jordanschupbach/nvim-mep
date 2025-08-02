@@ -352,6 +352,7 @@ vim.api.nvim_create_user_command('RunJust', function()
   local example_name = filename:gsub("^prefix_cpp_", ""):gsub("%.cpp$", "")
   local args = string.format("run example %s_cpp", example_name)
   vim.cmd("AsyncRun just " .. args)
+  vim.cmd("copen")
 end, {})
 
 
