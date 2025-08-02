@@ -1371,8 +1371,7 @@ local actionHints = {
 -- 󰔦󰕃󰔦󰡟󰺛󰴭
 -- 󰎦󰎧󰎩󰎪󰎬󰎭󰎮󰎪󰎰󰎱󰎳󰎵󰎶󰎸󰎹󰎻󰎼󰎾󰎡󰎣󰛦󰟟󰧑󰦌󰬯󰯻󰯺󰻕󰻖󱀇󱍢󱑷󱓞󱓟󱗃󱢴󱢊󱢋󱩡󱩲󱨚
 
-
--- {{{ PlayButton 
+-- {{{ PlayButton 
 local PlayButton = {
   -- require('nvim-web-devicons').get_icon()
   on_click = {
@@ -1397,6 +1396,125 @@ local PlayButton = {
 }
 
 -- }}} PlayButton 
+
+-- {{{ JumpIntoButton 
+local JumpIntoButton = {
+  -- require('nvim-web-devicons').get_icon()
+  on_click = {
+    callback = function()
+      -- vim.print('hello worldzzzz')
+      vim.cmd('RunJust')
+    end,
+    name = 'CPPButton',
+  },
+  init = function(self)
+    local filename = self.filename
+    local extension = vim.fn.fnamemodify(filename, ':e')
+    self.icon, self.icon_color =
+      require('nvim-web-devicons').get_icon_color(filename, extension, { default = true })
+  end,
+  provider = function()
+    return ''
+  end,
+  hl = function()
+    return { fg = mycolors.bluePartyParrot, underline = true }
+  end,
+}
+
+-- }}} PlayButton 
+
+-- {{{ JumpIntoButton 
+
+local JumpOutOfButton = {
+
+  on_click = {
+    callback = function()
+      vim.cmd('RunJust')
+    end,
+    name = 'CPPButton',
+  },
+
+  init = function(self)
+    local filename = self.filename
+    local extension = vim.fn.fnamemodify(filename, ':e')
+    self.icon, self.icon_color =
+      require('nvim-web-devicons').get_icon_color(filename, extension, { default = true })
+  end,
+
+  provider = function()
+    return ''
+  end,
+
+  hl = function()
+    return { fg = mycolors.bluePartyParrot, underline = true }
+  end,
+
+}
+
+-- }}} PlayButton 
+
+-- {{{ ContinueButton 
+
+local ContinueButton = {
+
+  on_click = {
+    callback = function()
+      vim.cmd('RunJust')
+    end,
+    name = 'CPPButton',
+  },
+
+  init = function(self)
+    local filename = self.filename
+    local extension = vim.fn.fnamemodify(filename, ':e')
+    self.icon, self.icon_color =
+      require('nvim-web-devicons').get_icon_color(filename, extension, { default = true })
+  end,
+
+  provider = function()
+    return ''
+  end,
+
+  hl = function()
+    return { fg = mycolors.bluePartyParrot, underline = true }
+  end,
+
+}
+
+-- }}} ContinueButton 
+
+-- {{{ PauseButton 
+
+local PauseButton = {
+
+  on_click = {
+    callback = function()
+      vim.cmd('RunJust')
+    end,
+    name = 'CPPButton',
+  },
+
+  init = function(self)
+    local filename = self.filename
+    local extension = vim.fn.fnamemodify(filename, ':e')
+    self.icon, self.icon_color =
+      require('nvim-web-devicons').get_icon_color(filename, extension, { default = true })
+  end,
+
+  provider = function()
+    return ''
+  end,
+
+  hl = function()
+    return { fg = mycolors.bluePartyParrot, underline = true }
+  end,
+
+}
+
+-- }}} ContinueButton 
+
+
+
 
 
 -- {{{ CPPButton 
@@ -2281,9 +2399,19 @@ local WinBar = {
   {},
   -- { require('lspsaga.symbol.winbar').get_bar() },
   { Align },
-  { Git },
+
+  { Separator },
+  { JumpOutOfButton },
+  { Separator },
+  { JumpIntoButton },
+  { Separator },
+  { ContinueButton },
+  { Separator },
+  { PauseButton },
   { Separator },
   { PlayButton },
+  { Git },
+  { Separator },
   -- { Ruler },
   -- { ScrollBar },
   -- { actionHints },
