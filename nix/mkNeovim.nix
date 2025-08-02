@@ -1,15 +1,6 @@
 
 # Function for creating a Neovim derivation
-{
-  lib,
-  stdenv,
-  sqlite,
-  git,
-  neovim-unwrapped,
-  # Set by the overlay to ensure we use a compatible version of `wrapNeovimUnstable`
-  wrapNeovimUnstable,
-  neovimUtils,
-}:
+{ lib, stdenv, sqlite, git, neovim-unwrapped, wrapNeovimUnstable, neovimUtils, }:
 
 
 with lib;
