@@ -369,7 +369,6 @@ local mycolors = {
 local Tabpage = {
     -- provider = function(self)
     --     -- return "%" .. self.tabnr .. "T " -- .. self.tabpage .. " %T"
-    --     return " 󰝥 "
     -- end,
     provider = function(self)
         if not self.is_active then
@@ -378,6 +377,13 @@ local Tabpage = {
             return " "
         end
     end,
+
+  on_click = {
+    callback = function(self)
+      vim.cmd('tabn ' .. self.tabnr)
+    end,
+    name = 'Tabpage',
+  },
     hl = function(self)
         return "TabLine"
         -- if not self.is_active then
