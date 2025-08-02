@@ -378,7 +378,7 @@ local Tabpage = {
 }
 
 local TabpageClose = {
-    provider = "%999X  %X",
+    provider = "%999X x %X",
     hl = "TabLine",
 }
 
@@ -2503,7 +2503,7 @@ local TabLine = {
   { TodoButton },
   { Space },
 
-  { Align },
+  -- { Align },
 
   { Separator },
   { TabPages },
