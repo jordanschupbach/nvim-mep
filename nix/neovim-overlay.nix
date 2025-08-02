@@ -117,6 +117,9 @@ with final.pkgs.lib; let
     luasnip
     luasnip # snippets | https://github.com/l3mon4d3/luasnip/
     melange-nvim # https://github.com/savq/melange-nvim
+    overseer-nvim # https://github.com/stevearc/overseer.nvim?tab=readme-ov-file
+    url-open # https://github.com/sontungexpt/url-open
+
     neogit # https://github.com/TimUntersberger/neogit/
     nerdtree #
     nvim-bqf
