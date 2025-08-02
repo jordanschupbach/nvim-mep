@@ -1397,7 +1397,7 @@ local PlayButton = {
     return ''
   end,
   hl = function()
-    return { fg = mycolors.bluePartyParrot, underline = true }
+    return { fg = mycolors.appleIiLime, underline = true }
   end,
 }
 
@@ -1429,7 +1429,7 @@ local JumpIntoButton = {
     return ''
   end,
   hl = function()
-    return { fg = mycolors.bluePartyParrot, underline = true }
+    return { fg = mycolors.pastelFirstSnow, underline = true }
   end,
 }
 
@@ -1464,7 +1464,7 @@ local JumpOutOfButton = {
   end,
 
   hl = function()
-    return { fg = mycolors.bluePartyParrot, underline = true }
+    return { fg = mycolors.pastelFirstSnow, underline = true }
   end,
 
 }
@@ -1499,7 +1499,7 @@ local ContinueButton = {
   end,
 
   hl = function()
-    return { fg = mycolors.bluePartyParrot, underline = true }
+    return { fg = mycolors.appleIiLime, underline = true }
   end,
 
 }
@@ -1535,7 +1535,7 @@ local PauseButton = {
   end,
 
   hl = function()
-    return { fg = mycolors.bluePartyParrot, underline = true }
+    return { fg = mycolors.trackAndField, underline = true }
   end,
 
 }
@@ -1572,7 +1572,7 @@ local RestartButton = {
   end,
 
   hl = function()
-    return { fg = mycolors.bluePartyParrot, underline = true }
+    return { fg = mycolors.sizzlingSunrise, underline = true }
   end,
 
 }
@@ -1655,7 +1655,7 @@ local DebugButton = { -- 󰃤
   end,
   provider = function()
     -- return ""
-    return ''
+    return ''
   end,
   hl = function()
     return { fg = mycolors.appleIiLime, underline = true }
