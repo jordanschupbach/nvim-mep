@@ -380,7 +380,7 @@ local Tabpage = {
 
   on_click = {
     callback = function(self)
-      vim.cmd('tabn ' .. self.tabnr)
+      vim.cmd('tabn ' .. self.tabpage)
     end,
     name = 'Tabpage',
   },
