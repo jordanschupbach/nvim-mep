@@ -2481,6 +2481,15 @@ local StatusLines = {
 
 local TabLine = {
 
+
+  -- { Align },
+
+  { Separator },
+  { TabPages },
+  { Separator },
+
+  { Align },
+
   { Separator },
   { HomeButton },
   { Space },
@@ -2503,13 +2512,6 @@ local TabLine = {
   { TodoButton },
   { Space },
 
-  -- { Align },
-
-  { Separator },
-  { TabPages },
-  { Separator },
-
-  { Align },
   -- { ViMode },
 
   -- { Space },
