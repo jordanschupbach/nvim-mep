@@ -6,6 +6,7 @@
 -- {{{ utilities
 
 local ju = {}
+local utils = require'heirline.utils'
 -- utilities = {}
 
 ju.has_wal = function()
@@ -360,7 +361,36 @@ local mycolors = {
   middleRedPurple = '#230839', -- Pantone 2627 C
 }
 
--- {{{ Colors
+-- }}} Colors
+
+
+local Tabpage = {
+    provider = function(self)
+        return "%" .. self.tabnr .. "T " .. self.tabpage .. " %T"
+    end,
+    hl = function(self)
+        if not self.is_active then
+            return "TabLine"
+        else
+            return "TabLineSel"
+        end
+    end,
+}
+
+local TabpageClose = {
+    provider = "%999X  %X",
+    hl = "TabLine",
+}
+
+local TabPages = {
+    -- only show this component if there's 2 or more tabpages
+    condition = function()
+        return #vim.api.nvim_list_tabpages() >= 2
+    end,
+    { provider = "%=" },
+    utils.make_tablist(Tabpage),
+    TabpageClose,
+}
 
 
 
@@ -2479,68 +2509,68 @@ local TabLine = {
   { Align },
   -- { ViMode },
 
-  { Space },
-  { Separator },
-  { ShellButton },
-
-  { Space },
-  { Separator },
-  { CButton },
-
-  { Space },
-  { Separator },
-  { CPPButton },
-
-  { Space },
-  { Separator },
-  { GoButton },
-
-  { Space },
-  { Separator },
-  { FortranButton },
-
-  { Space },
-  { Separator },
-  { HaskellButton },
-
-  { Space },
-  { Separator },
-  { JavaButton },
-
-  { Space },
-  { Separator },
-  { JavascriptButton },
-
-  { Space },
-  { Separator },
-  { LuaButton },
-
-  { Space },
-  { Separator },
-  { OCamlButton },
-
-  { Space },
-  { Separator },
-  { PythonButton },
+  -- { Space },
+  -- { Separator },
+  -- { ShellButton },
 
   -- { Space },
   -- { Separator },
   -- { CButton },
 
-  { Space },
-  { Separator },
-  { RButton },
+  -- { Space },
+  -- { Separator },
+  -- { CPPButton },
 
-  { Space },
-  { Separator },
-  { RustButton },
+  -- { Space },
+  -- { Separator },
+  -- { GoButton },
 
-  { Space },
-  { Separator },
-  { ZigButton },
+  -- { Space },
+  -- { Separator },
+  -- { FortranButton },
 
-  { Space },
-  { Separator },
+  -- { Space },
+  -- { Separator },
+  -- { HaskellButton },
+
+  -- { Space },
+  -- { Separator },
+  -- { JavaButton },
+
+  -- { Space },
+  -- { Separator },
+  -- { JavascriptButton },
+
+  -- { Space },
+  -- { Separator },
+  -- { LuaButton },
+
+  -- { Space },
+  -- { Separator },
+  -- { OCamlButton },
+
+  -- { Space },
+  -- { Separator },
+  -- { PythonButton },
+
+  -- { Space },
+  -- { Separator },
+  -- { CButton },
+
+  -- { Space },
+  -- { Separator },
+  -- { RButton },
+
+  -- { Space },
+  -- { Separator },
+  -- { RustButton },
+
+  -- { Space },
+  -- { Separator },
+  -- { ZigButton },
+
+  -- { Space },
+  -- { Separator },
 }
 
 -- local WinBar = { { require(lspsaga.symbol.winbar).get_bar() }, { {}, {} } }
