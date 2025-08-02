@@ -351,9 +351,7 @@ vim.api.nvim_create_user_command('RunJust', function()
   local filename = vim.fn.fnamemodify(file, ":t")
   local example_name = filename:gsub("^prefix_cpp_", ""):gsub("%.cpp$", "")
   local args = string.format("run example %s_cpp", example_name)
-  -- Set the make program and run make
-  vim.cmd("setlocal makeprg=just")
-  vim.cmd("make " .. args)
+  vim.cmd("AsyncRun just " .. args)
 end, {})
 
 
