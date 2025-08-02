@@ -7,7 +7,7 @@ return {
     local example_name = filename:gsub("^prefix_cpp_", ""):gsub("%.cpp$", "")
     return {
       cmd = { "just" },
-      args = {"run example " .. example_name .. "_cpp" },
+      args = {"run", "example" .. example_name .. "_cpp" },
       components = { { "on_output_quickfix", open = true }, "default" },
     }
   end,
