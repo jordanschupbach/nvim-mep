@@ -1429,7 +1429,7 @@ local JumpIntoButton = {
     return ''
   end,
   hl = function()
-    return { fg = mycolors.pastelFirstSnow, underline = true }
+    return { fg = mycolors.vibrantMint, underline = true }
   end,
 }
 
@@ -1464,7 +1464,7 @@ local JumpOutOfButton = {
   end,
 
   hl = function()
-    return { fg = mycolors.pastelFirstSnow, underline = true }
+    return { fg = mycolors.vibrantMint, underline = true }
   end,
 
 }
