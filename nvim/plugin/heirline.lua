@@ -2574,11 +2574,11 @@ local WinBar = {
 
   { Separator },
   { SplitButton },
-  { Separator },
-  { VSplitButton },
-  { Separator },
-  { CloseButton },
   { StatusSpace },
+  { VSplitButton },
+  { StatusSpace },
+  { CloseButton },
+  { Separator },
 
   -- { Ruler },
   -- { ScrollBar },
