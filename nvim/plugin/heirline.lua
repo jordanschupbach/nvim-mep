@@ -1406,6 +1406,12 @@ local PlayButton = {
 -- {{{ JumpIntoButton 
 local JumpIntoButton = {
   -- require('nvim-web-devicons').get_icon()
+
+  condition = function()
+    return conditions.buffer_matches {
+      filetype = { 'cpp', 'c' },
+    }
+  end,
   on_click = {
     callback = function()
       -- vim.print('hello worldzzzz')
@@ -1432,6 +1438,12 @@ local JumpIntoButton = {
 -- {{{ JumpIntoButton 
 
 local JumpOutOfButton = {
+
+  condition = function()
+    return conditions.buffer_matches {
+      filetype = { 'cpp', 'c' },
+    }
+  end,
 
   on_click = {
     callback = function()
@@ -1462,6 +1474,11 @@ local JumpOutOfButton = {
 -- {{{ ContinueButton 
 
 local ContinueButton = {
+  condition = function()
+    return conditions.buffer_matches {
+      filetype = { 'cpp', 'c' },
+    }
+  end,
 
   on_click = {
     callback = function()
@@ -1492,6 +1509,12 @@ local ContinueButton = {
 -- {{{ PauseButton 
 
 local PauseButton = {
+
+  condition = function()
+    return conditions.buffer_matches {
+      filetype = { 'cpp', 'c' },
+    }
+  end,
 
   on_click = {
     callback = function()
@@ -2409,6 +2432,7 @@ local WinBar = {
 
   { PlayButton },
   { Separator },
+  { StatusSpace },
   { ContinueButton },
   { StatusSpace },
   { JumpOutOfButton },
@@ -2416,6 +2440,7 @@ local WinBar = {
   { JumpIntoButton },
   { StatusSpace },
   { PauseButton },
+  { StatusSpace },
   { StatusSpace },
   -- { Ruler },
   -- { ScrollBar },
