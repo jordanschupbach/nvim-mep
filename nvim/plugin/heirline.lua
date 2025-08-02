@@ -1259,6 +1259,7 @@ local StatusSpace = {
 -- }}} Venv
 
 -- Vi Mode {{{
+
 local ViMode = {
   -- get vim current mode, this information will be required by the provider
   -- and the highlight functions, so we compute it only once per component
@@ -1369,6 +1370,33 @@ local actionHints = {
 -- 
 -- 󰔦󰕃󰔦󰡟󰺛󰴭
 -- 󰎦󰎧󰎩󰎪󰎬󰎭󰎮󰎪󰎰󰎱󰎳󰎵󰎶󰎸󰎹󰎻󰎼󰎾󰎡󰎣󰛦󰟟󰧑󰦌󰬯󰯻󰯺󰻕󰻖󱀇󱍢󱑷󱓞󱓟󱗃󱢴󱢊󱢋󱩡󱩲󱨚
+
+
+-- {{{ PlayButton 
+local PlayButton = {
+  -- require('nvim-web-devicons').get_icon()
+  on_click = {
+    callback = function()
+      vim.print('hello worldzzzz')
+    end,
+    name = 'CPPButton',
+  },
+  init = function(self)
+    local filename = self.filename
+    local extension = vim.fn.fnamemodify(filename, ':e')
+    self.icon, self.icon_color =
+      require('nvim-web-devicons').get_icon_color(filename, extension, { default = true })
+  end,
+  provider = function()
+    return ''
+  end,
+  hl = function()
+    return { fg = mycolors.bluePartyParrot, underline = true }
+  end,
+}
+
+-- }}} PlayButton 
+
 
 -- {{{ CPPButton 
 local CPPButton = {
@@ -2248,10 +2276,12 @@ local WinBar = {
   { Diagnostics },
   { StatusSpace },
 
+
   {},
   -- { require('lspsaga.symbol.winbar').get_bar() },
   { Align },
   { Git },
+  { PlayButton },
   -- { Ruler },
   -- { ScrollBar },
   -- { actionHints },
