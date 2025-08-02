@@ -8,7 +8,14 @@ return {
     return {
       cmd = { "just" },
       args = { "run", "example", example_name .. "_cpp"  },
-      components = { { "on_output_quickfix", open = true }, "default" },
+      components = { 
+        { "on_output_quickfix", open = true },
+        {
+          on_exit = function()
+            vim.cmd("normal! G")  -- Scroll to the bottom of the buffer
+          end,
+        },
+        "default" },
     }
   end,
   condition = {
