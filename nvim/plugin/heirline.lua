@@ -363,11 +363,19 @@ local mycolors = {
 
 -- }}} Colors
 
+-- 󰫈󰨔󰧞󰧟󰦥󰝦󰝥󰝴󰜏󰚀󰗮󰕮󰕰󰕴󰕳
 
 local Tabpage = {
+    -- provider = function(self)
+    --     -- return "%" .. self.tabnr .. "T " -- .. self.tabpage .. " %T"
+    --     return " 󰝥 "
+    -- end,
     provider = function(self)
-        -- return "%" .. self.tabnr .. "T " -- .. self.tabpage .. " %T"
-        return "󰎣"
+        if not self.is_active then
+            return " 󰝦"
+        else
+            return " 󰝥"
+        end
     end,
     hl = function(self)
         if not self.is_active then
