@@ -1372,8 +1372,14 @@ local actionHints = {
 -- 󰎦󰎧󰎩󰎪󰎬󰎭󰎮󰎪󰎰󰎱󰎳󰎵󰎶󰎸󰎹󰎻󰎼󰎾󰎡󰎣󰛦󰟟󰧑󰦌󰬯󰯻󰯺󰻕󰻖󱀇󱍢󱑷󱓞󱓟󱗃󱢴󱢊󱢋󱩡󱩲󱨚
 
 -- {{{ PlayButton 
+
 local PlayButton = {
   -- require('nvim-web-devicons').get_icon()
+  condition = function()
+    return conditions.buffer_matches {
+      filetype = { 'cpp', 'c' },
+    }
+  end,
   on_click = {
     callback = function()
       -- vim.print('hello worldzzzz')
