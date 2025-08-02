@@ -1450,6 +1450,33 @@ local actionHints = {
 -- 󰔦󰕃󰔦󰡟󰺛󰴭
 -- 󰎦󰎧󰎩󰎪󰎬󰎭󰎮󰎪󰎰󰎱󰎳󰎵󰎶󰎸󰎹󰎻󰎼󰎾󰎡󰎣󰛦󰟟󰧑󰦌󰬯󰯻󰯺󰻕󰻖󱀇󱍢󱑷󱓞󱓟󱗃󱢴󱢊󱢋󱩡󱩲󱨚
 
+-- {{{ aerial button 󰒪
+
+local AerialToggleButton = {
+  on_click = {
+    callback = function()
+      vim.cmd('AerialToggle')
+    end,
+    name = 'AerialToggleButton',
+  },
+  init = function(self)
+    local filename = self.filename
+    local extension = vim.fn.fnamemodify(filename, ':e')
+    self.icon, self.icon_color =
+      require('nvim-web-devicons').get_icon_color(filename, extension, { default = true })
+  end,
+  provider = function()
+    return '󰒪' -- 
+  end,
+  hl = function()
+    return { fg = mycolors.appleIiLime, underline = false }
+  end,
+}
+
+
+-- }}} aerial button
+
+
 -- {{{ TelescopeButton 
 
 local TelescopeButton = {
@@ -2707,7 +2734,8 @@ local WinBar = {
   { RestartButton },
   { StatusSpace },
 
-
+  { Separator },
+  { AerialToggleButton },
   { Separator },
   { TelescopeButton },
   { StatusSpace },
