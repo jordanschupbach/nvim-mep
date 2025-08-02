@@ -1377,7 +1377,8 @@ local PlayButton = {
   -- require('nvim-web-devicons').get_icon()
   on_click = {
     callback = function()
-      vim.print('hello worldzzzz')
+      -- vim.print('hello worldzzzz')
+      vim.cmd('RunJust')
     end,
     name = 'CPPButton',
   },
@@ -1388,7 +1389,7 @@ local PlayButton = {
       require('nvim-web-devicons').get_icon_color(filename, extension, { default = true })
   end,
   provider = function()
-    return ''
+    return ''
   end,
   hl = function()
     return { fg = mycolors.bluePartyParrot, underline = true }
@@ -2281,6 +2282,7 @@ local WinBar = {
   -- { require('lspsaga.symbol.winbar').get_bar() },
   { Align },
   { Git },
+  { Separator },
   { PlayButton },
   -- { Ruler },
   -- { ScrollBar },
