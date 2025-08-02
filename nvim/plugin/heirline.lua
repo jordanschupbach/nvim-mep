@@ -1397,7 +1397,7 @@ local PlayButton = {
     return ''
   end,
   hl = function()
-    return { fg = mycolors.appleIiLime, underline = true }
+    return { fg = mycolors.appleIiLime, underline = false }
   end,
 }
 
@@ -1429,7 +1429,7 @@ local JumpIntoButton = {
     return ''
   end,
   hl = function()
-    return { fg = mycolors.vibrantMint, underline = true }
+    return { fg = mycolors.vibrantMint, underline = false }
   end,
 }
 
@@ -1464,7 +1464,7 @@ local JumpOutOfButton = {
   end,
 
   hl = function()
-    return { fg = mycolors.vibrantMint, underline = true }
+    return { fg = mycolors.vibrantMint, underline = false }
   end,
 
 }
@@ -1499,7 +1499,7 @@ local ContinueButton = {
   end,
 
   hl = function()
-    return { fg = mycolors.appleIiLime, underline = true }
+    return { fg = mycolors.appleIiLime, underline = false }
   end,
 
 }
@@ -1535,7 +1535,7 @@ local PauseButton = {
   end,
 
   hl = function()
-    return { fg = mycolors.trackAndField, underline = true }
+    return { fg = mycolors.trackAndField, underline = false }
   end,
 
 }
@@ -1571,7 +1571,7 @@ local RestartButton = {
   end,
 
   hl = function()
-    return { fg = mycolors.sizzlingSunrise, underline = true }
+    return { fg = mycolors.sizzlingSunrise, underline = false }
   end,
 
 }
@@ -1600,7 +1600,7 @@ local CloseButton = {
   end,
 
   hl = function()
-    return { fg = mycolors.sizzlingSunrise, underline = false }
+    return { fg = mycolors.sizzlingSunrise, underline = true }
   end,
 
 }
@@ -1631,7 +1631,7 @@ local SplitButton = {
   end,
 
   hl = function()
-    return { fg = mycolors.sizzlingSunrise, underline = false }
+    return { fg = mycolors.sizzlingSunrise, underline = true }
   end,
 
 }
@@ -1660,7 +1660,7 @@ local VSplitButton = {
   end,
 
   hl = function()
-    return { fg = mycolors.sizzlingSunrise, underline = false }
+    return { fg = mycolors.sizzlingSunrise, underline = true }
   end,
 
 }
@@ -1742,7 +1742,7 @@ local DebugButton = { -- 󰃤
     return ''
   end,
   hl = function()
-    return { fg = mycolors.appleIiLime, underline = true }
+    return { fg = mycolors.appleIiLime, underline = false }
   end,
 }
 -- }}} DebugButton 󰃤
@@ -2572,8 +2572,8 @@ local WinBar = {
   { StatusSpace },
   { RestartButton },
   { StatusSpace },
+
   { Separator },
-  { StatusSpace },
   { StatusSpace },
   { SplitButton },
   { StatusSpace },
