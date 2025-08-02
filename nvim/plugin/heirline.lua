@@ -1385,7 +1385,7 @@ local PlayButton = {
       -- vim.print('hello worldzzzz')
       vim.cmd('RunJust')
     end,
-    name = 'CPPButton',
+    name = 'PlayButton',
   },
   init = function(self)
     local filename = self.filename
@@ -1417,7 +1417,7 @@ local JumpIntoButton = {
       -- vim.print('hello worldzzzz')
       vim.cmd('RunJust')
     end,
-    name = 'CPPButton',
+    name = 'JumpIntoButton',
   },
   init = function(self)
     local filename = self.filename
@@ -1449,7 +1449,7 @@ local JumpOutOfButton = {
     callback = function()
       vim.cmd('RunJust')
     end,
-    name = 'CPPButton',
+    name = 'JumpOutOfButton',
   },
 
   init = function(self)
@@ -1484,7 +1484,7 @@ local ContinueButton = {
     callback = function()
       vim.cmd('RunJust')
     end,
-    name = 'CPPButton',
+    name = 'ContinueButton',
   },
 
   init = function(self)
@@ -1520,7 +1520,7 @@ local PauseButton = {
     callback = function()
       vim.cmd('RunJust')
     end,
-    name = 'CPPButton',
+    name = 'PauseButton',
   },
 
   init = function(self)
@@ -1556,7 +1556,7 @@ local RestartButton = {
     callback = function()
       vim.cmd('RunJust')
     end,
-    name = 'CPPButton',
+    name = 'RestartButton',
   },
 
   init = function(self)
@@ -1585,7 +1585,7 @@ local CloseButton = {
     callback = function()
       vim.cmd('wincmd q')
     end,
-    name = 'CPPButton',
+    name = 'CloseButton',
   },
 
   init = function(self)
@@ -1606,6 +1606,8 @@ local CloseButton = {
 }
 
 -- }}} ContinueButton 
+
+
 
 -- {{{ CPPButton 
 local CPPButton = {
@@ -2514,8 +2516,8 @@ local WinBar = {
   { StatusSpace },
   { Separator },
 
-  -- { StatusSpace },
-  -- { CloseButton },
+  { StatusSpace },
+  { CloseButton },
 
   -- { Ruler },
   -- { ScrollBar },
