@@ -2,13 +2,11 @@
 return {
   name = "g++ build",
   builder = function()
-    -- Full path to current file (see :help expand())
     local file = vim.fn.expand("%:p")
     local filename = vim.fn.fnamemodify(file, ":t")
-    local example_name = filename:gsub("^prefix_cpp_", ""):gsub("%.cpp$", "") -- Adjust this line based on your prefix
+    local example_name = filename:gsub("^prefix_cpp_", ""):gsub("%.cpp$", "")
     return {
-      cmd = { "just"},
-      args = { "run", "TARGET=" .. example_name.."_cpp" },
+      cmd = { "sh", "-c", "TARGET=" .. example_name .. "_cpp" .. " just run" },
       components = { { "on_output_quickfix", open = true }, "default" },
     }
   end,
