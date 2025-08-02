@@ -240,6 +240,8 @@ mymap('n', '<Space>tgc', '<CMD>Telescope git_commits<CR>')
 mymap('n', '<C-tab>', '<CMD>tabnext<CR>')
 mymap('n', '<C-S-tab>', '<CMD>tabprevious<CR>')
 
+
+
 -- }}} Base Key mappings
 
 -- {{{ General Options
@@ -1206,6 +1208,7 @@ mymap('n', '<A-C-k>', "<CMD>lua require('smart-splits').swap_buf_up()<CR>")
 mymap('t', '<A-C-k>', "<CMD>lua require('smart-splits').swap_buf_up()<CR>")
 
 
+mymap('n', '<Space>rr', '<CMD>RunJust<CR>')
 
 -- {{{ tab bindings
 
