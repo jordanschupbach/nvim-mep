@@ -1542,7 +1542,6 @@ local PauseButton = {
 
 -- }}} ContinueButton 
 
-
 -- {{{ ResartButton 
 
 local RestartButton = {
@@ -1607,9 +1606,6 @@ local CloseButton = {
 }
 
 -- }}} ContinueButton 
-
-
-
 
 -- {{{ CPPButton 
 local CPPButton = {
