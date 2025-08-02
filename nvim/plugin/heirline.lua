@@ -1543,6 +1543,43 @@ local PauseButton = {
 -- }}} ContinueButton 
 
 
+-- {{{ ResartButton 
+
+local ResartButton = {
+
+  condition = function()
+    return conditions.buffer_matches {
+      filetype = { 'cpp', 'c' },
+    }
+  end,
+
+  on_click = {
+    callback = function()
+      vim.cmd('RunJust')
+    end,
+    name = 'CPPButton',
+  },
+
+  init = function(self)
+    local filename = self.filename
+    local extension = vim.fn.fnamemodify(filename, ':e')
+    self.icon, self.icon_color =
+      require('nvim-web-devicons').get_icon_color(filename, extension, { default = true })
+  end,
+
+  provider = function()
+    return ''
+  end,
+
+  hl = function()
+    return { fg = mycolors.bluePartyParrot, underline = true }
+  end,
+
+}
+
+-- }}} ContinueButton 
+
+
 
 
 
@@ -1599,6 +1636,11 @@ local CButton = {
 -- {{{ DebugButton 
 local DebugButton = { -- 󰃤
   -- require('nvim-web-devicons').get_icon()
+  condition = function()
+    return conditions.buffer_matches {
+      filetype = { 'cpp', 'c' },
+    }
+  end,
   on_click = {
     callback = function()
       require('dapui').toggle()
@@ -2433,6 +2475,8 @@ local WinBar = {
   { PlayButton },
   { Separator },
   { StatusSpace },
+  { DebugButton },
+  { StatusSpace },
   { ContinueButton },
   { StatusSpace },
   { JumpOutOfButton },
@@ -2441,6 +2485,9 @@ local WinBar = {
   { StatusSpace },
   { PauseButton },
   { StatusSpace },
+  { RestartButton },
+  { StatusSpace },
+  { Separator },
   { StatusSpace },
   -- { Ruler },
   -- { ScrollBar },
