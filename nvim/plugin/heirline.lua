@@ -378,17 +378,29 @@ local Tabpage = {
 }
 
 local TabpageClose = {
-    provider = "%999X x %X",
+    provider = "%999X x %X", -- what format is this?
+    hl = "TabLine",
+}
+
+local TabpageNew = {
+    provider = "%999X + %X", -- what format is this?
+  on_click = {
+    callback = function()
+      vim.cmd('tabn')
+    end,
+    name = 'TelescopeButton',
+  },
     hl = "TabLine",
 }
 
 local TabPages = {
     -- only show this component if there's 2 or more tabpages
-    condition = function()
-        return #vim.api.nvim_list_tabpages() >= 2
-    end,
-    { provider = "%=" },
+    -- condition = function()
+    --     return #vim.api.nvim_list_tabpages() >= 2
+    -- end,
+    { provider = "" }, -- %=
     utils.make_tablist(Tabpage),
+    TabpageNew,
     TabpageClose,
 }
 
