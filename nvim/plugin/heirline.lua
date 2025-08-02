@@ -1545,7 +1545,7 @@ local PauseButton = {
 
 -- {{{ ResartButton 
 
-local ResartButton = {
+local RestartButton = {
 
   condition = function()
     return conditions.buffer_matches {
@@ -2476,6 +2476,7 @@ local WinBar = {
   { Separator },
   { StatusSpace },
   { DebugButton },
+  { StatusSpace },
   { StatusSpace },
   { ContinueButton },
   { StatusSpace },
