@@ -373,9 +373,9 @@ local Tabpage = {
     -- end,
     provider = function(self)
         if not self.is_active then
-            return "" .. "%T "
+            return " "
         else
-            return " " .. "%T"
+            return " "
         end
     end,
     hl = function(self)
