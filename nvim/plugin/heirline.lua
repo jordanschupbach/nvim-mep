@@ -1401,16 +1401,9 @@ local actionHints = {
 -- 󰔦󰕃󰔦󰡟󰺛󰴭
 -- 󰎦󰎧󰎩󰎪󰎬󰎭󰎮󰎪󰎰󰎱󰎳󰎵󰎶󰎸󰎹󰎻󰎼󰎾󰎡󰎣󰛦󰟟󰧑󰦌󰬯󰯻󰯺󰻕󰻖󱀇󱍢󱑷󱓞󱓟󱗃󱢴󱢊󱢋󱩡󱩲󱨚
 
-
--- {{{ TelescopeButton 
+-- {{{ TelescopeButton 
 
 local TelescopeButton = {
-  -- require('nvim-web-devicons').get_icon()
-  condition = function()
-    return conditions.buffer_matches {
-      filetype = { 'cpp', 'c' },
-    }
-  end,
   on_click = {
     callback = function()
       vim.cmd('Telescope')
@@ -1424,7 +1417,7 @@ local TelescopeButton = {
       require('nvim-web-devicons').get_icon_color(filename, extension, { default = true })
   end,
   provider = function()
-    return ''
+    return '' -- 
   end,
   hl = function()
     return { fg = mycolors.appleIiLime, underline = false }
@@ -1436,12 +1429,6 @@ local TelescopeButton = {
 -- {{{ FileSearchButton 󰈞
 
 local FileSearchButton = {
-  -- require('nvim-web-devicons').get_icon()
-  condition = function()
-    return conditions.buffer_matches {
-      filetype = { 'cpp', 'c' },
-    }
-  end,
   on_click = {
     callback = function()
       vim.cmd('Telescope find_files')
@@ -2674,6 +2661,7 @@ local WinBar = {
 
   { Separator },
   { TelescopeButton },
+  { StatusSpace },
   { StatusSpace },
   { FileSearchButton },
   { Separator },
