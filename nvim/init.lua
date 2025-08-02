@@ -351,10 +351,20 @@ vim.api.nvim_create_user_command('RunJust', function()
   local filename = vim.fn.fnamemodify(file, ":t")
   local example_name = filename:gsub("^prefix_cpp_", ""):gsub("%.cpp$", "")
   local args = string.format("run example %s_cpp", example_name)
+  
+  -- Run the command asynchronously
   vim.cmd("AsyncRun just " .. args)
-  vim.cmd("copen")
-end, {})
 
+  -- Check if copen is already open
+  if vim.fn.getqflist({ winid = 0 }).winid == 0 then
+    -- Store the current window id
+    local current_window = vim.fn.win_getid()
+    vim.cmd("copen") -- Open quickfix window
+    
+    -- Function to go back to original window after entering quickfix
+    vim.cmd("autocmd! BufLeave quickfix lua vim.fn.win_gotoid(" .. current_window .. ")")
+  end
+end, {})
 
 
 
