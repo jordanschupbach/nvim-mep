@@ -383,7 +383,7 @@ local TabpageClose = {
     callback = function()
       vim.cmd('tabc')
     end,
-    name = 'TelescopeButton',
+    name = 'TabpageClose',
   },
   hl = "TabLine",
 }
@@ -394,7 +394,7 @@ local TabpageNew = {
     callback = function()
       vim.cmd('tabn')
     end,
-    name = 'TelescopeButton',
+    name = 'TabpageNew',
   },
     hl = "TabLine",
 }
