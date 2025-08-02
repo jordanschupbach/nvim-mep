@@ -8,9 +8,7 @@ return {
     return {
       cmd = { "just" },
       args = { "run", "example", example_name .. "_cpp"  },
-      components = { 
-        { "on_output_quickfix", open = true },
-        "default" },
+      components = { { "on_output_quickfix", open = true }, "default" },
     }
   end,
   condition = {
