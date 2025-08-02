@@ -12,7 +12,7 @@ return {
         { "on_output_quickfix", open = true },
         {
           on_exit = function()
-            vim.cmd("normal! G")  -- Scroll to the bottom of the buffer
+            vim.cmd("norm G")  -- Scroll to the bottom of the buffer
           end,
         },
         "default" },
