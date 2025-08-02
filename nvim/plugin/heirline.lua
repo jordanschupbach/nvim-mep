@@ -300,7 +300,6 @@ end
 
 -- }}} utilities
 
-
 -- {{{ Colors
 ---@class PaletteColors
 local mycolors = {
@@ -2574,15 +2573,10 @@ local WinBar = {
   { StatusSpace },
 
   { Separator },
-  { StatusSpace },
   { SplitButton },
-  { StatusSpace },
   { Separator },
-  { StatusSpace },
   { VSplitButton },
-  { StatusSpace },
   { Separator },
-  { StatusSpace },
   { CloseButton },
   { StatusSpace },
 
