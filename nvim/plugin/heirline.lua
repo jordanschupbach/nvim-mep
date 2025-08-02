@@ -2513,8 +2513,9 @@ local WinBar = {
   { RestartButton },
   { StatusSpace },
   { Separator },
-  { StatusSpace },
-  { CloseButton },
+
+  -- { StatusSpace },
+  -- { CloseButton },
 
   -- { Ruler },
   -- { ScrollBar },
