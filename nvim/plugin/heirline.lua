@@ -369,9 +369,9 @@ local mycolors = {
 local Tabpage = {
     provider = function(self)
       if not self.is_active then
-        return "%" .. self.tabnr .. "T " .. " %T"
+        return "%" .. self.tabnr .. "T " .. "%T"
       else
-        return "%" .. self.tabnr .. "T " .. " %T"
+        return "%" .. self.tabnr .. "T " .. "%T"
       end
     end,
 
