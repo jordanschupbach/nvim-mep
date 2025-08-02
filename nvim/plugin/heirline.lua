@@ -1600,14 +1600,72 @@ local CloseButton = {
   end,
 
   hl = function()
-    return { fg = mycolors.sizzlingSunrise, underline = true }
+    return { fg = mycolors.sizzlingSunrise, underline = false }
   end,
 
 }
 
 -- }}} ContinueButton 
 
+-- 󰐕󰤃󱄅
 
+-- {{{ Split 
+
+local SplitButton = {
+  on_click = {
+    callback = function()
+      vim.cmd('split')
+    end,
+    name = 'SplitButton',
+  },
+
+  init = function(self)
+    local filename = self.filename
+    local extension = vim.fn.fnamemodify(filename, ':e')
+    self.icon, self.icon_color =
+      require('nvim-web-devicons').get_icon_color(filename, extension, { default = true })
+  end,
+
+  provider = function()
+    return ''
+  end,
+
+  hl = function()
+    return { fg = mycolors.sizzlingSunrise, underline = false }
+  end,
+
+}
+
+-- }}} ContinueButton 
+
+-- {{{ VSplit 
+
+local VSplitButton = {
+  on_click = {
+    callback = function()
+      vim.cmd('vsplit')
+    end,
+    name = 'VSplitButton',
+  },
+
+  init = function(self)
+    local filename = self.filename
+    local extension = vim.fn.fnamemodify(filename, ':e')
+    self.icon, self.icon_color =
+      require('nvim-web-devicons').get_icon_color(filename, extension, { default = true })
+  end,
+
+  provider = function()
+    return '󰤃'
+  end,
+
+  hl = function()
+    return { fg = mycolors.sizzlingSunrise, underline = false }
+  end,
+
+}
+
+-- }}} ContinueButton 
 
 -- {{{ CPPButton 
 local CPPButton = {
@@ -2515,9 +2573,13 @@ local WinBar = {
   { RestartButton },
   { StatusSpace },
   { Separator },
-
   { StatusSpace },
+  { StatusSpace },
+  { SplitButton },
+  { StatusSpace },
+  { VSplitButton },
   { CloseButton },
+  { StatusSpace },
 
   -- { Ruler },
   -- { ScrollBar },
