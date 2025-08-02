@@ -1393,12 +1393,76 @@ local actionHints = {
 -- 
 -- │󱫫󱫤󱫡󱫐󱫠󱫪󱫬󱧡󱕱󱕜󱎯󱊡󱊢󱊣󱊤󱊥󱊦󱇪󱅥󰳤󰳦󰦐󰟔󰃤󰄵
 -- ◍󰂒󰂓󰂛󰂜󰂞󰂠󰂟󰃛󰃞󰃟󰅏󰅎󱇪󱏵󱏴󱏶󱏷󱪼
+-- p󰄲󰄵󰆚󰈞󰓥󰘧󰨰󰬯󰮗󰺛󱁍󱍢󱎎󱎴󱐌󱐋󱝁󱜿󱜙󱢺󱢴󱣓󱣒󱣻󱤎
 -- 󰴭
 -- 󰀦󰀨󰀩❘❘
 -- 
 -- 
 -- 󰔦󰕃󰔦󰡟󰺛󰴭
 -- 󰎦󰎧󰎩󰎪󰎬󰎭󰎮󰎪󰎰󰎱󰎳󰎵󰎶󰎸󰎹󰎻󰎼󰎾󰎡󰎣󰛦󰟟󰧑󰦌󰬯󰯻󰯺󰻕󰻖󱀇󱍢󱑷󱓞󱓟󱗃󱢴󱢊󱢋󱩡󱩲󱨚
+
+
+-- {{{ TelescopeButton 
+
+local TelescopeButton = {
+  -- require('nvim-web-devicons').get_icon()
+  condition = function()
+    return conditions.buffer_matches {
+      filetype = { 'cpp', 'c' },
+    }
+  end,
+  on_click = {
+    callback = function()
+      vim.cmd('Telescope')
+    end,
+    name = 'TelescopeButton',
+  },
+  init = function(self)
+    local filename = self.filename
+    local extension = vim.fn.fnamemodify(filename, ':e')
+    self.icon, self.icon_color =
+      require('nvim-web-devicons').get_icon_color(filename, extension, { default = true })
+  end,
+  provider = function()
+    return ''
+  end,
+  hl = function()
+    return { fg = mycolors.appleIiLime, underline = false }
+  end,
+}
+
+-- }}} PlayButton 
+
+-- {{{ FileSearchButton 󰈞
+
+local FileSearchButton = {
+  -- require('nvim-web-devicons').get_icon()
+  condition = function()
+    return conditions.buffer_matches {
+      filetype = { 'cpp', 'c' },
+    }
+  end,
+  on_click = {
+    callback = function()
+      vim.cmd('Telescope find_files')
+    end,
+    name = 'FileSearchButton',
+  },
+  init = function(self)
+    local filename = self.filename
+    local extension = vim.fn.fnamemodify(filename, ':e')
+    self.icon, self.icon_color =
+      require('nvim-web-devicons').get_icon_color(filename, extension, { default = true })
+  end,
+  provider = function()
+    return '󰈞'
+  end,
+  hl = function()
+    return { fg = mycolors.appleIiLime, underline = false }
+  end,
+}
+
+-- }}} PlayButton 
 
 -- {{{ PlayButton 
 
@@ -2607,6 +2671,11 @@ local WinBar = {
   { RestartButton },
   { StatusSpace },
 
+
+  { Separator },
+  { TelescopeButton },
+  { StatusSpace },
+  { FileSearchButton },
   { Separator },
   { SplitButton },
   { StatusSpace },
