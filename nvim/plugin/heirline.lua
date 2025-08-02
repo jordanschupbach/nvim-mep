@@ -1579,7 +1579,35 @@ local RestartButton = {
 
 -- }}} ContinueButton 
 
+-- {{{ CloseButton 
 
+local CloseButton = {
+  on_click = {
+    callback = function()
+      vim.cmd('wincmd q')
+    end,
+    name = 'CPPButton',
+  },
+
+  init = function(self)
+    local filename = self.filename
+    local extension = vim.fn.fnamemodify(filename, ':e')
+    self.icon, self.icon_color =
+      require('nvim-web-devicons').get_icon_color(filename, extension, { default = true })
+  end,
+
+  provider = function()
+    return ''
+  end,
+
+  hl = function()
+    return { fg = mycolors.sizzlingSunrise, underline = true }
+  end,
+
+}
+
+-- }}} ContinueButton 
+
 
 
 
@@ -2490,6 +2518,8 @@ local WinBar = {
   { StatusSpace },
   { Separator },
   { StatusSpace },
+  { CloseButton },
+
   -- { Ruler },
   -- { ScrollBar },
   -- { actionHints },
