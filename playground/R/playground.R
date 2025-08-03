@@ -1,6 +1,5 @@
 # beginfile
 
-
 print("hello, world")
 
 a <- function(x) {

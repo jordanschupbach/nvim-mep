@@ -1,8 +1,10 @@
 vim.loader.enable()
 
 -- {{{ aliases
+
 local cmd = vim.cmd
 local opt = vim.o
+
 -- }}} aliases
 
 -- {{{ Prior config

@@ -149,6 +149,7 @@ with final.pkgs.lib; let
       zen-mode-nvim
       none-ls-nvim
       conform-nvim
+      orgmode
 
       codecompanion-nvim
 
