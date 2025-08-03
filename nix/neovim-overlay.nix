@@ -214,6 +214,7 @@ with final.pkgs.lib; let
     nnn
     pkg-config
 
+    pylint
     python312
     (python312.withPackages (python-pkgs: [
       python-pkgs.numpy
