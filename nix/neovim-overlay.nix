@@ -138,6 +138,7 @@ with final.pkgs.lib; let
       telescope-project-nvim
       telescope-ultisnips-nvim
       text-case-nvim # https://github.com/johmsalas/text-case.nvim
+      # surround-nvim
       todo-comments-nvim
       tokyonight-nvim
       ultisnips
