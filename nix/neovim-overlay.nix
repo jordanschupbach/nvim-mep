@@ -213,8 +213,11 @@ with final.pkgs.lib; let
     nil # nix LSP
     nnn
     pkg-config
+    llvm
 
     pylint
+    isort
+    black
     python312
     (python312.withPackages (python-pkgs: [
       python-pkgs.numpy

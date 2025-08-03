@@ -1,4 +1,4 @@
-
+""" A simple Python script to demonstrate basic arithmetic operations. """
 print("Hello world!")
 
 def add(a, b):
@@ -21,6 +21,7 @@ def divide(a, b):
 
 
 def main():
+    """Main function to demonstrate arithmetic operations."""
     x = 10
     y = 5
     print(f"Adding {x} and {y}: {add(x, y)}")
