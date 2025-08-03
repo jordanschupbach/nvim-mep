@@ -1,11 +1,10 @@
-
 build:
-  cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-  cmake --build build
+    cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+    cmake --build build
 
 run:
-  ./build/simpleProgram
+    ./build/simpleProgram
 
 clean:
-  rm -rf build/
-  rm -rf compile_commands.json
+    rm -rf build/
+    rm -rf compile_commands.json

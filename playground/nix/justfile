@@ -1,3 +1,2 @@
-
 run:
-  nix-instantiate --eval eval.nix -A config.scripts.output
+    nix-instantiate --eval eval.nix -A config.scripts.output
