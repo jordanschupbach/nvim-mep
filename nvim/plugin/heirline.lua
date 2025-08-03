@@ -1250,6 +1250,19 @@ local CppSeparator = {
   end,
 }
 
+local RSeparator = {
+  condition = function()
+    return vim.bo.filetype == 'r'
+  end,
+  provider = function()
+    return '❘'
+  end,
+  hl = function()
+    return { fg = mycolors.donJuan }
+  end,
+}
+
+
 -- }}} Separator |
 
 
@@ -1564,9 +1577,11 @@ local FileSearchButton = {
 
 -- }}} PlayButton 
 
--- {{{ PlayButton 
+-- {{{ PlayButtons 
 
-local PlayButton = {
+
+-- {{{ cpp playbutton
+local CppPlayButton = {
   -- { CppSeparator },
   -- require('nvim-web-devicons').get_icon()
   condition = function()
@@ -1576,7 +1591,6 @@ local PlayButton = {
   end,
   on_click = {
     callback = function()
-      -- vim.print('hello worldzzzz')
       vim.cmd('RunJust')
     end,
     name = 'PlayButton',
@@ -1594,7 +1608,50 @@ local PlayButton = {
   end,
 }
 
--- }}} PlayButton 
+-- }}} cpp playbutton
+
+
+-- {{{ cpp playbutton
+local RPlayButton = {
+  -- { CppSeparator },
+  -- require('nvim-web-devicons').get_icon()
+  condition = function()
+    return conditions.buffer_matches {
+      filetype = { 'r', 'R', },
+    }
+  end,
+  on_click = {
+    callback = function()
+      vim.cmd('AsyncRun Rscript %')
+      -- Check if copen is already open
+      if vim.fn.getqflist({ winid = 0 }).winid == 0 then
+        -- Store the current window id
+        local current_window = vim.fn.win_getid()
+        vim.cmd('copen') -- Open quickfix window
+        -- Function to go back to original window after entering quickfix
+        vim.cmd('autocmd! BufLeave quickfix lua vim.fn.win_gotoid(' .. current_window .. ')')
+      end
+    end,
+    name = 'RPlayButton',
+  },
+  init = function(self)
+    local filename = self.filename
+    local extension = vim.fn.fnamemodify(filename, ':e')
+    self.icon, self.icon_color = require('nvim-web-devicons').get_icon_color(filename, extension, { default = true })
+  end,
+  provider = function()
+    return ''
+  end,
+  hl = function()
+    return { fg = mycolors.appleIiLime, underline = true }
+  end,
+}
+
+-- }}} cpp playbutton
+
+
+
+-- }}} PlayButtons 
 
 -- {{{ JumpIntoButton 
 local JumpIntoButton = {
@@ -2711,8 +2768,13 @@ local WinBar = {
   {},
 
   { Align },
+
   { CppSeparator },
-  { PlayButton },
+  { CppPlayButton },
+
+  { RSeparator },
+  { RPlayButton },
+
   -- { CppSeparator },
   { StatusSpace }, -- TODO: make CppStatusSpace
   { DebugButton },
