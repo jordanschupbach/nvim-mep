@@ -7,6 +7,12 @@ null_ls.setup {
     -- null_ls.builtins.completion.spell,
     -- null_ls.builtins.completion.spell,
 
+    -- {{{ just
+
+    null_ls.builtins.formatting.just,
+
+    -- }}} just
+
     -- {{{ python
 
     null_ls.builtins.diagnostics.pylint.with {

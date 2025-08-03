@@ -1,8 +1,7 @@
-{ pkgs ? import <nixpkgs> {} }:
+{pkgs ? import <nixpkgs> {}}:
 with pkgs;
-pkgs.mkShell {
-  buildInputs =
-    let
+  pkgs.mkShell {
+    buildInputs = let
       # Quipper does not work with GHC 7.10 or 8.10. The versions currently supported are GHC 8.0, 8.2, 8.4, 8.6, and 8.8.
       myHaskell = pkgs.haskell.packages.ghc884.override {
         overrides = self: super: {
@@ -15,10 +14,9 @@ pkgs.mkShell {
           quipper = haskell.lib.markUnbroken super.quipper;
         };
       };
-    in
-      [
-        (myHaskell.ghcWithPackages (hpkgs: [
-          hpkgs.quipper
-        ]))
-      ];
-}
+    in [
+      (myHaskell.ghcWithPackages (hpkgs: [
+        hpkgs.quipper
+      ]))
+    ];
+  }
