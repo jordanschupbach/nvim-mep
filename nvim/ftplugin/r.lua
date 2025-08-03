@@ -1,3 +1,5 @@
+vim.print("Loading R configuration...")
+
 local function get_r_info()
   -- Function to retrieve R version, location, and installed packages
   local r_version_cmd = "R --version"
