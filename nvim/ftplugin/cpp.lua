@@ -20,7 +20,7 @@ dap.adapters.gdb = {
   args = { "--interpreter=dap", "--eval-command", "set print pretty on" }
 }
 
-dap.configurations.c = {
+dap.configurations.cpp = {
   {
     name = "Launch",
     type = "gdb",
@@ -55,3 +55,6 @@ dap.configurations.c = {
     cwd = '${workspaceFolder}'
   },
 }
+
+-- dap.configurations.cpp = dap.configurations.c
+-- dap.configurations.rust = dap.configurations.c
