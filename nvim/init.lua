@@ -1092,6 +1092,7 @@ mymap('n', '<Space>dd', '<CMD>DapContinue<CR>')
 
 mymap('n', '<Space>do', '<CMD>DapStepOut<CR>')
 mymap('n', '<Space>di', '<CMD>DapStepInto<CR>')
+mymap('n', '<Space>dl', '<CMD>DapStepOver<CR>')
 mymap('n', '<Space>di', '<CMD>DapUIPlayPause<CR>')
 mymap('n', '<Space>dc', '<CMD>DapContinue<CR>')
 

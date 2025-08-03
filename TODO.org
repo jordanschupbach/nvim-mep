@@ -1,6 +1,7 @@
+* DONE Add AI button to tabbar
 * TODO Get installed by nixos (done?)
-* TODO Create basic devshell for c++
-* TODO Create basic devshell for java
-* TODO Create basic devshell for python
-* TODO Create basic devshell for R
+* DONE Create basic devshell for c++
+* DONE Create basic devshell for java
+* DONE Create basic devshell for python
+* DONE Create basic devshell for R
 * DONE Get telescope configured

@@ -52,7 +52,7 @@ null_ls.setup {
     -- {{{ lua
 
     null_ls.builtins.formatting.stylua,
-    null_ls.builtins.diagnostics.selene,
+    -- null_ls.builtins.diagnostics.selene, -- needs configuration w/ vim (workspaces?)
 
     -- }}} lua
 
