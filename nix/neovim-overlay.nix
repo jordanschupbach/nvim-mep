@@ -98,12 +98,12 @@ with final.pkgs.lib; let
     cmp-cmdline-history # cmp command line history suggestions
     cmp-nvim-lsp # LSP as completion source | https://github.com/hrsh7th/cmp-nvim-lsp/
     cmp-nvim-lsp-signature-help # https://github.com/hrsh7th/cmp-nvim-lsp-signature-help/
-    cmp-nvim-lua # neovim lua API as completion source | https://github.com/hrsh7th/cmp-nvim-lua/
-    cmp-path # file paths as completion source | https://github.com/hrsh7th/cmp-path/
-    cmp_luasnip # snippets autocompletion extension for nvim-cmp | https://github.com/saadparwaiz1/cmp_luasnip/
-    copilot-vim # https://github.com/github/copilot.vim/
-    dashboard-nvim # https://github.com/nvimdev/dashboard-nvim/
-    diffview-nvim # https://github.com/sindrets/diffview.nvim/
+    cmp-nvim-lua      # neovim lua API as completion source | https://github.com/hrsh7th/cmp-nvim-lua/
+    cmp-path          # file paths as completion source | https://github.com/hrsh7th/cmp-path/
+    cmp_luasnip       # snippets autocompletion extension for nvim-cmp | https://github.com/saadparwaiz1/cmp_luasnip/
+    copilot-vim       # https://github.com/github/copilot.vim/
+    dashboard-nvim    # https://github.com/nvimdev/dashboard-nvim/
+    diffview-nvim     # https://github.com/sindrets/diffview.nvim/
     flash-nvim
     focus-nvim        # https://github.com/nvim-focus/focus.nvim
     friendly-snippets
@@ -115,18 +115,18 @@ with final.pkgs.lib; let
     lsp-progress-nvim # https://github.com/linrongbin16/lsp-progress.nvim
     lspkind-nvim      # vscode-like LSP pictograms | https://github.com/onsails/lspkind.nvim/
     luasnip           # snippets | https://github.com/l3mon4d3/luasnip/
-    melange-nvim # https://github.com/savq/melange-nvim
-    overseer-nvim # https://github.com/stevearc/overseer.nvim?tab=readme-ov-file
-    url-open # https://github.com/sontungexpt/url-open
-    neogit # https://github.com/TimUntersberger/neogit/
+    melange-nvim      # https://github.com/savq/melange-nvim
+    overseer-nvim     # https://github.com/stevearc/overseer.nvim?tab=readme-ov-file
+    url-open          # https://github.com/sontungexpt/url-open
+    neogit            # https://github.com/TimUntersberger/neogit/
     nerdtree #
     nvim-bqf
-    nvim-cmp # https://github.com/hrsh7th/nvim-cmp
+    nvim-cmp          # https://github.com/hrsh7th/nvim-cmp
     nvim-highlight-colors
     nvim-luadev
-    nvim-navic # Add LSP location to lualine | https://github.com/SmiteshP/nvim-navic
-    nvim-surround # https://github.com/kylechui/nvim-surround/
-    nvim-tree-lua #
+    nvim-navic        # https://github.com/SmiteshP/nvim-navic
+    nvim-surround     # https://github.com/kylechui/nvim-surround/
+    nvim-tree-lua     #
     nvim-treesitter
     # nvim-treesitter-parsers.cpp
     # nvim-treesitter-parsers.lua
