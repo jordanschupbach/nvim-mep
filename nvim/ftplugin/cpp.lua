@@ -7,6 +7,7 @@ local root_files = {
 }
 
 mymap('n', '<A-S-return>', '<CMD>RunJust<CR>')
+mymap('n', '<Space>rr', '<CMD>RunJust<CR>')
 
 vim.lsp.start {
   name = 'cpp',

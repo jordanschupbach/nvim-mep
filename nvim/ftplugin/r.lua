@@ -50,8 +50,7 @@ vim.api.nvim_create_user_command('RunR', run_r, {
 
 
 mymap('n', '<A-S-return>', '<CMD>RunR<CR>')
-
-
+mymap('n', '<Space>rr', '<CMD>RunR<CR>')
 
 
 local root_files = {
