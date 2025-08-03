@@ -1,6 +1,6 @@
 # beginfile
 
-print("hello, world")
+print("hellozzz, worldzzzzzz")
 
 a <- function(x) {
   x + 1
