@@ -1,30 +1,36 @@
+local null_ls = require('null-ls')
 
+null_ls.setup {
+  sources = {
+    -- null_ls.builtins.formatting.stylua,
+    -- null_ls.builtins.diagnostics.eslint,
+    -- null_ls.builtins.completion.spell,
+    -- null_ls.builtins.completion.spell,
 
-local null_ls = require("null-ls")
+    -- {{{ python
 
-null_ls.setup({
-    sources = {
-        -- null_ls.builtins.formatting.stylua,
-        -- null_ls.builtins.diagnostics.eslint,
-        -- null_ls.builtins.completion.spell,
-        -- null_ls.builtins.completion.spell,
-
-        -- {{{ python
-
-        null_ls.builtins.diagnostics.pylint.with({
-          diagnostics_postprocess = function(diagnostic)
-            diagnostic.code = diagnostic.message_id
-          end,
-        }),
-        null_ls.builtins.formatting.isort,
-        null_ls.builtins.formatting.black,
-
-        -- }}} python
-
-        -- {{{ cpp
-
-        null_ls.builtins.formatting.clang_format,
-
-        -- }}} cpp
+    null_ls.builtins.diagnostics.pylint.with {
+      diagnostics_postprocess = function(diagnostic)
+        diagnostic.code = diagnostic.message_id
+      end,
     },
-})
+    null_ls.builtins.formatting.isort,
+    null_ls.builtins.formatting.black,
+
+    -- }}} python
+
+    -- {{{ cpp
+
+    null_ls.builtins.diagnostics.cppcheck,
+    null_ls.builtins.formatting.clang_format,
+
+    -- }}} cpp
+
+    -- {{{ javascript
+
+    null_ls.builtins.formatting.prettierd,
+    -- null_ls.builtins.formatting.prettierd.with({
+    --     filetypes = { "javascript", "typescript", "html", "css", "json" },
+    -- }),
+  },
+}

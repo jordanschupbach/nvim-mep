@@ -1,4 +1,3 @@
-
 {
   description = "MEP Neovim derivation";
 
@@ -14,7 +13,6 @@
     #   url = "github:Cassin01/wf.nvim";
     #   flake = false;
     # };
-
   };
 
   outputs = inputs @ {
@@ -24,7 +22,6 @@
     flake-utils,
     ...
   }: let
-
     systems = builtins.attrNames nixpkgs.legacyPackages;
 
     # This is where the Neovim derivation is built.
@@ -47,7 +44,6 @@
       shell = pkgs.mkShell {
         name = "nvim-devShell";
         buildInputs = with pkgs; [
-
           # Tools for Lua and Nix development, useful for editing files in this repo
           tree-sitter
           libxml2
@@ -64,6 +60,8 @@
           luajitPackages.luacheck
           nvim-dev
 
+          nodejs_23
+
           python312
           # python312Packages.pynvim
           # python312Packages.pylsp
@@ -75,18 +73,15 @@
           # python312Packages.pylsp-black
           # python312Packages.pylsp-isort
 
-
-
           # NOTE: adding here did work
           # R
           # rPackages.callr
           # rPackages.languageserver
           # rPackages.languageserversetup
-
         ];
         nativeBuildInputs = with pkgs; [
-            tree-sitter
-            pkg-config
+          tree-sitter
+          pkg-config
         ];
         shellHook = ''
           # symlink the .luarc.json generated in the overlay
@@ -106,7 +101,8 @@
           {
             name = "enter-shell";
             command = "exec ${pkgs.bashInteractive}/bin/bash";
-          }];
+          }
+        ];
       };
     })
     // {

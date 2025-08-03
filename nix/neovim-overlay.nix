@@ -194,6 +194,7 @@ with final.pkgs.lib; let
       pkg-config
 
       # javascript
+      nodejs_23
       prettierd
 
       # lua
@@ -210,6 +211,7 @@ with final.pkgs.lib; let
       gcc
       libclang
       llvm # ??? rudundant?
+      cppcheck
 
       # nix
       nil # nix LSP
