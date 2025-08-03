@@ -132,27 +132,27 @@ local function on_project_selected(prompt_bufnr)
   vim.cmd 'term'
   vim.api.nvim_win_set_height(0, 8)
   vim.cmd 'wincmd k'
-  -- vim.cmd 'SidebarNvimToggle'
-  if file_exists('' .. entry['value'] .. '/TODO.org') then
-    vim.cmd 'vsplit'
-    vim.cmd('edit ' .. entry['value'] .. '/TODO.org')
-    if file_exists('' .. entry['value'] .. '/justfile') then
-      vim.cmd 'split'
-      vim.cmd('edit ' .. entry['value'] .. '/justfile')
-      vim.cmd('AerialToggle')
-      vim.cmd 'wincmd h'
-      vim.cmd 'wincmd h'
-    end
-    vim.cmd 'wincmd h'
-  else
-    if file_exists('' .. entry['value'] .. '/justfile') then
-      vim.cmd 'vsplit'
-      vim.cmd('edit ' .. entry['value'] .. '/justfile')
-      vim.cmd('AerialToggle')
-      vim.cmd 'wincmd h'
-      vim.cmd 'wincmd h'
-    end
-  end
+  -- -- vim.cmd 'SidebarNvimToggle'
+  -- if file_exists('' .. entry['value'] .. '/TODO.org') then
+  --   vim.cmd 'vsplit'
+  --   vim.cmd('edit ' .. entry['value'] .. '/TODO.org')
+  --   if file_exists('' .. entry['value'] .. '/justfile') then
+  --     vim.cmd 'split'
+  --     vim.cmd('edit ' .. entry['value'] .. '/justfile')
+  --     vim.cmd('AerialToggle')
+  --     vim.cmd 'wincmd h'
+  --     vim.cmd 'wincmd h'
+  --   end
+  --   vim.cmd 'wincmd h'
+  -- else
+  --   if file_exists('' .. entry['value'] .. '/justfile') then
+  --     vim.cmd 'vsplit'
+  --     vim.cmd('edit ' .. entry['value'] .. '/justfile')
+  --     vim.cmd('AerialToggle')
+  --     vim.cmd 'wincmd h'
+  --     vim.cmd 'wincmd h'
+  --   end
+  -- end
   -- vim.cmd('cd ')
 end
 
@@ -234,7 +234,7 @@ require('telescope').setup {
     },
 
 
-   -- This configuration only affects this extension.
+    -- This configuration only affects this extension.
     telescope_words = {
 
       -- Define custom mappings. Default mappings are {} (empty).
@@ -391,6 +391,6 @@ vim.keymap.set(
 --     },
 --   },
 -- }
--- 
+--
 
 -- }}} Old config
