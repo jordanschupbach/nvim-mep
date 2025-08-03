@@ -1235,6 +1235,25 @@ local StatusLineSeparator = {
 }
 -- }}} Separator |
 
+
+-- {{{ Separator |
+
+local CppSeparator = {
+  condition = function()
+    return vim.bo.filetype == 'cpp'
+  end,
+  provider = function()
+    return '❘'
+  end,
+  hl = function()
+    return { fg = mycolors.donJuan }
+  end,
+}
+
+-- }}} Separator |
+
+
+
 -- {{{ Space
 local Space = {
   -- require('nvim-web-devicons').get_icon()
@@ -1548,7 +1567,7 @@ local FileSearchButton = {
 -- {{{ PlayButton 
 
 local PlayButton = {
-  { Separator },
+  { CppSeparator },
   -- require('nvim-web-devicons').get_icon()
   condition = function()
     return conditions.buffer_matches {
@@ -2693,7 +2712,6 @@ local WinBar = {
 
   { Align },
 
-  { Separator },
   { PlayButton },
   { Separator },
   { StatusSpace },
