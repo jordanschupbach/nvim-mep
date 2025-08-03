@@ -2713,7 +2713,7 @@ local WinBar = {
   { Align },
   { CppSeparator },
   { PlayButton },
-  { CppSeparator },
+  -- { CppSeparator },
   { StatusSpace }, -- TODO: make CppStatusSpace
   { DebugButton },
   -- { StatusSpace },
