@@ -1,8 +1,12 @@
-
+local function mymap(mode, key, value)
+  vim.keymap.set(mode, key, value, { silent = true, remap = true })
+end
 
 local root_files = {
   '.git',
 }
+
+mymap('n', '<A-S-return>', '<CMD>RunJust<CR>')
 
 vim.lsp.start {
   name = 'cpp',
@@ -36,11 +40,11 @@ dap.configurations.cpp = {
     type = "gdb",
     request = "attach",
     program = function()
-       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
     end,
     pid = function()
-       local name = vim.fn.input('Executable name (filter): ')
-       return require("dap.utils").pick_process({ filter = name })
+      local name = vim.fn.input('Executable name (filter): ')
+      return require("dap.utils").pick_process({ filter = name })
     end,
     cwd = '${workspaceFolder}'
   },
@@ -50,7 +54,7 @@ dap.configurations.cpp = {
     request = 'attach',
     target = 'localhost:1234',
     program = function()
-       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
     end,
     cwd = '${workspaceFolder}'
   },

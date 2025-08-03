@@ -1,5 +1,6 @@
-* DONE Add AI button to tabbar
 * TODO Get installed by nixos (done?)
+
+* DONE Add AI button to tabbar
 * DONE Create basic devshell for c++
 * DONE Create basic devshell for java
 * DONE Create basic devshell for python
