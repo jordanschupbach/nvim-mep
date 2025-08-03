@@ -4,7 +4,6 @@
 with final.pkgs.lib; let
   pkgs = final;
 
-
   # Use this to create a plugin from a flake input
   mkNvimPlugin = src: pname:
     pkgs.vimUtils.buildVimPlugin {
@@ -19,8 +18,8 @@ with final.pkgs.lib; let
   # This is the helper function that builds the Neovim derivation.
 
   mkNeovim = pkgs.callPackage ./mkNeovim.nix {
-      inherit (pkgs-locked) wrapNeovimUnstable neovimUtils;
-    };
+    inherit (pkgs-locked) wrapNeovimUnstable neovimUtils;
+  };
 
   # A plugin can either be a package or an attrset, such as
   # { plugin = <plugin>; # the package, e.g. pkgs.vimPlugins.nvim-cmp
@@ -106,20 +105,19 @@ with final.pkgs.lib; let
     dashboard-nvim # https://github.com/nvimdev/dashboard-nvim/
     diffview-nvim # https://github.com/sindrets/diffview.nvim/
     flash-nvim
-    focus-nvim
-    focus-nvim # https://github.com/nvim-focus/focus.nvim
+    focus-nvim        # https://github.com/nvim-focus/focus.nvim
     friendly-snippets
-    gitsigns-nvim # https://github.com/lewis6991/gitsigns.nvim/
-    heirline-nvim # https://github.com/rebelot/heirline.nvim/
-    kanagawa-nvim # https://github.com/rebelot/kanagawa.nvim
+    nvim-dap
+    nvim-dap-ui
+    gitsigns-nvim     # https://github.com/lewis6991/gitsigns.nvim/
+    heirline-nvim     # https://github.com/rebelot/heirline.nvim/
+    kanagawa-nvim     # https://github.com/rebelot/kanagawa.nvim
     lsp-progress-nvim # https://github.com/linrongbin16/lsp-progress.nvim
-    lspkind-nvim # vscode-like LSP pictograms | https://github.com/onsails/lspkind.nvim/
-    luasnip
-    luasnip # snippets | https://github.com/l3mon4d3/luasnip/
+    lspkind-nvim      # vscode-like LSP pictograms | https://github.com/onsails/lspkind.nvim/
+    luasnip           # snippets | https://github.com/l3mon4d3/luasnip/
     melange-nvim # https://github.com/savq/melange-nvim
     overseer-nvim # https://github.com/stevearc/overseer.nvim?tab=readme-ov-file
     url-open # https://github.com/sontungexpt/url-open
-
     neogit # https://github.com/TimUntersberger/neogit/
     nerdtree #
     nvim-bqf

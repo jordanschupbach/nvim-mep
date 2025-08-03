@@ -646,6 +646,7 @@ end
 -- }}} Colors
 
 -- {{{ Autos
+
 vim.api.nvim_create_augroup('Heirline', { clear = true })
 vim.api.nvim_create_autocmd('ColorScheme', {
   callback = function()
@@ -653,6 +654,7 @@ vim.api.nvim_create_autocmd('ColorScheme', {
   end,
   group = 'Heirline',
 })
+
 -- }}} Autos
 
 --- {{{ Components
@@ -1442,13 +1444,41 @@ local actionHints = {
 -- 
 -- │󱫫󱫤󱫡󱫐󱫠󱫪󱫬󱧡󱕱󱕜󱎯󱊡󱊢󱊣󱊤󱊥󱊦󱇪󱅥󰳤󰳦󰦐󰟔󰃤󰄵
 -- ◍󰂒󰂓󰂛󰂜󰂞󰂠󰂟󰃛󰃞󰃟󰅏󰅎󱇪󱏵󱏴󱏶󱏷󱪼
--- p󰄲󰄵󰆚󰈞󰓥󰘧󰨰󰬯󰮗󰺛󱁍󱍢󱎎󱎴󱐌󱐋󱝁󱜿󱜙󱢺󱢴󱣓󱣒󱣻󱤎
+-- 󰄲󰄵󰆚󰈞󰓥󰘧󰨰󰬯󰮗󰺛󱁍󱍢󱎎󱎴󱐌󱐋󱝁󱜿󱜙󱢺󱢴󱣓󱣒󱣻󱤎
 -- 󰴭
 -- 󰀦󰀨󰀩❘❘
 -- 
 -- 
 -- 󰔦󰕃󰔦󰡟󰺛󰴭
 -- 󰎦󰎧󰎩󰎪󰎬󰎭󰎮󰎪󰎰󰎱󰎳󰎵󰎶󰎸󰎹󰎻󰎼󰎾󰎡󰎣󰛦󰟟󰧑󰦌󰬯󰯻󰯺󰻕󰻖󱀇󱍢󱑷󱓞󱓟󱗃󱢴󱢊󱢋󱩡󱩲󱨚
+
+
+
+-- {{{ AI BUtton 󰅏
+
+local AIButton = {
+  on_click = {
+    callback = function()
+      vim.cmd('AerialToggle')
+    end,
+    name = 'AIButton',
+  },
+  init = function(self)
+    local filename = self.filename
+    local extension = vim.fn.fnamemodify(filename, ':e')
+    self.icon, self.icon_color =
+      require('nvim-web-devicons').get_icon_color(filename, extension, { default = true })
+  end,
+  provider = function()
+    return '󰅏' -- 
+  end,
+  hl = function()
+    return { fg = mycolors.appleIiLime, underline = false }
+  end,
+}
+
+
+-- }}} AIButton
 
 -- {{{ aerial button 󰒪
 
@@ -2375,7 +2405,8 @@ local SettingsButton = {
 }
 -- }}} SettingsButton 
 
--- {{{ ShellButton 
+-- {{{ ShellButton  󰦮󰨊
+
 local ShellButton = {
   -- require('nvim-web-devicons').get_icon()
   on_click = {
