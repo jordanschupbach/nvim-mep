@@ -41,7 +41,7 @@ local run_r = function()
   end
 end
 
-vim.api.create_user_command('RunR', run_r, {
+vim.api.nvim_create_user_command('RunR', run_r, {
   desc = 'Run the current R script',
   nargs = 0,
 })
