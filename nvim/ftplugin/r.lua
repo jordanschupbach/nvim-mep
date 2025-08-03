@@ -32,7 +32,13 @@ end
 
 
 local run_r = function()
-  vim.cmd('AsyncRun Rscript %')
+  -- Check if flake.nix exists
+  local flake_exists = vim.fn.filereadable('flake.nix') == 1
+  if flake_exists then
+    vim.cmd('AsyncRun nix develop --command Rscript %')
+  else
+    vim.cmd('AsyncRun Rscript %')
+  end
   -- Check if copen is already open
   if vim.fn.getqflist({ winid = 0 }).winid == 0 then
     -- Store the current window id
