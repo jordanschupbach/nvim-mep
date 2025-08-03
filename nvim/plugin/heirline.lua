@@ -1548,6 +1548,7 @@ local FileSearchButton = {
 -- {{{ PlayButton 
 
 local PlayButton = {
+  { Separator },
   -- require('nvim-web-devicons').get_icon()
   condition = function()
     return conditions.buffer_matches {
@@ -2692,6 +2693,7 @@ local WinBar = {
 
   { Align },
 
+  { Separator },
   { PlayButton },
   { Separator },
   { StatusSpace },
