@@ -193,6 +193,9 @@ with final.pkgs.lib; let
       nnn
       pkg-config
 
+      # javascript
+      prettierd
+
       # lua
       lua-language-server
 
@@ -201,7 +204,7 @@ with final.pkgs.lib; let
 
       # haskell
       ghc
-      hindent
+      haskellPackages.hindent
 
       # c/cpp
       gcc
