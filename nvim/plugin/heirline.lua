@@ -1590,7 +1590,7 @@ local PlayButton = {
     return ''
   end,
   hl = function()
-    return { fg = mycolors.appleIiLime, underline = false }
+    return { fg = mycolors.appleIiLime, underline = true }
   end,
 }
 
@@ -1917,7 +1917,7 @@ local DebugButton = { -- 󰃤
     return ''
   end,
   hl = function()
-    return { fg = mycolors.appleIiLime, underline = false }
+    return { fg = mycolors.appleIiLime, underline = true }
   end,
 }
 -- }}} DebugButton 󰃤
@@ -2731,7 +2731,7 @@ local WinBar = {
   { Separator },
   { AIButton },  -- conditions?
   { Separator }, -- conditions?
-  { StatusSpace },
+  -- { StatusSpace },
   { AerialToggleButton },
   { Separator },
   { TelescopeButton },
