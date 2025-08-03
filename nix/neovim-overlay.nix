@@ -90,6 +90,9 @@ with final.pkgs.lib; let
     # nvim-cmp (autocompletion) and extensions
     # nvim-unception # Prevent nested neovim sessions | nvim-unception
 
+    # nvim-treesitter-parsers.R
+    # nvim-treesitter-parsers.cpp
+    # nvim-treesitter-parsers.lua
     aerial-nvim # https://github.com/stevearc/aerial.nvim
     asyncrun-vim
     blink-cmp
@@ -107,30 +110,27 @@ with final.pkgs.lib; let
     flash-nvim
     focus-nvim        # https://github.com/nvim-focus/focus.nvim
     friendly-snippets
-    nvim-dap
-    nvim-dap-ui
     gitsigns-nvim     # https://github.com/lewis6991/gitsigns.nvim/
     heirline-nvim     # https://github.com/rebelot/heirline.nvim/
+    jupytext-nvim
     kanagawa-nvim     # https://github.com/rebelot/kanagawa.nvim
     lsp-progress-nvim # https://github.com/linrongbin16/lsp-progress.nvim
     lspkind-nvim      # vscode-like LSP pictograms | https://github.com/onsails/lspkind.nvim/
     luasnip           # snippets | https://github.com/l3mon4d3/luasnip/
+    markdown-preview-nvim
     melange-nvim      # https://github.com/savq/melange-nvim
-    overseer-nvim     # https://github.com/stevearc/overseer.nvim?tab=readme-ov-file
-    url-open          # https://github.com/sontungexpt/url-open
     neogit            # https://github.com/TimUntersberger/neogit/
-    nerdtree #
+    nerdtree
     nvim-bqf
     nvim-cmp          # https://github.com/hrsh7th/nvim-cmp
+    nvim-dap
+    nvim-dap-ui
     nvim-highlight-colors
     nvim-luadev
     nvim-navic        # https://github.com/SmiteshP/nvim-navic
     nvim-surround     # https://github.com/kylechui/nvim-surround/
     nvim-tree-lua     #
     nvim-treesitter
-    # nvim-treesitter-parsers.cpp
-    # nvim-treesitter-parsers.lua
-    # nvim-treesitter-parsers.R
     nvim-treesitter-context # nvim-treesitter-context
     nvim-treesitter-textobjects # https://github.com/nvim-treesitter/nvim-treesitter-textobjects/
     nvim-treesitter.withAllGrammars
@@ -138,7 +138,9 @@ with final.pkgs.lib; let
     nvim-web-devicons
     oil-nvim # https://github.com/stevearc/oil.nvim
     other-nvim
+    overseer-nvim     # https://github.com/stevearc/overseer.nvim?tab=readme-ov-file
     plenary-nvim
+    render-markdown-nvim
     smart-splits-nvim #
     sqlite-lua
     statuscol-nvim # Status column | https://github.com/luukvbaal/statuscol.nvim/
@@ -150,14 +152,12 @@ with final.pkgs.lib; let
     todo-comments-nvim
     tokyonight-nvim
     ultisnips
+    url-open          # https://github.com/sontungexpt/url-open
     vim-fugitive # https://github.com/tpope/vim-fugitive/
     vim-repeat
     vim-slime
     which-key-nvim
     zen-mode-nvim
-    render-markdown-nvim
-    markdown-preview-nvim
-    jupytext-nvim
 
     # # neorg
     # vim-unimpaired # predefined ] and [ navigation keymaps | https://github.com/tpope/vim-unimpaired/
