@@ -150,6 +150,8 @@ with final.pkgs.lib; let
       none-ls-nvim
       conform-nvim
 
+      codecompanion-nvim
+
       # # neorg
       # vim-unimpaired # predefined ] and [ navigation keymaps | https://github.com/tpope/vim-unimpaired/
 

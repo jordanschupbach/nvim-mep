@@ -1454,7 +1454,7 @@ local actionHints = {
 local AIButton = {
   on_click = {
     callback = function()
-      vim.cmd('AerialToggle')
+      vim.cmd('CodeCompanionActions')
     end,
     name = 'AIButton',
   },
