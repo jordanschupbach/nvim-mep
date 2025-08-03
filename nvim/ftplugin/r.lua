@@ -1,5 +1,4 @@
-
-function get_r_info()
+local function get_r_info()
   -- Function to retrieve R version, location, and installed packages
   local r_version_cmd = "R --version"
   local r_location_cmd = "which R"
@@ -12,8 +11,8 @@ function get_r_info()
 
   -- Create a message to display
   local message = "R Version:\n" .. r_version .. "\n" ..
-                  "R Location:\n" .. r_location .. "\n" ..
-                  "Installed Packages:\n" .. r_packages
+      "R Location:\n" .. r_location .. "\n" ..
+      "Installed Packages:\n" .. r_packages
 
   -- Display the message in Vim
   -- vim.cmd("echo '" .. message:gsub("'", "''") .. "'")
@@ -23,6 +22,32 @@ end
 
 -- Optionally, call this function on specific events
 -- get_r_info() -- Uncomment to automatically get R info on certain triggers
+
+
+local function mymap(mode, key, value)
+  vim.keymap.set(mode, key, value, { silent = true, remap = true })
+end
+
+
+local run_r = function()
+  vim.cmd('AsyncRun Rscript %')
+  -- Check if copen is already open
+  if vim.fn.getqflist({ winid = 0 }).winid == 0 then
+    -- Store the current window id
+    local current_window = vim.fn.win_getid()
+    vim.cmd('copen') -- Open quickfix window
+    -- Function to go back to original window after entering quickfix
+    vim.cmd('autocmd! BufLeave quickfix lua vim.fn.win_gotoid(' .. current_window .. ')')
+  end
+end
+
+vim.api.create_user_command('RunR', run_r, {
+  desc = 'Run the current R script',
+  nargs = 0,
+})
+
+
+mymap('n', '<A-S-return>', '<CMD>RunR<CR>')
 
 
 
@@ -36,7 +61,7 @@ local root_files = {
 
 -- TODO: refactor into R
 
--- from python 
+-- from python
 -- require'lspconfig'.pylsp.setup{
 --   settings = {
 --     pylsp = {
@@ -60,4 +85,3 @@ vim.lsp.start {
   filetypes = { 'r', 'R', },
   capabilities = require('user.lsp').make_client_capabilities(),
 }
-
