@@ -172,6 +172,7 @@ with final.pkgs.lib; let
 
   extraPackages = 
   let
+
     # R-with-my-packages = pkgs.rWrapper.override{ packages = with pkgs.rPackages; [ 
     #   snakecase 
     #   lme4 

@@ -18,12 +18,23 @@ with lib; {
       ripgrep
       pkg-config
 
+      python312
+      python312Packages.numpy
+      python312Packages.python-lsp-server
+      python312Packages.debugpy
+
       # ruby
       # nodejs
     ], # List of plugins
     # List of dev plugins (will be bootstrapped) - useful for plugin developers
     # { name = <plugin-name>; url = <git-url>; }
     devPlugins ? [
+
+      python312
+      python312Packages.numpy
+      python312Packages.python-lsp-server
+      python312Packages.debugpy
+
       # pkgs.libxml2
 
       # R
@@ -45,6 +56,11 @@ with lib; {
       # libclang
       cava
       libxml2
+
+      python312
+      python312Packages.numpy
+      python312Packages.python-lsp-server
+      python312Packages.debugpy
       # rPackages.callr
       # ripgrep
       # libxml2
