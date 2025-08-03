@@ -2613,6 +2613,9 @@ local TabLine = {
   { Separator },
   { TodoButton },
   { Space },
+  { Separator },
+  { AIButton },
+  { Separator },
 
   -- { ViMode },
 
@@ -2708,10 +2711,6 @@ local WinBar = {
   { StatusSpace },
   { RestartButton },
   { StatusSpace },
-  { Separator },
-  { AIButton },
-  { StatusSpace },
-  { Separator },
   { AerialToggleButton },
   { Separator },
   { TelescopeButton },
