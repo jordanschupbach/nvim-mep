@@ -1,4 +1,3 @@
-
 # This overlay, when applied to nixpkgs, adds the final neovim derivation to nixpkgs.
 {inputs}: final: prev:
 with final.pkgs.lib; let
@@ -30,230 +29,213 @@ with final.pkgs.lib; let
   #   ...
   # }
 
-
-
-  all-plugins = 
-  let
-
+  all-plugins = let
     EasyGrep = pkgs.vimUtils.buildVimPlugin {
-        name = "vim-easygrep";
-        src = pkgs.fetchFromGitHub {
-          owner = "dkprice";
-          repo = "vim-easygrep";
-          rev = "d0c36a77cc63c22648e792796b1815b44164653a";
-          hash = "sha256-bL33/S+caNmEYGcMLNCanFZyEYUOUmSsedCVBn4tV3g=";
-        };
+      name = "vim-easygrep";
+      src = pkgs.fetchFromGitHub {
+        owner = "dkprice";
+        repo = "vim-easygrep";
+        rev = "d0c36a77cc63c22648e792796b1815b44164653a";
+        hash = "sha256-bL33/S+caNmEYGcMLNCanFZyEYUOUmSsedCVBn4tV3g=";
       };
+    };
 
     TelescopeLuasnip = pkgs.vimUtils.buildVimPlugin {
-        name = "telescope-luasnip-nvim";
-        src = pkgs.fetchFromGitHub {
-          owner = "benfowler";
-          repo = "telescope-luasnip.nvim";
-          rev = "07a2a2936a7557404c782dba021ac0a03165b343";
-          hash = "sha256-9XsV2hPjt05q+y5FiSbKYYXnznDKYOsDwsVmfskYd3M=";
-        };
+      name = "telescope-luasnip-nvim";
+      src = pkgs.fetchFromGitHub {
+        owner = "benfowler";
+        repo = "telescope-luasnip.nvim";
+        rev = "07a2a2936a7557404c782dba021ac0a03165b343";
+        hash = "sha256-9XsV2hPjt05q+y5FiSbKYYXnznDKYOsDwsVmfskYd3M=";
       };
+    };
 
     JustNvim = pkgs.vimUtils.buildVimPlugin {
-        name = "just-nvim";
-        src = pkgs.fetchFromGitHub {
-          owner = "al1-ce";
-          repo = "just.nvim";
-          rev = "14e2c95b2b988bb265da3ee0d546c1ec176dd6e1";
-          hash = "sha256-gdgBeNx3npks16Px01oLX7HjyNtCyIqvCbpZsbLVkUM=";
-        };
+      name = "just-nvim";
+      src = pkgs.fetchFromGitHub {
+        owner = "al1-ce";
+        repo = "just.nvim";
+        rev = "14e2c95b2b988bb265da3ee0d546c1ec176dd6e1";
+        hash = "sha256-gdgBeNx3npks16Px01oLX7HjyNtCyIqvCbpZsbLVkUM=";
       };
+    };
 
     JsFunc = pkgs.vimUtils.buildVimPlugin {
-        name = "jsfunc-nvim";
-        src = pkgs.fetchFromGitHub {
-          owner = "al1-ce";
-          repo = "jsfunc.nvim";
-          rev = "ed968840ade89f1d0c95513852a145dca1fe7916";
-          hash = "sha256-qQAGTI0BieXI6F/qWNmiQVVVxmTwHQ9vlMendflkAxs=";
-        };
+      name = "jsfunc-nvim";
+      src = pkgs.fetchFromGitHub {
+        owner = "al1-ce";
+        repo = "jsfunc.nvim";
+        rev = "ed968840ade89f1d0c95513852a145dca1fe7916";
+        hash = "sha256-qQAGTI0BieXI6F/qWNmiQVVVxmTwHQ9vlMendflkAxs=";
       };
-
-
+    };
   in
+    with pkgs.vimPlugins; [
+      # plugins from nixpkgs go in here.
+      # https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=vimPlugins
 
+      # eyeliner-nvim # Highlights unique characters for f/F and t/T motions | https://github.com/jinh0/eyeliner.nvim
+      # lualine-nvim # Status line | https://github.com/nvim-lualine/lualine.nvim/
+      # nvim-cmp (autocompletion) and extensions
+      # nvim-unception # Prevent nested neovim sessions | nvim-unception
 
-  with pkgs.vimPlugins; [
+      # nvim-treesitter-parsers.R
+      # nvim-treesitter-parsers.cpp
+      # nvim-treesitter-parsers.lua
+      aerial-nvim # https://github.com/stevearc/aerial.nvim
+      asyncrun-vim
+      blink-cmp
+      cmp-buffer # current buffer as completion source | https://github.com/hrsh7th/cmp-buffer/
+      cmp-cmdline # cmp command line suggestions
+      cmp-cmdline-history # cmp command line history suggestions
+      cmp-nvim-lsp # LSP as completion source | https://github.com/hrsh7th/cmp-nvim-lsp/
+      cmp-nvim-lsp-signature-help # https://github.com/hrsh7th/cmp-nvim-lsp-signature-help/
+      cmp-nvim-lua # neovim lua API as completion source | https://github.com/hrsh7th/cmp-nvim-lua/
+      cmp-path # file paths as completion source | https://github.com/hrsh7th/cmp-path/
+      cmp_luasnip # snippets autocompletion extension for nvim-cmp | https://github.com/saadparwaiz1/cmp_luasnip/
+      copilot-vim # https://github.com/github/copilot.vim/
+      dashboard-nvim # https://github.com/nvimdev/dashboard-nvim/
+      diffview-nvim # https://github.com/sindrets/diffview.nvim/
+      flash-nvim
+      focus-nvim # https://github.com/nvim-focus/focus.nvim
+      friendly-snippets
+      gitsigns-nvim # https://github.com/lewis6991/gitsigns.nvim/
+      heirline-nvim # https://github.com/rebelot/heirline.nvim/
+      jupytext-nvim
+      kanagawa-nvim # https://github.com/rebelot/kanagawa.nvim
+      lsp-progress-nvim # https://github.com/linrongbin16/lsp-progress.nvim
+      lspkind-nvim # vscode-like LSP pictograms | https://github.com/onsails/lspkind.nvim/
+      luasnip # snippets | https://github.com/l3mon4d3/luasnip/
+      markdown-preview-nvim
+      melange-nvim # https://github.com/savq/melange-nvim
+      neogit # https://github.com/TimUntersberger/neogit/
+      nerdtree
+      nvim-bqf
+      nvim-cmp # https://github.com/hrsh7th/nvim-cmp
+      nvim-dap
+      nvim-dap-ui
+      nvim-highlight-colors
+      nvim-luadev
+      nvim-navic # https://github.com/SmiteshP/nvim-navic
+      nvim-surround # https://github.com/kylechui/nvim-surround/
+      nvim-tree-lua #
+      nvim-treesitter
+      nvim-treesitter-context # nvim-treesitter-context
+      nvim-treesitter-textobjects # https://github.com/nvim-treesitter/nvim-treesitter-textobjects/
+      nvim-treesitter.withAllGrammars
+      nvim-ts-context-commentstring # https://github.com/joosepalviste/nvim-ts-context-commentstring/
+      nvim-web-devicons
+      oil-nvim # https://github.com/stevearc/oil.nvim
+      other-nvim
+      overseer-nvim # https://github.com/stevearc/overseer.nvim?tab=readme-ov-file
+      plenary-nvim
+      render-markdown-nvim
+      smart-splits-nvim #
+      sqlite-lua
+      statuscol-nvim # Status column | https://github.com/luukvbaal/statuscol.nvim/
+      telescope-fzy-native-nvim # https://github.com/nvim-telescope/telescope-fzy-native.nvim
+      telescope-nvim # https://github.com/nvim-telescope/telescope.nvim/
+      telescope-project-nvim
+      telescope-ultisnips-nvim
+      text-case-nvim # https://github.com/johmsalas/text-case.nvim
+      todo-comments-nvim
+      tokyonight-nvim
+      ultisnips
+      url-open # https://github.com/sontungexpt/url-open
+      vim-fugitive # https://github.com/tpope/vim-fugitive/
+      vim-repeat
+      vim-slime
+      which-key-nvim
+      zen-mode-nvim
+      none-ls-nvim
+      conform-nvim
 
-    # plugins from nixpkgs go in here.
-    # https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=vimPlugins
+      # # neorg
+      # vim-unimpaired # predefined ] and [ navigation keymaps | https://github.com/tpope/vim-unimpaired/
 
+      EasyGrep
+      TelescopeLuasnip
+      JustNvim
+      JsFunc
+    ];
 
-    # eyeliner-nvim # Highlights unique characters for f/F and t/T motions | https://github.com/jinh0/eyeliner.nvim
-    # lualine-nvim # Status line | https://github.com/nvim-lualine/lualine.nvim/
-    # nvim-cmp (autocompletion) and extensions
-    # nvim-unception # Prevent nested neovim sessions | nvim-unception
-
-    # nvim-treesitter-parsers.R
-    # nvim-treesitter-parsers.cpp
-    # nvim-treesitter-parsers.lua
-    aerial-nvim # https://github.com/stevearc/aerial.nvim
-    asyncrun-vim
-    blink-cmp
-    cmp-buffer # current buffer as completion source | https://github.com/hrsh7th/cmp-buffer/
-    cmp-cmdline # cmp command line suggestions
-    cmp-cmdline-history # cmp command line history suggestions
-    cmp-nvim-lsp # LSP as completion source | https://github.com/hrsh7th/cmp-nvim-lsp/
-    cmp-nvim-lsp-signature-help # https://github.com/hrsh7th/cmp-nvim-lsp-signature-help/
-    cmp-nvim-lua      # neovim lua API as completion source | https://github.com/hrsh7th/cmp-nvim-lua/
-    cmp-path          # file paths as completion source | https://github.com/hrsh7th/cmp-path/
-    cmp_luasnip       # snippets autocompletion extension for nvim-cmp | https://github.com/saadparwaiz1/cmp_luasnip/
-    copilot-vim       # https://github.com/github/copilot.vim/
-    dashboard-nvim    # https://github.com/nvimdev/dashboard-nvim/
-    diffview-nvim     # https://github.com/sindrets/diffview.nvim/
-    flash-nvim
-    focus-nvim        # https://github.com/nvim-focus/focus.nvim
-    friendly-snippets
-    gitsigns-nvim     # https://github.com/lewis6991/gitsigns.nvim/
-    heirline-nvim     # https://github.com/rebelot/heirline.nvim/
-    jupytext-nvim
-    kanagawa-nvim     # https://github.com/rebelot/kanagawa.nvim
-    lsp-progress-nvim # https://github.com/linrongbin16/lsp-progress.nvim
-    lspkind-nvim      # vscode-like LSP pictograms | https://github.com/onsails/lspkind.nvim/
-    luasnip           # snippets | https://github.com/l3mon4d3/luasnip/
-    markdown-preview-nvim
-    melange-nvim      # https://github.com/savq/melange-nvim
-    neogit            # https://github.com/TimUntersberger/neogit/
-    nerdtree
-    nvim-bqf
-    nvim-cmp          # https://github.com/hrsh7th/nvim-cmp
-    nvim-dap
-    nvim-dap-ui
-    nvim-highlight-colors
-    nvim-luadev
-    nvim-navic        # https://github.com/SmiteshP/nvim-navic
-    nvim-surround     # https://github.com/kylechui/nvim-surround/
-    nvim-tree-lua     #
-    nvim-treesitter
-    nvim-treesitter-context # nvim-treesitter-context
-    nvim-treesitter-textobjects # https://github.com/nvim-treesitter/nvim-treesitter-textobjects/
-    nvim-treesitter.withAllGrammars
-    nvim-ts-context-commentstring # https://github.com/joosepalviste/nvim-ts-context-commentstring/
-    nvim-web-devicons
-    oil-nvim # https://github.com/stevearc/oil.nvim
-    other-nvim
-    overseer-nvim     # https://github.com/stevearc/overseer.nvim?tab=readme-ov-file
-    plenary-nvim
-    render-markdown-nvim
-    smart-splits-nvim #
-    sqlite-lua
-    statuscol-nvim # Status column | https://github.com/luukvbaal/statuscol.nvim/
-    telescope-fzy-native-nvim # https://github.com/nvim-telescope/telescope-fzy-native.nvim
-    telescope-nvim # https://github.com/nvim-telescope/telescope.nvim/
-    telescope-project-nvim
-    telescope-ultisnips-nvim
-    text-case-nvim # https://github.com/johmsalas/text-case.nvim
-    todo-comments-nvim
-    tokyonight-nvim
-    ultisnips
-    url-open          # https://github.com/sontungexpt/url-open
-    vim-fugitive # https://github.com/tpope/vim-fugitive/
-    vim-repeat
-    vim-slime
-    which-key-nvim
-    zen-mode-nvim
-    none-ls-nvim
-    conform-nvim
-
-    # # neorg
-    # vim-unimpaired # predefined ] and [ navigation keymaps | https://github.com/tpope/vim-unimpaired/
-
-    EasyGrep
-    TelescopeLuasnip
-    JustNvim
-    JsFunc
-
-  ];
-
-
-  extraPackages = 
-  let
-
-    # R-with-my-packages = pkgs.rWrapper.override{ packages = with pkgs.rPackages; [ 
-    #   snakecase 
-    #   lme4 
-    #   languageserver 
-    #   lintr 
+  extraPackages = let
+    # R-with-my-packages = pkgs.rWrapper.override{ packages = with pkgs.rPackages; [
+    #   snakecase
+    #   lme4
+    #   languageserver
+    #   lintr
     # ]; };
   in
+    with pkgs; [
+      # language servers, etc.
+      # cava
 
-  with pkgs; [
-    # language servers, etc.
-    # cava
+      # rWrapper
+      # R-with-my-packages
+      # R
 
-    # rWrapper
-    # R-with-my-packages
-    # R
+      # R
+      # rPackages.languageserver
 
-    # R
-    # rPackages.languageserver
+      gdb
+      tree-sitter
+      bash-language-server
+      cmake
+      fish
+      git
+      gnumake
+      haskellPackages.hmatrix
+      haskellPackages.hmatrix-gsl
+      libxml2
+      nerd-fonts.ubuntu
+      nerd-fonts.ubuntu-mono
+      nnn
+      pkg-config
 
-    gdb
-    tree-sitter
-    bash-language-server
-    cmake
-    fish
-    git
-    gnumake
-    haskellPackages.hmatrix
-    haskellPackages.hmatrix-gsl
-    libxml2
-    nerd-fonts.ubuntu
-    nerd-fonts.ubuntu-mono
-    nnn
-    pkg-config
+      # lua
+      lua-language-server
 
+      # fortran
+      gfortran
 
+      # haskell
+      ghc
+      hindent
 
-    # lua
-    lua-language-server
+      # c/cpp
+      gcc
+      libclang
+      llvm # ??? rudundant?
 
-    # fortran
-    gfortran
+      # nix
+      nil # nix LSP
+      alejandra
 
-    # haskell
-    ghc
+      # shell
+      beautysh
 
-    # c/cpp
-    gcc
-    libclang
-    llvm # ??? rudundant?
+      # python
+      pylint
+      isort
+      black
+      python312
+      (python312.withPackages (python-pkgs: [
+        python-pkgs.numpy
+        python-pkgs.python-lsp-server
+        python-pkgs.debugpy
+      ]))
 
-    # nix
-    nil # nix LSP
-    alejandra
+      # rPackages.callr
+      # rPackages.languageserver
+      # rPackages.languageserversetup
 
-    # shell
-    beautysh
+      # latex
+      texliveFull
 
-    # python
-    pylint
-    isort
-    black
-    python312
-    (python312.withPackages (python-pkgs: [
-      python-pkgs.numpy
-      python-pkgs.python-lsp-server
-      python-pkgs.debugpy
-    ]))
-
-    # rPackages.callr
-    # rPackages.languageserver
-    # rPackages.languageserversetup
-
-    # latex
-    texliveFull
-
-    # typescript
-    typescript-language-server
-
-  ];
+      # typescript
+      typescript-language-server
+    ];
 in {
   # This is the neovim derivation
   # returned by the overlay

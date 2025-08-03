@@ -19,6 +19,7 @@ require('conform').setup {
     sh = { 'beautysh', lsp_format = 'fallback' },
 
     nix = { 'alejandra', lsp_format = 'fallback' },
+    haskell = { 'hindent', lsp_format = 'fallback' },
   },
 }
 
