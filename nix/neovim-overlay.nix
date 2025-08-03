@@ -211,10 +211,12 @@ with final.pkgs.lib; let
     nil # nix LSP
     nnn
     pkg-config
+
     python312
     python312Packages.numpy
     python312Packages.python-lsp-server
     python312Packages.debugpy
+
     # rPackages.callr
     # rPackages.languageserver
     # rPackages.languageserversetup

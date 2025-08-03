@@ -18,10 +18,10 @@ with lib; {
       ripgrep
       pkg-config
 
-      python312
-      python312Packages.numpy
-      python312Packages.python-lsp-server
-      python312Packages.debugpy
+      # python312
+      # python312Packages.numpy
+      # python312Packages.python-lsp-server
+      # python312Packages.debugpy
 
       # ruby
       # nodejs
@@ -30,10 +30,6 @@ with lib; {
     # { name = <plugin-name>; url = <git-url>; }
     devPlugins ? [
 
-      python312
-      python312Packages.numpy
-      python312Packages.python-lsp-server
-      python312Packages.debugpy
 
       # pkgs.libxml2
 
@@ -57,10 +53,11 @@ with lib; {
       cava
       libxml2
 
-      python312
-      python312Packages.numpy
-      python312Packages.python-lsp-server
-      python312Packages.debugpy
+      # python312
+      # python312Packages.numpy
+      # python312Packages.python-lsp-server
+      # python312Packages.debugpy
+
       # rPackages.callr
       # ripgrep
       # libxml2
