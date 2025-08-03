@@ -17,6 +17,8 @@ require('conform').setup {
     cpp = { 'clang_format' },
 
     sh = { 'beautysh', lsp_format = 'fallback' },
+
+    nix = { 'alejandra', lsp_format = 'fallback' },
   },
 }
 

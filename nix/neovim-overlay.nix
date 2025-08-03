@@ -199,25 +199,40 @@ with final.pkgs.lib; let
     bash-language-server
     cmake
     fish
-    gcc
-    gfortran
-    ghc
     git
     gnumake
     haskellPackages.hmatrix
     haskellPackages.hmatrix-gsl
-    libclang
     libxml2
-    lua-language-server
     nerd-fonts.ubuntu
     nerd-fonts.ubuntu-mono
-    nil # nix LSP
     nnn
     pkg-config
-    llvm
 
+
+
+    # lua
+    lua-language-server
+
+    # fortran
+    gfortran
+
+    # haskell
+    ghc
+
+    # c/cpp
+    gcc
+    libclang
+    llvm # ??? rudundant?
+
+    # nix
+    nil # nix LSP
+    alejandra
+
+    # shell
     beautysh
 
+    # python
     pylint
     isort
     black
@@ -231,7 +246,11 @@ with final.pkgs.lib; let
     # rPackages.callr
     # rPackages.languageserver
     # rPackages.languageserversetup
+
+    # latex
     texliveFull
+
+    # typescript
     typescript-language-server
 
   ];
