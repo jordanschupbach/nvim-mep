@@ -1567,7 +1567,7 @@ local FileSearchButton = {
 -- {{{ PlayButton 
 
 local PlayButton = {
-  { CppSeparator },
+  -- { CppSeparator },
   -- require('nvim-web-devicons').get_icon()
   condition = function()
     return conditions.buffer_matches {
