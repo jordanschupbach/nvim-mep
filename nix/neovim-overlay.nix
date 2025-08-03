@@ -216,6 +216,8 @@ with final.pkgs.lib; let
     pkg-config
     llvm
 
+    beautysh
+
     pylint
     isort
     black
