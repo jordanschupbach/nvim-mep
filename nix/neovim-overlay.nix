@@ -213,6 +213,7 @@ with final.pkgs.lib; let
     python312
     python312Packages.numpy
     python312Packages.python-lsp-server
+    python312Packages.debugpy
     # rPackages.callr
     # rPackages.languageserver
     # rPackages.languageserversetup
