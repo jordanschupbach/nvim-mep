@@ -1,4 +1,3 @@
-
 vim.loader.enable()
 
 -- {{{ aliases
@@ -7,7 +6,6 @@ local opt = vim.o
 -- }}} aliases
 
 -- {{{ Prior config
-
 
 -- <leader> key. Defaults to `\`. Some people prefer space.
 -- The default leader is '\'. Some people prefer <space>. Uncomment this if you do, too.
@@ -98,7 +96,6 @@ cmd.packadd('cfilter') -- Allows filtering the quickfix list with :cfdo
 -- let sqlite.lua (which some plugins depend on) know where to find sqlite
 -- vim.g.sqlite_clib_path = require('luv').os_getenv('LIBSQLITE')
 
-
 -- }}} Prior config
 
 -- {{{ Plugin Free Key mappings
@@ -110,7 +107,7 @@ end
 ---@diagnostic disable-next-line: unused-function, unused-local
 local function toggle_quickfix()
   if vim.fn.empty(vim.fn.getqflist()) == 1 then
-    print("Quickfix list is empty!")
+    print('Quickfix list is empty!')
     return
   end
   local quickfix_open = false
@@ -123,9 +120,9 @@ local function toggle_quickfix()
     end
   end
   if quickfix_open then
-    vim.cmd("cclose")
+    vim.cmd('cclose')
   else
-    vim.cmd("copen")
+    vim.cmd('copen')
   end
 end
 
@@ -137,15 +134,13 @@ show_line_diagnostics = function()
   end
 end
 
-
 mymap('n', 'g:', '<CMD>term<CR>')
 
 mymap('n', '<Space>tn', '<CMD>lua toggle_number()<CR>')
 
 mymap('n', '<Space>tt', '<CMD>lua toggle_todo()<CR>')
 
-
-mymap('n', '<Space>cc', '<CMD>CodeCompanionActions<CR>')
+mymap('n', '<Space>cc', '<CMD>CodeCompanionChat<CR>')
 -- mymap('n', '<Space>cc', '<CMD>CToggle<CR>')
 mymap('n', '<Space>co', '<CMD>CToggle<CR>')
 -- mymap('n', '<A-S-return>', '<CMD>silent make<CR>')
@@ -172,11 +167,6 @@ mymap('t', '<Space>wl', '<CMD>wincmd l<CR>')
 mymap('n', '<A-S-l>', "<CMD>lua require('smart-splits').resize_right()<CR>")
 mymap('t', '<A-S-l>', "<CMD>lua require('smart-splits').resize_right()<CR>")
 
-
-
-
-
-
 -- Window left
 mymap('n', '<A-h>', '<CMD>wincmd h<CR>')
 mymap('t', '<A-h>', '<CMD>wincmd h<CR>')
@@ -200,10 +190,16 @@ mymap('n', '<Space>wk', '<CMD>wincmd k<CR>')
 mymap('t', '<Space>wk', '<CMD>wincmd k<CR>')
 mymap('n', '<A-S-k>', "<CMD>lua require('smart-splits').resize_up()<CR>")
 mymap('t', '<A-S-k>', "<CMD>lua require('smart-splits').resize_up()<CR>")
-mymap('n', '<A-S-->',
-  "<CMD>lua require('smart-splits').resize_up()<CR><CMD>lua require('smart-splits').resize_left()<CR>")
-mymap('n', '<A-S-=>',
-  "<CMD>lua require('smart-splits').resize_down()<CR><CMD>lua require('smart-splits').resize_right()<CR>")
+mymap(
+  'n',
+  '<A-S-->',
+  "<CMD>lua require('smart-splits').resize_up()<CR><CMD>lua require('smart-splits').resize_left()<CR>"
+)
+mymap(
+  'n',
+  '<A-S-=>',
+  "<CMD>lua require('smart-splits').resize_down()<CR><CMD>lua require('smart-splits').resize_right()<CR>"
+)
 
 -- Split pane horizontal
 mymap('n', '<A-s>', '<CMD>split<CR>')
@@ -240,15 +236,13 @@ mymap('n', '<Space>tgc', '<CMD>Telescope git_commits<CR>')
 mymap('n', '<C-tab>', '<CMD>tabnext<CR>')
 mymap('n', '<C-S-tab>', '<CMD>tabprevious<CR>')
 
-
-
 -- }}} Base Key mappings
 
 -- {{{ General Options
 vim.g.slime_target = 'neovim'
 
-vim.g.mapleader = " "
-vim.g.maplocalleader = ";"
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ';'
 
 -- -- Leader keys
 --
@@ -258,7 +252,7 @@ vim.g['test#cpp#runner'] = 'ctest'
 vim.g['test#cpp#catch2#bin_dir'] = '../build/tests/'
 vim.g.gui_font_face = 'UbuntuMono Nerd Font Mono - Bold'
 vim.g.gui_font_size = 12
-vim.g.mapleader = " "
+vim.g.mapleader = ' '
 vim.g.maplocalleader = ','
 vim.g.minimap_auto_start = 0
 vim.g.minimap_auto_start_win_enter = 1
@@ -282,21 +276,31 @@ vim.opt.conceallevel = 0
 vim.opt.cursorline = true
 vim.opt.expandtab = true
 vim.opt.fileencoding = 'utf-8'
-vim.opt.fillchars = { stl	= '━', stlnc	 = '━', horiz = '━', horizup = '┻', horizdown = '┳', vert = '┃', vertleft = '┫', vertright = '┣', verthoriz = '╋', }
-vim.opt.statusline = ""
+vim.opt.fillchars = {
+  stl = '━',
+  stlnc = '━',
+  horiz = '━',
+  horizup = '┻',
+  horizdown = '┳',
+  vert = '┃',
+  vertleft = '┫',
+  vertright = '┣',
+  verthoriz = '╋',
+}
+vim.opt.statusline = ''
 vim.opt.foldmethod = 'marker'
-vim.opt.formatoptions:append 'rn1'
-vim.opt.formatoptions:remove 'oa2'
+vim.opt.formatoptions:append('rn1')
+vim.opt.formatoptions:remove('oa2')
 vim.opt.hlsearch = true
 vim.opt.ignorecase = true
 vim.opt.incsearch = false
 vim.opt.joinspaces = false
 vim.opt.laststatus = 2
-vim.opt.laststatus = 2  -- Always show the status line
-vim.opt.statusline = "%f %y %m %r %=%-14.(%l,%c%V%) %P"  -- Example status line
-vim.opt.statusline = ""
+vim.opt.laststatus = 2 -- Always show the status line
+vim.opt.statusline = '%f %y %m %r %=%-14.(%l,%c%V%) %P' -- Example status line
+vim.opt.statusline = ''
 vim.opt.list = true
-vim.opt.listchars = { tab = '»·', trail = '·', extends = '↪', precedes = '↩', }
+vim.opt.listchars = { tab = '»·', trail = '·', extends = '↪', precedes = '↩' }
 vim.opt.mouse = 'a'
 vim.opt.number = false
 vim.opt.pumblend = 0
@@ -327,11 +331,9 @@ vim.wildoptions = 'pum'
 vim.wo.number = false
 vim.wo.signcolumn = 'yes'
 
-
 -- }}} General Options
 
 -- {{{ Utility functions
-
 
 ---@diagnostic disable-next-line: lowercase-global
 function toggle_number()
@@ -347,29 +349,25 @@ end
 -- Optionally, create a command to call the toggle function
 vim.api.nvim_create_user_command('ToggleNumber', toggle_number, {})
 
-
 vim.api.nvim_create_user_command('RunJust', function()
-  local file = vim.fn.expand("%:p")
-  local filename = vim.fn.fnamemodify(file, ":t")
-  local example_name = filename:gsub("^prefix_cpp_", ""):gsub("%.cpp$", "")
-  local args = string.format("run example %s_cpp", example_name)
-  
+  local file = vim.fn.expand('%:p')
+  local filename = vim.fn.fnamemodify(file, ':t')
+  local example_name = filename:gsub('^prefix_cpp_', ''):gsub('%.cpp$', '')
+  local args = string.format('run example %s_cpp', example_name)
+
   -- Run the command asynchronously
-  vim.cmd("AsyncRun just " .. args)
+  vim.cmd('AsyncRun just ' .. args)
 
   -- Check if copen is already open
   if vim.fn.getqflist({ winid = 0 }).winid == 0 then
     -- Store the current window id
     local current_window = vim.fn.win_getid()
-    vim.cmd("copen") -- Open quickfix window
-    
+    vim.cmd('copen') -- Open quickfix window
+
     -- Function to go back to original window after entering quickfix
-    vim.cmd("autocmd! BufLeave quickfix lua vim.fn.win_gotoid(" .. current_window .. ")")
+    vim.cmd('autocmd! BufLeave quickfix lua vim.fn.win_gotoid(' .. current_window .. ')')
   end
 end, {})
-
-
-
 
 ---@diagnostic disable-next-line: lowercase-global
 function toggle_todo()
@@ -402,16 +400,14 @@ end
 -- Command to call the function
 vim.api.nvim_create_user_command('ToggleTODO', toggle_todo, {})
 
-
-
 --- Open neorepl
 -- opens the neorepl in a new split
 ---@diagnostic disable-next-line: lowercase-global
 open_neorepl = function()
-  vim.cmd 'split'
+  vim.cmd('split')
   local buf = vim.api.nvim_get_current_buf()
   require('neorepl').new { lang = 'lua', buffer = buf }
-  vim.cmd 'resize 10 | setl winfixheight'
+  vim.cmd('resize 10 | setl winfixheight')
   buf = vim.api.nvim_get_current_buf()
   SendTo_Bufnr = buf
   -- vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-w>k', true, false, true), 'm', true)
@@ -419,7 +415,7 @@ end
 
 ---@diagnostic disable-next-line: lowercase-global
 register_sendto_buffer = function()
-  local current_bufnr = tostring(vim.fn.bufnr '%')
+  local current_bufnr = tostring(vim.fn.bufnr('%'))
   current_bufnr = vim.fn.input('SendTo bufnr: ', current_bufnr)
   SendTo_Bufnr = tonumber(current_bufnr)
 end
@@ -447,7 +443,7 @@ send_line_to_buffer = function()
   end
 
   -- Move to the bottom and insert the line.
-  vim.api.nvim_feedkeys(current_line, 'm', true)                                              -- Input the current line
+  vim.api.nvim_feedkeys(current_line, 'm', true) -- Input the current line
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<CR>', true, false, true), 'm', true) -- Press Enter
 
   -- Use vim.schedule to ensure the following code runs after feedkeys
@@ -462,8 +458,8 @@ end
 -- @return a text string of the current visual selection
 ---@diagnostic disable: lowercase-global
 get_visual_selection = function()
-  local s_start = vim.fn.getpos "'<"
-  local s_end = vim.fn.getpos "'>"
+  local s_start = vim.fn.getpos("'<")
+  local s_end = vim.fn.getpos("'>")
   local n_lines = math.abs(s_end[2] - s_start[2]) + 1
   local lines = vim.api.nvim_buf_get_lines(0, s_start[2] - 1, s_end[2], false)
   lines[1] = string.sub(lines[1], s_start[3], -1)
@@ -528,7 +524,7 @@ end
 -- function that extracts selected text
 extract_selected_text = function()
   -- Get the start and end positions of the selected text
-  local start_line, start_col, end_line, end_col = unpack(vim.fn.getpos "'<" + vim.fn.getpos "'>")
+  local start_line, start_col, end_line, end_col = unpack(vim.fn.getpos("'<") + vim.fn.getpos("'>"))
   -- Extract the selected text using the range
   local selected_text = vim.fn.getline(start_line, end_line)
   -- If the selection spans multiple lines, adjust the text
@@ -546,9 +542,9 @@ end
 -- local popup = require('plenary.popup')
 
 function extract_selected_text_and_show_popup()
-  local popup = require 'plenary.popup'
+  local popup = require('plenary.popup')
   -- Get the start and end positions of the selected text
-  local start_line, start_col, end_line, end_col = unpack(vim.fn.getpos "'<" + vim.fn.getpos "'>")
+  local start_line, start_col, end_line, end_col = unpack(vim.fn.getpos("'<") + vim.fn.getpos("'>"))
 
   -- Extract the selected text using the range
   local selected_text = vim.fn.getline(start_line, end_line)
@@ -588,7 +584,7 @@ end
 
 extract_paragraph_at_cursor = function()
   -- Get the current line number
-  local current_line = vim.fn.line '.'
+  local current_line = vim.fn.line('.')
 
   -- Find the start and end lines of the paragraph
   local start_line = current_line
@@ -600,7 +596,7 @@ extract_paragraph_at_cursor = function()
   end
 
   -- Find the end line of the paragraph
-  while end_line < vim.fn.line '$' and vim.fn.trim(vim.fn.getline(end_line + 1)) ~= '' do
+  while end_line < vim.fn.line('$') and vim.fn.trim(vim.fn.getline(end_line + 1)) ~= '' do
     end_line = end_line + 1
   end
 
@@ -649,8 +645,8 @@ run_shell_command_to_buffer = function(command)
   local output = vim.fn.systemlist(command)
   local bufnr = vim.api.nvim_create_buf(false, true)
   vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, output)
-  vim.cmd 'enew | setlocal buftype=nofile bufhidden=hide noswapfile'
-  vim.cmd 'setlocal filetype=text'
+  vim.cmd('enew | setlocal buftype=nofile bufhidden=hide noswapfile')
+  vim.cmd('setlocal filetype=text')
   vim.api.nvim_set_current_buf(bufnr)
 end
 
@@ -662,7 +658,7 @@ end
 readFromFile2 = function(file_path)
   local file = io.open(file_path, 'r') -- Open the file in read mode
   if file then
-    local content = file:read '*a'
+    local content = file:read('*a')
     file:close()
     if content == '' then
       return 'File was empty'
@@ -676,10 +672,10 @@ readFromFile2 = function(file_path)
 end
 
 show_simple_popup = function(text)
-  local popup = require 'plenary.popup'
+  local popup = require('plenary.popup')
   local popup_opts = {
-    line = vim.fn.line '.' + 1,
-    col = vim.fn.col '.',
+    line = vim.fn.line('.') + 1,
+    col = vim.fn.col('.'),
     width = 30,
     height = 3,
     padding = { 0, 1, 0, 1 },
@@ -714,13 +710,13 @@ runRScript = function(text)
     file:write(text)
     file:close()
   else
-    print 'Error: Could not open file for writing.'
+    print('Error: Could not open file for writing.')
     return
   end
   ---@diagnostic disable-next-line: redefined-local
   local file = io.open(temp_file2, 'r')
   if file then
-    local content = file:read '*a'
+    local content = file:read('*a')
     return content
   else
     print('Unable to read' .. temp_file2)
@@ -728,7 +724,7 @@ runRScript = function(text)
 end
 
 getCurrentBufferFilePath = function()
-  local bufnr = vim.fn.bufnr '%'
+  local bufnr = vim.fn.bufnr('%')
   if bufnr ~= 0 then
     return vim.fn.bufname(bufnr)
   else
@@ -758,18 +754,17 @@ end
 
 split_string_at_newlines = function(text)
   local lines = {}
-  for line in text:gmatch '[^\r\n]+' do
+  for line in text:gmatch('[^\r\n]+') do
     table.insert(lines, line)
   end
   return lines
 end
 
-
 ---@diagnostic disable-next-line: unused-local
 parse_cpp_test_output = function(output)
   ---@diagnostic disable-next-line: unused-local
   local ret = {}
-  local test_output = run_shell_to_string 'make test'
+  local test_output = run_shell_to_string('make test')
   local ntest_line_idx = 0
   for key, value in pairs(test_output) do
     if value:find('%f[%a]' .. 'test cases' .. '%f[%A]') then
@@ -783,7 +778,7 @@ parse_cpp_test_output = function(output)
     ntests = 0
     ntests_passed = 0
   else
-    ntests, ntests_passed = test_output[ntest_line_idx]:match ': (%d+) | (%d+)'
+    ntests, ntests_passed = test_output[ntest_line_idx]:match(': (%d+) | (%d+)')
     -- ntests = tonumber(test_output[ntest_line_idx]:match '%d+')
     -- ntests_passing = tonumber(test_output[npass_line_idx]:match '%d+')
   end
@@ -796,7 +791,7 @@ parse_cpp_coverage_ouput = function()
   local ret = {}
   local lout = ''
   local fout = ''
-  local test_output = run_shell_to_string 'make coverage'
+  local test_output = run_shell_to_string('make coverage')
   local ntest_line_idx = 0
   local npass_line_idx = 0
   for key, value in pairs(test_output) do
@@ -818,11 +813,11 @@ parse_cpp_coverage_ouput = function()
     fout = '100% (0/0)'
   else
     ---@diagnostic disable-next-line: unused-local, cast-local-type
-    ntests = tonumber(test_output[ntest_line_idx]:match '%d+')
+    ntests = tonumber(test_output[ntest_line_idx]:match('%d+'))
     ---@diagnostic disable-next-line: unused-local, cast-local-type
-    ntests_passing = tonumber(test_output[npass_line_idx]:match '%d+')
+    ntests_passing = tonumber(test_output[npass_line_idx]:match('%d+'))
     local lpercentage, lnumerator, ldenominator =
-        string.match(test_output[ntest_line_idx], '(%d+%.?%d*)%% %((%d+) of (%d+) lines%)')
+      string.match(test_output[ntest_line_idx], '(%d+%.?%d*)%% %((%d+) of (%d+) lines%)')
     if lpercentage == nil then
       lout = '100% (0/0)'
     else
@@ -830,7 +825,7 @@ parse_cpp_coverage_ouput = function()
     end
 
     local fpercentage, fnumerator, fdenominator =
-        string.match(test_output[npass_line_idx], '(%d+%.?%d*)%% %((%d+) of (%d+) functions%)')
+      string.match(test_output[npass_line_idx], '(%d+%.?%d*)%% %((%d+) of (%d+) functions%)')
     if fpercentage == nil then
       fout = '100% (0/0)'
     else
@@ -852,15 +847,14 @@ file_exists = function(file)
 end
 
 init_ldmode = function()
-  if not file_exists '/home/jordan/.cache/ldmode' then
+  if not file_exists('/home/jordan/.cache/ldmode') then
     local file = io.open('/home/jordan/.cache/ldmode', 'w')
     ---@diagnostic disable-next-line: need-check-nil
-    file:write 'dark'
+    file:write('dark')
     ---@diagnostic disable-next-line: need-check-nil
     file:close()
   end
 end
-
 
 -- get all lines from a file, returns an empty
 -- list/table if the file does not exist
@@ -876,25 +870,25 @@ lines_from = function(file)
 end
 
 get_ldmode = function()
-  return lines_from '/home/jordan/.cache/ldmode'
+  return lines_from('/home/jordan/.cache/ldmode')
 end
 
 waldark_toggle = function()
-  io.popen 'waldark '
+  io.popen('waldark ')
 end
 
 waldark_dark = function()
-  io.popen 'waldark --dark'
+  io.popen('waldark --dark')
 end
 
 waldark_light = function()
-  io.popen 'waldark --light'
+  io.popen('waldark --light')
 end
 
 swap_window_right = function()
   local current_win = vim.api.nvim_get_current_win()
   local current_buf = vim.api.nvim_win_get_buf(current_win)
-  vim.api.nvim_command 'wincmd l'
+  vim.api.nvim_command('wincmd l')
   local right_win = vim.api.nvim_get_current_win()
   local right_buf = vim.api.nvim_win_get_buf(right_win)
   if current_win ~= right_win then
@@ -908,7 +902,7 @@ end
 swap_window_left = function()
   local current_win = vim.api.nvim_get_current_win()
   local current_buf = vim.api.nvim_win_get_buf(current_win)
-  vim.api.nvim_command 'wincmd h'
+  vim.api.nvim_command('wincmd h')
   local left_win = vim.api.nvim_get_current_win()
   local left_buf = vim.api.nvim_win_get_buf(left_win)
   if current_win ~= left_win then
@@ -921,7 +915,7 @@ end
 swap_window_up = function()
   local current_win = vim.api.nvim_get_current_win()
   local current_buf = vim.api.nvim_win_get_buf(current_win)
-  vim.api.nvim_command 'wincmd k'
+  vim.api.nvim_command('wincmd k')
   local up_win = vim.api.nvim_get_current_win()
   local up_buf = vim.api.nvim_win_get_buf(up_win)
   if current_win ~= up_win then
@@ -934,7 +928,7 @@ end
 swap_window_down = function()
   local current_win = vim.api.nvim_get_current_win()
   local current_buf = vim.api.nvim_win_get_buf(current_win)
-  vim.api.nvim_command 'wincmd j'
+  vim.api.nvim_command('wincmd j')
   local down_win = vim.api.nvim_get_current_win()
   local down_buf = vim.api.nvim_win_get_buf(down_win)
   if current_win ~= down_win then
@@ -965,7 +959,7 @@ slime_send = function(command)
 end
 
 say_hello = function()
-  print 'hello world'
+  print('hello world')
 end
 
 ---@diagnostic disable-next-line: lowercase-global
@@ -973,7 +967,9 @@ function dump(o)
   if type(o) == 'table' then
     local s = '{ '
     for k, v in pairs(o) do
-      if type(k) ~= 'number' then k = '"' .. k .. '"' end
+      if type(k) ~= 'number' then
+        k = '"' .. k .. '"'
+      end
       s = s .. '[' .. k .. '] = ' .. dump(v) .. ','
     end
     return s .. '} '
@@ -984,19 +980,19 @@ end
 
 ---@diagnostic disable-next-line: lowercase-global
 read_file = function(path)
-  local file = io.open(path, "r") -- Open the file in read mode
+  local file = io.open(path, 'r') -- Open the file in read mode
   if not file then
-    return nil, "Could not open file: " .. path
+    return nil, 'Could not open file: ' .. path
   end
-  local content = file:read("*a") -- Read the entire file content
+  local content = file:read('*a') -- Read the entire file content
   return content
 end
 
 ---@diagnostic disable-next-line: lowercase-global
 function extract_time_points(input)
-  local start_time, end_time = input:match("CLOCK:%s*%[([^%]]+)%]%s*%-%-%s*%[([^%]]+)%]")
+  local start_time, end_time = input:match('CLOCK:%s*%[([^%]]+)%]%s*%-%-%s*%[([^%]]+)%]')
   if not end_time then
-    start_time, end_time = input:match("CLOCK:%s*%[([^%]]+)%]")
+    start_time, end_time = input:match('CLOCK:%s*%[([^%]]+)%]')
   end
   return start_time, end_time
 end
@@ -1004,30 +1000,30 @@ end
 ---@diagnostic disable-next-line: lowercase-global
 function parse_timers(content)
   local content_tbl = {}
-  for line in string.gmatch(content, "[^\n]+") do
+  for line in string.gmatch(content, '[^\n]+') do
     table.insert(content_tbl, line)
   end
   local found_open_timer = false
-  local task_text = ""
-  local time_diff_str = ""
+  local task_text = ''
+  local time_diff_str = ''
   for linum, line in ipairs(content_tbl) do
     local tp1, tp2 = extract_time_points(line)
     if tp1 and not tp2 then
       found_open_timer = true
       task_text = content_tbl[linum - 2]
-      local start_time_epoch = os.time({
+      local start_time_epoch = os.time {
         year = tp1:sub(1, 4),
         month = tp1:sub(6, 7),
         day = tp1:sub(9, 10),
         hour = tonumber(tp1:sub(16, 17)),
-        min = tonumber(tp1:sub(19, 21))
-      })
+        min = tonumber(tp1:sub(19, 21)),
+      }
       local current_time = os.time()
       local time_diff = current_time - start_time_epoch
       if time_diff < 60 then
-        time_diff_str = time_diff .. "s"
+        time_diff_str = time_diff .. 's'
       else
-        time_diff_str = math.floor(time_diff / 60) .. "min"
+        time_diff_str = math.floor(time_diff / 60) .. 'min'
       end
       return found_open_timer, task_text, time_diff_str
     end
@@ -1058,13 +1054,12 @@ get_running_timer_text = function(folders)
     if content then
       local found_timer, task_text, time_diff = parse_timers(content)
       if found_timer then
-        return "Current Task: " .. task_text:sub(8, #task_text) .. " (" .. time_diff .. ")"
+        return 'Current Task: ' .. task_text:sub(8, #task_text) .. ' (' .. time_diff .. ')'
       end
     end
   end
-  return "No current task"
+  return 'No current task'
 end
-
 
 -- }}} Utility functions
 
@@ -1072,7 +1067,7 @@ end
 
 -- Prototype (example) hello world command
 vim.api.nvim_create_user_command('SayHello', function()
-  require 'playground'.hello_world()
+  require('playground').hello_world()
 end, {})
 -- Command to reload FTPlugins for dev purposes
 
@@ -1082,48 +1077,41 @@ vim.api.nvim_create_user_command('ReloadFTPlugins', 'execute "source" glob($MYVI
 
 -- {{{ Plugin mappings
 
-
 mymap('n', '<Space>ff', '<CMD>NvimTreeToggle<CR>')
 mymap('n', '<Space>gg', '<CMD>Neogit kind=vsplit<CR>')
-
 
 mymap('n', '<Space>oo', '<CMD>Other<CR>')
 mymap('n', '<Space>ov', '<CMD>OtherVSplit<CR>')
 mymap('n', '<Space>os', '<CMD>OtherSplit<CR>')
 mymap('n', '<Space>aa', '<CMD>AerialToggle<CR>')
 
-
 mymap('n', '<Space>du', '<CMD>lua require("dapui").toggle()<CR>')
 mymap('n', '<Space>db', '<CMD>DapToggleBreakpoint<CR>')
 mymap('n', '<Space>du', '<CMD>lua require("dapui").toggle()<CR>')
 mymap('n', '<Space>dd', '<CMD>DapContinue<CR>')
-
 
 mymap('n', '<Space>do', '<CMD>DapStepOut<CR>')
 mymap('n', '<Space>di', '<CMD>DapStepInto<CR>')
 mymap('n', '<Space>di', '<CMD>DapUIPlayPause<CR>')
 mymap('n', '<Space>dc', '<CMD>DapContinue<CR>')
 
-
 -- }}} Plugin mappings
 
 -- {{{ misc inbox
-vim.cmd("colorscheme tokyonight-night")
+vim.cmd('colorscheme tokyonight-night')
 mymap('n', '<A-l>', '<CMD>wincmd l<CR>')
 wrapped_slime = function()
-  vim.cmd("sleep 10m")      -- Adjust the sleep as necessary
+  vim.cmd('sleep 10m') -- Adjust the sleep as necessary
   vim.cmd("'<,'>SlimeSend") -- Send to Slime
 end
 mymap('n', '<A-return>', '<CMD>SlimeSend<CR>')
 mymap('v', '<A-return>', ':lua wrapped_slime()<CR>')
-
 
 mymap('n', '<A-x>', ':Telescope commands<CR>')
 mymap('v', '<A-x>', ':Telescope commands<CR>')
 
 mymap('n', '<Space>yy', ':Telescope luasnip<CR>')
 mymap('n', '<Space><Space>', ':JustSelect<CR>')
-
 
 mymap('n', '<C-1>', ':tabn 1<CR>')
 mymap('n', '<C-2>', ':tabn 2<CR>')
@@ -1159,21 +1147,21 @@ mymap('t', '<C-9>', ':tabn 9<CR>')
 
 -- {{{ Statusline active/not_active behavior
 -- vim.cmd('highlight StatusLineNC guifg=#888888 guibg=#DFDFF1')     --  guibg=#000000'Inactive buffer colors
-vim.cmd('highlight StatusLine guifg=#FF33FF guibg=#00FFFFBB')     -- Active buffer colors
-vim.cmd('highlight StatusLineNC guifg=#888888 guibg=#88888888')   --  guibg=#000000'Inactive buffer colors
+vim.cmd('highlight StatusLine guifg=#FF33FF guibg=#00FFFFBB') -- Active buffer colors
+vim.cmd('highlight StatusLineNC guifg=#888888 guibg=#88888888') --  guibg=#000000'Inactive buffer colors
 vim.cmd('highlight StatusLineActive guifg=#FF33FF guibg=#003366') -- Different color for active buffer
 vim.cmd('highlight WinSeparatorActive guifg=#FF33FF') -- Color for active window separator
-vim.cmd('highlight WinSeparatorNC guifg=#444444')     -- Color for inactive window separators
+vim.cmd('highlight WinSeparatorNC guifg=#444444') -- Color for inactive window separators
 
 -- Function to update all status lines and separators
 function UpdateAll()
   local current_win = vim.api.nvim_get_current_win()
 
-  vim.cmd('highlight StatusLine guifg=#FF33FF guibg=#00FFFFBB')     -- Active buffer colors
-  vim.cmd('highlight StatusLineNC guifg=#888888 guibg=#88888888')   --  guibg=#000000'Inactive buffer colors
+  vim.cmd('highlight StatusLine guifg=#FF33FF guibg=#00FFFFBB') -- Active buffer colors
+  vim.cmd('highlight StatusLineNC guifg=#888888 guibg=#88888888') --  guibg=#000000'Inactive buffer colors
   vim.cmd('highlight StatusLineActive guifg=#FF33FF guibg=#003366') -- Different color for active buffer
   vim.cmd('highlight WinSeparatorActive guifg=#FF33FF') -- Color for active window separator
-  vim.cmd('highlight WinSeparatorNC guifg=#444444')     -- Color for inactive window separators
+  vim.cmd('highlight WinSeparatorNC guifg=#444444') -- Color for inactive window separators
 
   -- Update status line colors
   for _, win in ipairs(vim.api.nvim_list_wins()) do
@@ -1183,8 +1171,6 @@ function UpdateAll()
     if win == current_win then
       -- vim.api.nvim_set_option_value('statusline', '%#StatusLineActive#' .. status_line, { win = win })
       vim.api.nvim_set_option_value('winhighlight', 'WinSeparator:WinSeparatorActive', { win = win })
-
-
     else
       -- vim.api.nvim_set_option_value('statusline', '%#StatusLineNC#' .. status_line, { win = win })
       vim.api.nvim_set_option_value('winhighlight', 'WinSeparator:WinSeparatorNC', { win = win })
@@ -1193,10 +1179,10 @@ function UpdateAll()
 end
 
 -- Autocommand to refresh status lines and separators on resize
-vim.api.nvim_create_autocmd("VimResized", { callback = UpdateAll })
+vim.api.nvim_create_autocmd('VimResized', { callback = UpdateAll })
 -- Autocommand to update status lines and separators on window focus changes
-vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, { callback = UpdateAll })
-vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, { callback = UpdateAll })
+vim.api.nvim_create_autocmd({ 'WinEnter', 'BufEnter' }, { callback = UpdateAll })
+vim.api.nvim_create_autocmd({ 'WinLeave', 'BufLeave' }, { callback = UpdateAll })
 
 -- Initial setup to set status lines and separators for all windows
 UpdateAll()
@@ -1205,12 +1191,10 @@ vim.cmd('highlight EndOfBuffer guifg=#881188') -- Customize color as needed
 
 -- }}} Statusline active/not_active behavior
 
-
 -- vim.opt.statusline = "%l/%3L:%2c %= %P"  -- Example status line
 -- vim.opt.statusline = " %= %P"  -- Example status line
-vim.opt.statusline = " %= %l/%3L"  -- Example status line
-vim.opt.statusline = "%="  -- Example status line
-
+vim.opt.statusline = ' %= %l/%3L' -- Example status line
+vim.opt.statusline = '%=' -- Example status line
 
 mymap('n', '<A-C-h>', "<CMD>lua require('smart-splits').swap_buf_left()<CR>")
 mymap('t', '<A-C-h>', "<CMD>lua require('smart-splits').swap_buf_left()<CR>")
@@ -1221,21 +1205,19 @@ mymap('t', '<A-C-j>', "<CMD>lua require('smart-splits').swap_buf_down()<CR>")
 mymap('n', '<A-C-k>', "<CMD>lua require('smart-splits').swap_buf_up()<CR>")
 mymap('t', '<A-C-k>', "<CMD>lua require('smart-splits').swap_buf_up()<CR>")
 
-
 mymap('n', '<Space>rr', '<CMD>RunJust<CR>')
 
 -- {{{ tab bindings
 
-mymap('n', '1', "<CMD>tabn 1<CR>")
-mymap('n', '2', "<CMD>tabn 2<CR>")
-mymap('n', '3', "<CMD>tabn 3<CR>")
-mymap('n', '4', "<CMD>tabn 4<CR>")
-mymap('n', '5', "<CMD>tabn 5<CR>")
-mymap('n', '6', "<CMD>tabn 6<CR>")
-mymap('n', '7', "<CMD>tabn 7<CR>")
-mymap('n', '8', "<CMD>tabn 8<CR>")
-mymap('n', '9', "<CMD>tabn 9<CR>")
-
+mymap('n', '1', '<CMD>tabn 1<CR>')
+mymap('n', '2', '<CMD>tabn 2<CR>')
+mymap('n', '3', '<CMD>tabn 3<CR>')
+mymap('n', '4', '<CMD>tabn 4<CR>')
+mymap('n', '5', '<CMD>tabn 5<CR>')
+mymap('n', '6', '<CMD>tabn 6<CR>')
+mymap('n', '7', '<CMD>tabn 7<CR>')
+mymap('n', '8', '<CMD>tabn 8<CR>')
+mymap('n', '9', '<CMD>tabn 9<CR>')
 
 -- }}} tab bindings
 
@@ -1247,7 +1229,3 @@ mymap('n', '9', "<CMD>tabn 9<CR>")
 --     end,
 -- })
 -- -- }}} Fortran filetype detection
-
-
-
-

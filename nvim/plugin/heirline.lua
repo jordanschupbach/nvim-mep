@@ -1454,7 +1454,7 @@ local actionHints = {
 local AIButton = {
   on_click = {
     callback = function()
-      vim.cmd('CodeCompanionActions')
+      vim.cmd('CodeCompanionChat')
     end,
     name = 'AIButton',
   },
