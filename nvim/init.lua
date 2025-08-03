@@ -1082,13 +1082,27 @@ vim.api.nvim_create_user_command('ReloadFTPlugins', 'execute "source" glob($MYVI
 
 -- {{{ Plugin mappings
 
+
 mymap('n', '<Space>ff', '<CMD>NvimTreeToggle<CR>')
 mymap('n', '<Space>gg', '<CMD>Neogit kind=vsplit<CR>')
+
 
 mymap('n', '<Space>oo', '<CMD>Other<CR>')
 mymap('n', '<Space>ov', '<CMD>OtherVSplit<CR>')
 mymap('n', '<Space>os', '<CMD>OtherSplit<CR>')
 mymap('n', '<Space>aa', '<CMD>AerialToggle<CR>')
+
+
+mymap('n', '<Space>du', '<CMD>lua require("dapui").toggle()<CR>')
+mymap('n', '<Space>db', '<CMD>DapToggleBreakpoint<CR>')
+mymap('n', '<Space>du', '<CMD>lua require("dapui").toggle()<CR>')
+mymap('n', '<Space>dd', '<CMD>DapContinue<CR>')
+
+
+mymap('n', '<Space>do', '<CMD>DapStepOut<CR>')
+mymap('n', '<Space>di', '<CMD>DapStepInto<CR>')
+mymap('n', '<Space>di', '<CMD>DapUIPlayPause<CR>')
+mymap('n', '<Space>dc', '<CMD>DapContinue<CR>')
 
 
 -- }}} Plugin mappings
