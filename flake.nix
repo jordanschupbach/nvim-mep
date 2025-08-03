@@ -64,6 +64,19 @@
           luajitPackages.luacheck
           nvim-dev
 
+          python312
+          # python312Packages.pynvim
+          # python312Packages.pylsp
+          # python312Packages.pylsp-mypy
+          python312Packages.debugpy
+          python312Packages.numpy
+          python312Packages.pandas
+
+          # python312Packages.pylsp-black
+          # python312Packages.pylsp-isort
+
+
+
           # NOTE: adding here did work
           # R
           # rPackages.callr

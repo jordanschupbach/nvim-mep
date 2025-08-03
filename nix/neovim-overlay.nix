@@ -192,6 +192,7 @@ with final.pkgs.lib; let
     # R
     # rPackages.languageserver
 
+    gdb
     tree-sitter
     bash-language-server
     cmake
@@ -213,9 +214,11 @@ with final.pkgs.lib; let
     pkg-config
 
     python312
-    python312Packages.numpy
-    python312Packages.python-lsp-server
-    python312Packages.debugpy
+    (python312.withPackages (python-pkgs: [
+      python-pkgs.numpy
+      python-pkgs.python-lsp-server
+      python-pkgs.debugpy
+    ]))
 
     # rPackages.callr
     # rPackages.languageserver
