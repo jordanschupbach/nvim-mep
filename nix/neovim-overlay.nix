@@ -168,36 +168,41 @@ with final.pkgs.lib; let
     # ]; };
   in
     with pkgs; [
-      # language servers, etc.
-      # cava
-
-      # rWrapper
-      # R-with-my-packages
-      # R
-
-      # R
-      # rPackages.languageserver
-
-      gdb
-      tree-sitter
-      bash-language-server
-      cmake
-      fish
-      git
-      gnumake
+      # Questionable (devshell?)
+      libxml2 # ???? should be in a dev shell for a project?
+      fish # NOTE: this should be in devShell?
       haskellPackages.hmatrix
       haskellPackages.hmatrix-gsl
-      libxml2
+      nnn # dev-shell?
+      pkg-config # dev-shell?
+
+      # General
       nerd-fonts.ubuntu
       nerd-fonts.ubuntu-mono
-      nnn
-      pkg-config
+      git
+      tree-sitter
+      gnumake
+
+      # cmake
+      cmake
+      cmake-lint
+
+      # HTML
+      html-tidy
+
+      # markdown
+      markdownlint-cli2
 
       # javascript
       nodejs_23
       prettierd
 
+      # css
+      stylelint
+      stylelint-lsp
+
       # lua
+      selene
       lua-language-server
 
       # fortran
@@ -209,6 +214,7 @@ with final.pkgs.lib; let
 
       # c/cpp
       gcc
+      gdb
       libclang
       llvm # ??? rudundant?
       cppcheck
@@ -216,11 +222,14 @@ with final.pkgs.lib; let
       # nix
       nil # nix LSP
       alejandra
+      statix
 
       # shell
+      bash-language-server
       beautysh
 
       # python
+      mypy
       pylint
       isort
       black
@@ -231,12 +240,14 @@ with final.pkgs.lib; let
         python-pkgs.debugpy
       ]))
 
+      # NOTE: these should prolly be here? but are getting pulled from main nix config?
       # rPackages.callr
       # rPackages.languageserver
       # rPackages.languageserversetup
 
       # latex
       texliveFull
+      # textidote
 
       # typescript
       typescript-language-server

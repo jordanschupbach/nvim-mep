@@ -45,5 +45,3 @@ nix profile install .#nvim
 
 > [!CAUTION]
 > (this is just a test of markdown syntax)
-
-

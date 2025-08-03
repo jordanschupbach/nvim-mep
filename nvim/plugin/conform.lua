@@ -1,3 +1,4 @@
+-- NOTE: conform might be redundant with null-ls.nvim
 require('conform').setup {
   format_on_save = function(bufnr)
     -- Disable with a global or buffer-local variable
@@ -7,7 +8,7 @@ require('conform').setup {
     return { timeout_ms = 500, lsp_format = 'fallback' }
   end,
   formatters_by_ft = {
-    lua = { 'stylua' },
+    lua = { 'stylua' }, -- redundant w/ none-ls?
     -- Conform will run multiple formatters sequentially
     python = { 'isort', 'black' },
     -- You can customize some of the format options for the filetype (:help conform.format)

@@ -1,9 +1,5 @@
-
-
 build:
-  ghc -o ./playground playground.hs
-
+    ghc -o ./playground playground.hs
 
 run: build
-  ./playground
-
+    ./playground
