@@ -2711,13 +2711,11 @@ local WinBar = {
   {},
 
   { Align },
-
   { CppSeparator },
   { PlayButton },
-  { Separator },
-  { StatusSpace },
+  { CppSeparator },
+  { StatusSpace }, -- TODO: make CppStatusSpace
   { DebugButton },
-
   -- { StatusSpace },
   -- { StatusSpace },
   -- { ContinueButton },
@@ -2731,8 +2729,8 @@ local WinBar = {
   -- { RestartButton },
 
   { Separator },
-  { AIButton },
-  { Separator },
+  { AIButton },  -- conditions?
+  { Separator }, -- conditions?
   { StatusSpace },
   { AerialToggleButton },
   { Separator },
