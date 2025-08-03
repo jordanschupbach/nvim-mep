@@ -2712,6 +2712,7 @@ local WinBar = {
 
   { Align },
 
+  { CppSeparator },
   { PlayButton },
   { Separator },
   { StatusSpace },
