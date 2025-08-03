@@ -11,6 +11,27 @@ local root_files = {
 }
 
 
+pythonPath = function()
+  local handle = io.popen("which python")
+  local result = handle:read("*a")
+  handle:close()
+
+  if result and result ~= "" then
+    return result:gsub("%s+", "") -- Trim any whitespace
+  end
+
+  -- Fallback to virtual environments
+  local cwd = vim.fn.getcwd()
+  if vim.fn.executable(cwd .. '/venv/bin/python') == 1 then
+    return cwd .. '/venv/bin/python'
+  elseif vim.fn.executable(cwd .. '/.venv/bin/python') == 1 then
+    return cwd .. '/.venv/bin/python'
+  else
+    return '/usr/bin/python'
+  end
+end;
+
+
 require'lspconfig'.pylsp.setup{
   settings = {
     pylsp = {
@@ -53,7 +74,8 @@ dap.adapters.python = function(cb, config)
   else
     cb({
       type = 'executable',
-      command = 'path/to/virtualenvs/debugpy/bin/python',
+      -- command = 'path/to/virtualenvs/debugpy/bin/python',
+      command = pythonPath(),
       args = { '-m', 'debugpy.adapter' },
       options = {
         source_filetype = 'python',
@@ -82,7 +104,8 @@ dap.configurations.python = {
       elseif vim.fn.executable(cwd .. '/.venv/bin/python') == 1 then
         return cwd .. '/.venv/bin/python'
       else
-        return '/usr/bin/python'
+        return pythonPath()
+        -- return '/usr/bin/python'
       end
     end;
   },
