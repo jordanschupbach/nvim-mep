@@ -5,6 +5,7 @@ local function get_jdtls_path()
   return path:gsub("\n", "") -- Remove trailing newline
 end
 
+
 local config = {
   cmd = { get_jdtls_path() }, -- Get the jdtls path dynamically
   root_dir = vim.fs.dirname(vim.fs.find({ 'gradlew', '.git', 'mvnw' }, { upward = true })[1]),
@@ -12,6 +13,5 @@ local config = {
     java = {}
   }
 }
-
 
 require('jdtls').start_or_attach(config)
