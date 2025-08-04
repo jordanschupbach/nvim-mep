@@ -113,6 +113,7 @@ with final.pkgs.lib; let
       nvim-bqf
       nvim-cmp # https://github.com/hrsh7th/nvim-cmp
       nvim-dap
+
       nvim-dap-ui
       nvim-highlight-colors
       nvim-luadev
@@ -174,6 +175,7 @@ with final.pkgs.lib; let
   in
     with pkgs; [
       # Questionable (devshell?)
+
       libxml2 # ???? should be in a dev shell for a project?
       fish # NOTE: this should be in devShell?
       haskellPackages.hmatrix
@@ -246,6 +248,7 @@ with final.pkgs.lib; let
       ]))
 
       # Java
+      jdk
       jdt-language-server
 
       # NOTE: these should prolly be here? but are getting pulled from main nix config?
