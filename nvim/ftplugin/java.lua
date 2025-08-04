@@ -6,9 +6,11 @@ local function get_jdtls_path()
 end
 
 local function get_java_path()
+  vim.print("Getting Java path...")
   local handle = io.popen("which java")
   local path = handle:read("*a")
   handle:close()
+  vim.print("Obtained path" .. path:gsub("\n", ""))
   return path:gsub("\n", "") -- Remove trailing newline
 end
 
