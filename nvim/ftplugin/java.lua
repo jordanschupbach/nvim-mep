@@ -26,10 +26,14 @@ local jdtls_path = get_jdtls_path()
 local java_path = get_java_path()
 local install_path = vim.fn.fnamemodify(jdtls_path, ":h:h") -- Two directories back
 
-local jar_path = install_path .. "/share/java/jdtls/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar"
-local configuration_path = install_path .. "/share/java/jdtls/config_linux"
+local jar_path = "/home/jordan/Downloads/plugins/org.eclipse.equinox.launcher_1.7.0.v20250519-0528.jar"
+-- local jar_path = install_path .. "/share/java/jdtls/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar"
+local configuration_path = "/home/jordan/Downloads/config_linux/"
+-- local configuration_path = install_path .. "/share/java/jdtls/config_linux"
 -- Calculate workspace dir
+--                  home/jordan/.local/share/nvim
 local workspace_dir = vim.fn.stdpath("data") .. "/site/java/workspace-root/" .. project_name
+-- local workspace_dir = "/home/jordan/.local/share/nvim" .. "/site/java/workspace-root/" .. project_name
 
 
 -- Get the debug adapter install path (you can keep using mason for this if preferred)
