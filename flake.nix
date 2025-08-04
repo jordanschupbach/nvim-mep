@@ -59,6 +59,7 @@
           fish
           luajitPackages.luacheck
           nvim-dev
+          jdt-language-server
 
           nodejs_23
 

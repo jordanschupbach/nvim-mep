@@ -151,6 +151,7 @@ with final.pkgs.lib; let
       none-ls-nvim
       conform-nvim
       orgmode
+      nvim-jdtls
 
       codecompanion-nvim
 
@@ -243,6 +244,9 @@ with final.pkgs.lib; let
         python-pkgs.python-lsp-server
         python-pkgs.debugpy
       ]))
+
+      # Java
+      jdt-language-server
 
       # NOTE: these should prolly be here? but are getting pulled from main nix config?
       # rPackages.callr
