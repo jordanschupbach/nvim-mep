@@ -5,11 +5,11 @@ local function get_jdtls_path()
   return path:gsub("\n", "") -- Remove trailing newline
 end
 
-local on_attach = function(client, bufnr)
-  require("plugins.configs.lspconfig").on_attach(client, bufnr)
-end
+-- local on_attach = function(client, bufnr)
+--   require("plugins.configs.lspconfig").on_attach(client, bufnr)
+-- end
 
-local capabilities = require("plugins.configs.lspconfig").capabilities
+-- local capabilities = require("plugins.configs.lspconfig").capabilities
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 
 -- Get the jdtls path and calculate the install path
@@ -46,7 +46,7 @@ local config = {
     workspace_dir,
   },
   on_attach = on_attach,
-  capabilities = capabilities,
+  -- capabilities = capabilities,
   root_dir = vim.fs.dirname(
     vim.fs.find({ ".gradlew", ".git", "mvnw", "pom.xml", "build.gradle" }, { upward = true })[1]
   ),
