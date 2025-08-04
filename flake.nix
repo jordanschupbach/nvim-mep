@@ -71,6 +71,8 @@
           python312Packages.numpy
           python312Packages.pandas
 
+          jdk
+
           # python312Packages.pylsp-black
           # python312Packages.pylsp-isort
 
