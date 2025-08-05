@@ -1348,17 +1348,39 @@ get_visual_selection = function()
   return table.concat(lines, '\n')
 end
 
---- Gets the text in the visual selection
--- @return a table of lines of current visual selection
----@diagnostic disable: lowercase-global
+visual_selection_text = ""
+
+-- --- Gets the text in the visual selection
+-- -- @return a table of lines of current visual selection
+-- ---@diagnostic disable: lowercase-global
+-- get_visual_selection_lines = function()
+--   vim.cmd('sleep 10m') -- Adjust the sleep as necessary
+--   local s_start = vim.fn.getpos("'<")
+--   local s_end = vim.fn.getpos("'>")
+--   vim.cmd('sleep 10m') -- Adjust the sleep as necessary
+--   local s_start = vim.fn.getpos("'<")
+--   local s_end = vim.fn.getpos("'>")
+--   vim.cmd('sleep 10m') -- Adjust the sleep as necessary
+--   -- Adjust for zero-based indexing
+--   local start_line = s_start[2] - 1
+--   local end_line = s_end[2] - 1
+--   local lines = vim.api.nvim_buf_get_lines(0, start_line, end_line + 1, false)
+--   -- Trim the start of the first line if necessary
+--   if #lines > 0 then
+--     lines[1] = string.sub(lines[1], s_start[3], -1)
+--   end
+--   -- Trim the end of the last line if the selection spans multiple lines
+--   if #lines > 1 then
+--     lines[#lines] = string.sub(lines[#lines], 1, s_end[3])
+--   elseif #lines == 1 then
+--     lines[1] = string.sub(lines[1], s_start[3], s_end[3])
+--   end
+--   return lines
+-- end
+
 get_visual_selection_lines = function()
-  vim.cmd('sleep 10m') -- Adjust the sleep as necessary
   local s_start = vim.fn.getpos("'<")
   local s_end = vim.fn.getpos("'>")
-  vim.cmd('sleep 10m') -- Adjust the sleep as necessary
-  local s_start = vim.fn.getpos("'<")
-  local s_end = vim.fn.getpos("'>")
-  vim.cmd('sleep 10m') -- Adjust the sleep as necessary
   -- Adjust for zero-based indexing
   local start_line = s_start[2] - 1
   local end_line = s_end[2] - 1
@@ -1373,8 +1395,17 @@ get_visual_selection_lines = function()
   elseif #lines == 1 then
     lines[1] = string.sub(lines[1], s_start[3], s_end[3])
   end
-  return lines
+  -- Save the selected lines to the global variable as a single string
+  visual_selection_text = table.concat(lines, "\n")
 end
+
+
+vim.cmd [[
+  augroup GetVisualSelection
+    autocmd!
+    autocmd VisualLeave * lua get_visual_selection_lines()
+  augroup END
+]]
 
 --- Sends visual selection to SendTo buffer
 -- @see register_sendto_buffer, send_line_to_buffer
