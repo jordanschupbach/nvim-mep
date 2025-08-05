@@ -422,39 +422,39 @@ register_sendto_buffer = function()
   SendTo_Bufnr = tonumber(current_bufnr)
 end
 
---- Sends current line to SendTo buffer
--- @see register_sendto_buffer, send_lines_to_buffer
----@diagnostic disable-next-line: lowercase-global
-send_line_to_buffer = function()
-  local current_line = vim.api.nvim_get_current_line()
-  local original_bufnr = vim.fn.bufnr('%')
-  local original_cursor_pos = vim.api.nvim_win_get_cursor(0) -- Save cursor position
-
-  if SendTo_Bufnr == nil then
-    register_sendto_buffer()
-  end
-
-  local target_bufnr = SendTo_Bufnr
-  local win_id = vim.fn.bufwinid(target_bufnr)
-
-  if win_id ~= -1 then
-    vim.api.nvim_set_current_win(win_id)
-    vim.cmd('startinsert') -- Enter insert mode
-  else
-    return
-  end
-
-  -- Move to the bottom and insert the line.
-  vim.api.nvim_feedkeys(current_line, 'm', true)                                              -- Input the current line
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<CR>', true, false, true), 'm', true) -- Press Enter
-
-  -- Use vim.schedule to ensure the following code runs after feedkeys
-  vim.schedule(function()
-    -- Return to the original window and restore the cursor position
-    vim.api.nvim_set_current_win(vim.fn.bufwinid(original_bufnr))
-    vim.api.nvim_win_set_cursor(0, original_cursor_pos) -- Restore cursor position
-  end)
-end
+-- --- Sends current line to SendTo buffer
+-- -- @see register_sendto_buffer, send_lines_to_buffer
+-- ---@diagnostic disable-next-line: lowercase-global
+-- send_line_to_buffer = function()
+--   local current_line = vim.api.nvim_get_current_line()
+--   local original_bufnr = vim.fn.bufnr('%')
+--   local original_cursor_pos = vim.api.nvim_win_get_cursor(0) -- Save cursor position
+--
+--   if SendTo_Bufnr == nil then
+--     register_sendto_buffer()
+--   end
+--
+--   local target_bufnr = SendTo_Bufnr
+--   local win_id = vim.fn.bufwinid(target_bufnr)
+--
+--   if win_id ~= -1 then
+--     vim.api.nvim_set_current_win(win_id)
+--     vim.cmd('startinsert') -- Enter insert mode
+--   else
+--     return
+--   end
+--
+--   -- Move to the bottom and insert the line.
+--   vim.api.nvim_feedkeys(current_line, 'm', true)                                              -- Input the current line
+--   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<CR>', true, false, true), 'm', true) -- Press Enter
+--
+--   -- Use vim.schedule to ensure the following code runs after feedkeys
+--   vim.schedule(function()
+--     -- Return to the original window and restore the cursor position
+--     vim.api.nvim_set_current_win(vim.fn.bufwinid(original_bufnr))
+--     vim.api.nvim_win_set_cursor(0, original_cursor_pos) -- Restore cursor position
+--   end)
+-- end
 
 --- Gets the text in the visual selection
 -- @return a text string of the current visual selection
@@ -498,30 +498,30 @@ get_visual_selection_lines = function()
   return lines
 end
 
---- Sends visual selection to SendTo buffer
--- @see register_sendto_buffer, send_line_to_buffer
-send_lines_to_buffer = function()
-  local current_lines = get_visual_selection_lines()
-  local original_bufnr = vim.fn.bufnr('%')
-  local original_cursor_pos = vim.api.nvim_win_get_cursor(0)
-  local target_bufnr = SendTo_Bufnr
-  local win_id = vim.fn.bufwinid(target_bufnr)
-  -- dump(current_lines)
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<esc>', true, false, true), 'm', true)
-  vim.api.nvim_set_current_win(win_id)
-  vim.cmd('startinsert') -- Enter insert mode
-  -- vim.api.nvim_feedkeys('i', 'm', true) -- Input the current line
-  for _, line in ipairs(current_lines) do
-    vim.api.nvim_feedkeys(line, 'm', true) -- Input the current line
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<CR>', true, false, true), 'm', true)
-  end
-  -- Use vim.schedule to ensure the following code runs after feedkeys
-  vim.schedule(function()
-    -- Return to the original window and restore the cursor position
-    vim.api.nvim_set_current_win(vim.fn.bufwinid(original_bufnr))
-    vim.api.nvim_win_set_cursor(0, original_cursor_pos) -- Restore cursor position
-  end)
-end
+-- --- Sends visual selection to SendTo buffer
+-- -- @see register_sendto_buffer, send_line_to_buffer
+-- send_lines_to_buffer = function()
+--   local current_lines = get_visual_selection_lines()
+--   local original_bufnr = vim.fn.bufnr('%')
+--   local original_cursor_pos = vim.api.nvim_win_get_cursor(0)
+--   local target_bufnr = SendTo_Bufnr
+--   local win_id = vim.fn.bufwinid(target_bufnr)
+--   -- dump(current_lines)
+--   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<esc>', true, false, true), 'm', true)
+--   vim.api.nvim_set_current_win(win_id)
+--   vim.cmd('startinsert') -- Enter insert mode
+--   -- vim.api.nvim_feedkeys('i', 'm', true) -- Input the current line
+--   for _, line in ipairs(current_lines) do
+--     vim.api.nvim_feedkeys(line, 'm', true) -- Input the current line
+--     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<CR>', true, false, true), 'm', true)
+--   end
+--   -- Use vim.schedule to ensure the following code runs after feedkeys
+--   vim.schedule(function()
+--     -- Return to the original window and restore the cursor position
+--     vim.api.nvim_set_current_win(vim.fn.bufwinid(original_bufnr))
+--     vim.api.nvim_win_set_cursor(0, original_cursor_pos) -- Restore cursor position
+--   end)
+-- end
 
 -- function that extracts selected text
 extract_selected_text = function()
@@ -1377,6 +1377,7 @@ end
 -- @see register_sendto_buffer, send_line_to_buffer
 send_lines_to_buffer = function()
   local current_lines = get_visual_selection_lines()
+  print(dump(current_lines))
   local original_bufnr = vim.fn.bufnr('%')
   local original_cursor_pos = vim.api.nvim_win_get_cursor(0)
 
@@ -1623,56 +1624,56 @@ local show_buffer_info = function()
 end
 
 
-function send_visual_selection_to_first_terminal()
-  -- Get the start and end positions of the visual selection
-  local s_start = vim.fn.getpos("'<")
-  local s_end = vim.fn.getpos("'>")
-
-  -- Extract selected lines from the buffer
-  local lines = vim.api.nvim_buf_get_lines(0, s_start[2] - 1, s_end[2], false)
-
-  -- Adjust first and last lines based on selection columns
-  if #lines > 0 then
-    lines[1] = string.sub(lines[1], s_start[3])              -- Trim start of the first line
-    if #lines > 1 then
-      lines[#lines] = string.sub(lines[#lines], 1, s_end[3]) -- Trim end of the last line
-    else
-      lines[1] = string.sub(lines[1], 1, s_end[3])           -- Handle single line selection
-    end
-  end
-
-  -- Find the first terminal buffer
-  local term_bufnr = nil
-  local tabpage_buffs = vim.fn.tabpagebuflist()
-  for _, bufnr in ipairs(tabpage_buffs) do
-    if vim.bo[bufnr].buftype == 'terminal' then
-      term_bufnr = bufnr
-      break
-    end
-  end
-
-  -- If a terminal buffer is found, send the lines
-  if term_bufnr then
-    local win_id = vim.fn.bufwinid(term_bufnr)
-    if win_id ~= -1 then
-      -- Switch to the terminal buffer
-      vim.api.nvim_set_current_win(win_id)
-      vim.cmd('startinsert') -- Enter insert mode
-
-      -- Send each line to the terminal buffer
-      for _, line in ipairs(lines) do
-        vim.api.nvim_feedkeys(line, 'n', true)
-        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<CR>', true, false, true), 'n', true) -- Press Enter
-      end
-      -- Return to the original window
-      vim.api.nvim_set_current_win(0) -- Switch back to the previous window
-    else
-      print("Terminal buffer not found.")
-    end
-  else
-    print("No terminal buffer available.")
-  end
-end
+-- function send_visual_selection_to_first_terminal()
+--   -- Get the start and end positions of the visual selection
+--   local s_start = vim.fn.getpos("'<")
+--   local s_end = vim.fn.getpos("'>")
+--
+--   -- Extract selected lines from the buffer
+--   local lines = vim.api.nvim_buf_get_lines(0, s_start[2] - 1, s_end[2], false)
+--
+--   -- Adjust first and last lines based on selection columns
+--   if #lines > 0 then
+--     lines[1] = string.sub(lines[1], s_start[3])              -- Trim start of the first line
+--     if #lines > 1 then
+--       lines[#lines] = string.sub(lines[#lines], 1, s_end[3]) -- Trim end of the last line
+--     else
+--       lines[1] = string.sub(lines[1], 1, s_end[3])           -- Handle single line selection
+--     end
+--   end
+--
+--   -- Find the first terminal buffer
+--   local term_bufnr = nil
+--   local tabpage_buffs = vim.fn.tabpagebuflist()
+--   for _, bufnr in ipairs(tabpage_buffs) do
+--     if vim.bo[bufnr].buftype == 'terminal' then
+--       term_bufnr = bufnr
+--       break
+--     end
+--   end
+--
+--   -- If a terminal buffer is found, send the lines
+--   if term_bufnr then
+--     local win_id = vim.fn.bufwinid(term_bufnr)
+--     if win_id ~= -1 then
+--       -- Switch to the terminal buffer
+--       vim.api.nvim_set_current_win(win_id)
+--       vim.cmd('startinsert') -- Enter insert mode
+--
+--       -- Send each line to the terminal buffer
+--       for _, line in ipairs(lines) do
+--         vim.api.nvim_feedkeys(line, 'n', true)
+--         vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<CR>', true, false, true), 'n', true) -- Press Enter
+--       end
+--       -- Return to the original window
+--       vim.api.nvim_set_current_win(0) -- Switch back to the previous window
+--     else
+--       print("Terminal buffer not found.")
+--     end
+--   else
+--     print("No terminal buffer available.")
+--   end
+-- end
 
 mymap('n', '<Space>bi', '<CMD>lua show_buffer_info()<CR>')
 mymap('n', '<A-return>', '<CMD>lua send_line_to_buffer()<CR>')
