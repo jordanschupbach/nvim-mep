@@ -298,7 +298,7 @@ vim.opt.ignorecase = true
 vim.opt.incsearch = false
 vim.opt.joinspaces = false
 vim.opt.laststatus = 2
-vim.opt.laststatus = 2                                  -- Always show the status line
+vim.opt.laststatus = 2 -- Always show the status line
 vim.opt.statusline = '%f %y %m %r %=%-14.(%l,%c%V%) %P' -- Example status line
 vim.opt.statusline = ''
 vim.opt.list = true
@@ -819,7 +819,7 @@ parse_cpp_coverage_ouput = function()
     ---@diagnostic disable-next-line: unused-local, cast-local-type
     ntests_passing = tonumber(test_output[npass_line_idx]:match('%d+'))
     local lpercentage, lnumerator, ldenominator =
-        string.match(test_output[ntest_line_idx], '(%d+%.?%d*)%% %((%d+) of (%d+) lines%)')
+      string.match(test_output[ntest_line_idx], '(%d+%.?%d*)%% %((%d+) of (%d+) lines%)')
     if lpercentage == nil then
       lout = '100% (0/0)'
     else
@@ -827,7 +827,7 @@ parse_cpp_coverage_ouput = function()
     end
 
     local fpercentage, fnumerator, fdenominator =
-        string.match(test_output[npass_line_idx], '(%d+%.?%d*)%% %((%d+) of (%d+) functions%)')
+      string.match(test_output[npass_line_idx], '(%d+%.?%d*)%% %((%d+) of (%d+) functions%)')
     if fpercentage == nil then
       fout = '100% (0/0)'
     else
@@ -1105,7 +1105,7 @@ mymap('n', '<Space>dc', '<CMD>DapRestartFrame<CR>')
 vim.cmd('colorscheme tokyonight-night')
 mymap('n', '<A-l>', '<CMD>wincmd l<CR>')
 wrapped_slime = function()
-  vim.cmd('sleep 10m')      -- Adjust the sleep as necessary
+  vim.cmd('sleep 10m') -- Adjust the sleep as necessary
   vim.cmd("'<,'>SlimeSend") -- Send to Slime
 end
 -- mymap('n', '<A-return>', '<CMD>SlimeSend<CR>')
@@ -1152,21 +1152,21 @@ mymap('t', '<C-9>', ':tabn 9<CR>')
 
 -- {{{ Statusline active/not_active behavior
 -- vim.cmd('highlight StatusLineNC guifg=#888888 guibg=#DFDFF1')     --  guibg=#000000'Inactive buffer colors
-vim.cmd('highlight StatusLine guifg=#FF33FF guibg=#00FFFFBB')     -- Active buffer colors
-vim.cmd('highlight StatusLineNC guifg=#888888 guibg=#88888888')   --  guibg=#000000'Inactive buffer colors
+vim.cmd('highlight StatusLine guifg=#FF33FF guibg=#00FFFFBB') -- Active buffer colors
+vim.cmd('highlight StatusLineNC guifg=#888888 guibg=#88888888') --  guibg=#000000'Inactive buffer colors
 vim.cmd('highlight StatusLineActive guifg=#FF33FF guibg=#003366') -- Different color for active buffer
-vim.cmd('highlight WinSeparatorActive guifg=#FF33FF')             -- Color for active window separator
-vim.cmd('highlight WinSeparatorNC guifg=#444444')                 -- Color for inactive window separators
+vim.cmd('highlight WinSeparatorActive guifg=#FF33FF') -- Color for active window separator
+vim.cmd('highlight WinSeparatorNC guifg=#444444') -- Color for inactive window separators
 
 -- Function to update all status lines and separators
 function UpdateAll()
   local current_win = vim.api.nvim_get_current_win()
 
-  vim.cmd('highlight StatusLine guifg=#FF33FF guibg=#00FFFFBB')     -- Active buffer colors
-  vim.cmd('highlight StatusLineNC guifg=#888888 guibg=#88888888')   --  guibg=#000000'Inactive buffer colors
+  vim.cmd('highlight StatusLine guifg=#FF33FF guibg=#00FFFFBB') -- Active buffer colors
+  vim.cmd('highlight StatusLineNC guifg=#888888 guibg=#88888888') --  guibg=#000000'Inactive buffer colors
   vim.cmd('highlight StatusLineActive guifg=#FF33FF guibg=#003366') -- Different color for active buffer
-  vim.cmd('highlight WinSeparatorActive guifg=#FF33FF')             -- Color for active window separator
-  vim.cmd('highlight WinSeparatorNC guifg=#444444')                 -- Color for inactive window separators
+  vim.cmd('highlight WinSeparatorActive guifg=#FF33FF') -- Color for active window separator
+  vim.cmd('highlight WinSeparatorNC guifg=#444444') -- Color for inactive window separators
 
   -- Update status line colors
   for _, win in ipairs(vim.api.nvim_list_wins()) do
@@ -1199,7 +1199,7 @@ vim.cmd('highlight EndOfBuffer guifg=#881188') -- Customize color as needed
 -- vim.opt.statusline = "%l/%3L:%2c %= %P"  -- Example status line
 -- vim.opt.statusline = " %= %P"  -- Example status line
 vim.opt.statusline = ' %= %l/%3L' -- Example status line
-vim.opt.statusline = '%='         -- Example status line
+vim.opt.statusline = '%=' -- Example status line
 
 mymap('n', '<A-C-h>', "<CMD>lua require('smart-splits').swap_buf_left()<CR>")
 mymap('t', '<A-C-h>', "<CMD>lua require('smart-splits').swap_buf_left()<CR>")
@@ -1211,7 +1211,6 @@ mymap('n', '<A-C-k>', "<CMD>lua require('smart-splits').swap_buf_up()<CR>")
 mymap('t', '<A-C-k>', "<CMD>lua require('smart-splits').swap_buf_up()<CR>")
 
 mymap('n', '<Space>rr', '<CMD>RunJust<CR>')
-
 
 -- {{{ tab bindings
 
@@ -1238,19 +1237,22 @@ mymap('n', '9', '<CMD>tabn 9<CR>')
 
 -- {{{ Inbox
 
-mymap({ "n", "x", "o" }, "s", function() require("flash").jump() end)
+mymap({ 'n', 'x', 'o' }, 's', function()
+  require('flash').jump()
+end)
 -- mymap({ "n", "x", "o" }, "S", function() require("flash").treesitter() end)
 -- mymap("o", "r", function() require("flash").remote() end)
 -- mymap({ "o", "x" }, "R", function() require("flash").treesitter_search() end)
 -- mymap("c", "<c-s>", function() require("flash").toggle() end)
-
 
 ---@diagnostic disable-next-line: lowercase-global
 function dump(o)
   if type(o) == 'table' then
     local s = '{ '
     for k, v in pairs(o) do
-      if type(k) ~= 'number' then k = '"' .. k .. '"' end
+      if type(k) ~= 'number' then
+        k = '"' .. k .. '"'
+      end
       s = s .. '[' .. k .. '] = ' .. dump(v) .. ','
     end
     return s .. '} '
@@ -1282,7 +1284,7 @@ register_sendto_buffer = function()
   if term_bufnr then
     current_bufnr = term_bufnr
   else
-    local buf_list = vim.fn.getbufinfo({ buflisted = 1 })
+    local buf_list = vim.fn.getbufinfo { buflisted = 1 }
     if #buf_list > 1 then
       -- Take the first non-terminal buffer
       for _, buf in ipairs(buf_list) do
@@ -1318,9 +1320,9 @@ send_line_to_buffer = function()
     local channel_id = vim.api.nvim_buf_get_var(target_bufnr, 'terminal_job_id')
     if channel_id then
       -- Send the current line to the terminal channel
-      vim.fn.chansend(channel_id, current_line .. "\n") -- Ensure to end with a newline
+      vim.fn.chansend(channel_id, current_line .. '\n') -- Ensure to end with a newline
     else
-      vim.api.nvim_err_writeln("No job ID found for the terminal buffer.")
+      vim.api.nvim_err_writeln('No job ID found for the terminal buffer.')
     end
   else
     return
@@ -1335,8 +1337,8 @@ end
 -- @return a text string of the current visual selection
 ---@diagnostic disable: lowercase-global
 get_visual_selection = function()
-  local s_start = vim.fn.getpos "'<"
-  local s_end = vim.fn.getpos "'>"
+  local s_start = vim.fn.getpos("'<")
+  local s_end = vim.fn.getpos("'>")
   local n_lines = math.abs(s_end[2] - s_start[2]) + 1
   local lines = vim.api.nvim_buf_get_lines(0, s_start[2] - 1, s_end[2], false)
   lines[1] = string.sub(lines[1], s_start[3], -1)
@@ -1348,7 +1350,7 @@ get_visual_selection = function()
   return table.concat(lines, '\n')
 end
 
-visual_selection_text = ""
+visual_selection_text = ''
 
 -- --- Gets the text in the visual selection
 -- -- @return a table of lines of current visual selection
@@ -1396,9 +1398,8 @@ get_visual_selection_lines = function()
     lines[1] = string.sub(lines[1], s_start[3], s_end[3])
   end
   -- Save the selected lines to the global variable as a single string
-  visual_selection_text = table.concat(lines, "\n")
+  visual_selection_text = table.concat(lines, '\n')
 end
-
 
 -- local augroup_id = vim.api.nvim_create_augroup("GetVisualSelection", { clear = true })
 -- vim.api.nvim_create_autocmd("VisualLeave", {
@@ -1409,7 +1410,8 @@ end
 --- Sends visual selection to SendTo buffer
 -- @see register_sendto_buffer, send_line_to_buffer
 send_lines_to_buffer = function()
-  local current_lines = get_visual_selection_lines()
+  -- local current_lines = get_visual_selection_lines()
+  local current_lines = extract_selected_text()
   print(dump(current_lines))
   local original_bufnr = vim.fn.bufnr('%')
   local original_cursor_pos = vim.api.nvim_win_get_cursor(0)
@@ -1429,24 +1431,24 @@ send_lines_to_buffer = function()
     if channel_id then
       for _, line in ipairs(current_lines) do
         -- Send each line to the terminal channel
-        vim.fn.chansend(channel_id, line .. "\n") -- Ensure each line ends with a newline
+        vim.fn.chansend(channel_id, line .. '\n') -- Ensure each line ends with a newline
       end
     else
-      vim.api.nvim_err_writeln("No job ID found for the terminal buffer.")
+      vim.api.nvim_err_writeln('No job ID found for the terminal buffer.')
     end
 
     -- Return to the original window and restore the cursor position
     vim.api.nvim_set_current_win(vim.fn.bufwinid(original_bufnr))
     vim.api.nvim_win_set_cursor(0, original_cursor_pos) -- Restore cursor position
   else
-    vim.api.nvim_err_writeln("Target buffer not open.")
+    vim.api.nvim_err_writeln('Target buffer not open.')
   end
 end
 
 -- function that extracts selected text
 extract_selected_text = function()
   -- Get the start and end positions of the selected text
-  local start_line, start_col, end_line, end_col = unpack(vim.fn.getpos "'<" + vim.fn.getpos "'>")
+  local start_line, start_col, end_line, end_col = unpack(vim.fn.getpos("'<") + vim.fn.getpos("'>"))
   -- Extract the selected text using the range
   local selected_text = vim.fn.getline(start_line, end_line)
   -- If the selection spans multiple lines, adjust the text
@@ -1464,9 +1466,9 @@ end
 -- local popup = require('plenary.popup')
 
 function extract_selected_text_and_show_popup()
-  local popup = require 'plenary.popup'
+  local popup = require('plenary.popup')
   -- Get the start and end positions of the selected text
-  local start_line, start_col, end_line, end_col = unpack(vim.fn.getpos "'<" + vim.fn.getpos "'>")
+  local start_line, start_col, end_line, end_col = unpack(vim.fn.getpos("'<") + vim.fn.getpos("'>"))
 
   -- Extract the selected text using the range
   local selected_text = vim.fn.getline(start_line, end_line)
@@ -1506,7 +1508,7 @@ end
 
 extract_paragraph_at_cursor = function()
   -- Get the current line number
-  local current_line = vim.fn.line '.'
+  local current_line = vim.fn.line('.')
 
   -- Find the start and end lines of the paragraph
   local start_line = current_line
@@ -1518,7 +1520,7 @@ extract_paragraph_at_cursor = function()
   end
 
   -- Find the end line of the paragraph
-  while end_line < vim.fn.line '$' and vim.fn.trim(vim.fn.getline(end_line + 1)) ~= '' do
+  while end_line < vim.fn.line('$') and vim.fn.trim(vim.fn.getline(end_line + 1)) ~= '' do
     end_line = end_line + 1
   end
 
@@ -1567,8 +1569,8 @@ run_shell_command_to_buffer = function(command)
   local output = vim.fn.systemlist(command)
   local bufnr = vim.api.nvim_create_buf(false, true)
   vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, output)
-  vim.cmd 'enew | setlocal buftype=nofile bufhidden=hide noswapfile'
-  vim.cmd 'setlocal filetype=text'
+  vim.cmd('enew | setlocal buftype=nofile bufhidden=hide noswapfile')
+  vim.cmd('setlocal filetype=text')
   vim.api.nvim_set_current_buf(bufnr)
 end
 
@@ -1580,7 +1582,7 @@ end
 readFromFile2 = function(file_path)
   local file = io.open(file_path, 'r') -- Open the file in read mode
   if file then
-    local content = file:read '*a'
+    local content = file:read('*a')
     file:close()
     if content == '' then
       return 'File was empty'
@@ -1594,10 +1596,10 @@ readFromFile2 = function(file_path)
 end
 
 show_simple_popup = function(text)
-  local popup = require 'plenary.popup'
+  local popup = require('plenary.popup')
   local popup_opts = {
-    line = vim.fn.line '.' + 1,
-    col = vim.fn.col '.',
+    line = vim.fn.line('.') + 1,
+    col = vim.fn.col('.'),
     width = 30,
     height = 3,
     padding = { 0, 1, 0, 1 },
@@ -1613,8 +1615,6 @@ show_paragraph_in_popup = function()
   show_simple_popup(paragraph)
 end
 
-
-
 local show_buffer_info = function()
   local bufnr = vim.api.nvim_get_current_buf()
   local winid = vim.api.nvim_get_current_win()
@@ -1625,14 +1625,14 @@ local show_buffer_info = function()
   local filetype = vim.api.nvim_buf_get_option(bufnr, 'filetype')
   local readonly = vim.api.nvim_buf_get_option(bufnr, 'readonly')
   local info = {
-    "Buffer Information:",
-    "Buffer Number: " .. bufnr,
-    "Window Number: " .. winid,
-    "Name: " .. bufname,
-    "Line Count: " .. line_count,
-    "Modified: " .. tostring(modified),
-    "Filetype: " .. (filetype ~= '' and filetype or 'none'),
-    "Read-only: " .. tostring(readonly),
+    'Buffer Information:',
+    'Buffer Number: ' .. bufnr,
+    'Window Number: ' .. winid,
+    'Name: ' .. bufname,
+    'Line Count: ' .. line_count,
+    'Modified: ' .. tostring(modified),
+    'Filetype: ' .. (filetype ~= '' and filetype or 'none'),
+    'Read-only: ' .. tostring(readonly),
   }
 
   local width = 50
@@ -1655,7 +1655,6 @@ local show_buffer_info = function()
   local win_id = popup.create(bufnr_info, opts)
   vim.api.nvim_win_set_option(win_id, 'winhighlight', 'Normal:Normal')
 end
-
 
 -- function send_visual_selection_to_first_terminal()
 --   -- Get the start and end positions of the visual selection
@@ -1712,7 +1711,5 @@ mymap('n', '<Space>bi', '<CMD>lua show_buffer_info()<CR>')
 mymap('n', '<A-return>', '<CMD>lua send_line_to_buffer()<CR>')
 mymap('v', '<A-return>', '<CMD>lua send_lines_to_buffer()<CR>')
 -- mymap('v', '<A-return>', '<CMD>lua send_visual_selection_to_first_terminal()<CR>')
-
-
 
 -- }}} Inbox
