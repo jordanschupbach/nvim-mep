@@ -1772,7 +1772,7 @@ end
 mymap('n', '<Space>bi', '<CMD>lua show_buffer_info()<CR>')
 -- mymap('n', '<A-return>', '<CMD>lua send_line_to_buffer()<CR>')
 mymap('n', '<A-return>', '<CMD>SlimeSend<CR>')
-mymap('v', '<A-return>', '<CMD>SlimeSend<CR>')
+mymap('v', '<A-return>', "<CMD>'<,'>SlimeSend<CR>")
 -- mymap('v', '<A-return>', "<CMD>'<,'>SlimeSend<CR>")
 -- mymap('v', '<A-return>', '<CMD>lua send_lines_to_buffer()<CR>')
 
