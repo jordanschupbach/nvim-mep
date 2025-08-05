@@ -1246,6 +1246,20 @@ mymap({ "n", "x", "o" }, "s", function() require("flash").jump() end)
 
 
 ---@diagnostic disable-next-line: lowercase-global
+function dump(o)
+  if type(o) == 'table' then
+    local s = '{ '
+    for k, v in pairs(o) do
+      if type(k) ~= 'number' then k = '"' .. k .. '"' end
+      s = s .. '[' .. k .. '] = ' .. dump(v) .. ','
+    end
+    return s .. '} '
+  else
+    return tostring(o)
+  end
+end
+
+---@diagnostic disable-next-line: lowercase-global
 register_sendto_buffer = function()
   local function get_terminal_bufnr()
     local term_bufnr = nil
@@ -1374,7 +1388,7 @@ send_lines_to_buffer = function()
   end
   local target_bufnr = SendTo_Bufnr
   local win_id = vim.fn.bufwinid(target_bufnr)
-  -- dump(current_lines)
+  dump(current_lines)
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<esc>', true, false, true), 'm', true)
   vim.api.nvim_set_current_win(win_id)
   vim.cmd('startinsert') -- Enter insert mode
@@ -1658,7 +1672,8 @@ end
 
 mymap('n', '<Space>bi', '<CMD>lua show_buffer_info()<CR>')
 mymap('n', '<A-return>', '<CMD>lua send_line_to_buffer()<CR>')
-mymap('v', '<A-return>', '<CMD>lua send_visual_selection_to_first_terminal()<CR>')
+mymap('v', '<A-return>', '<CMD>lua send_lines_to_buffer()<CR>')
+-- mymap('v', '<A-return>', '<CMD>lua send_visual_selection_to_first_terminal()<CR>')
 
 
 
