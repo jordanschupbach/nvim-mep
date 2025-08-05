@@ -473,30 +473,30 @@ get_visual_selection = function()
   return table.concat(lines, '\n')
 end
 
---- Gets the text in the visual selection
--- @return a table of lines of current visual selection
----@diagnostic disable: lowercase-global
-get_visual_selection_lines = function()
-  local s_start = vim.fn.getpos("'<")
-  local s_end = vim.fn.getpos("'>")
-  -- Adjust for zero-based indexing
-  local start_line = s_start[2] - 1
-  local end_line = s_end[2] - 1
-  local lines = vim.api.nvim_buf_get_lines(0, start_line, end_line + 1, false)
-  -- Trim the start of the first line if necessary
-  if #lines > 0 then
-    lines[1] = string.sub(lines[1], s_start[3], -1)
-  end
-
-  -- Trim the end of the last line if the selection spans multiple lines
-  if #lines > 1 then
-    lines[#lines] = string.sub(lines[#lines], 1, s_end[3])
-  elseif #lines == 1 then
-    lines[1] = string.sub(lines[1], s_start[3], s_end[3])
-  end
-
-  return lines
-end
+-- --- Gets the text in the visual selection
+-- -- @return a table of lines of current visual selection
+-- ---@diagnostic disable: lowercase-global
+-- get_visual_selection_lines = function()
+--   local s_start = vim.fn.getpos("'<")
+--   local s_end = vim.fn.getpos("'>")
+--   -- Adjust for zero-based indexing
+--   local start_line = s_start[2] - 1
+--   local end_line = s_end[2] - 1
+--   local lines = vim.api.nvim_buf_get_lines(0, start_line, end_line + 1, false)
+--   -- Trim the start of the first line if necessary
+--   if #lines > 0 then
+--     lines[1] = string.sub(lines[1], s_start[3], -1)
+--   end
+--
+--   -- Trim the end of the last line if the selection spans multiple lines
+--   if #lines > 1 then
+--     lines[#lines] = string.sub(lines[#lines], 1, s_end[3])
+--   elseif #lines == 1 then
+--     lines[1] = string.sub(lines[1], s_start[3], s_end[3])
+--   end
+--
+--   return lines
+-- end
 
 -- --- Sends visual selection to SendTo buffer
 -- -- @see register_sendto_buffer, send_line_to_buffer
@@ -1352,18 +1352,23 @@ end
 -- @return a table of lines of current visual selection
 ---@diagnostic disable: lowercase-global
 get_visual_selection_lines = function()
-  -- Yanks the current visual selection into a register
-  vim.cmd('normal! gv"vy') -- Yank the selected text into the default register
-
-  -- Get the visual selection content from the 'v' register
-  local visual_content = vim.fn.getreg('"') -- Use default register
-
-  -- Split the content into lines and return as a table
-  local lines = {}
-  for line in visual_content:gmatch("[^\n]*") do
-    table.insert(lines, line)
+  vim.cmd('sleep 10m') -- Adjust the sleep as necessary
+  local s_start = vim.fn.getpos("'<")
+  local s_end = vim.fn.getpos("'>")
+  -- Adjust for zero-based indexing
+  local start_line = s_start[2] - 1
+  local end_line = s_end[2] - 1
+  local lines = vim.api.nvim_buf_get_lines(0, start_line, end_line + 1, false)
+  -- Trim the start of the first line if necessary
+  if #lines > 0 then
+    lines[1] = string.sub(lines[1], s_start[3], -1)
   end
-
+  -- Trim the end of the last line if the selection spans multiple lines
+  if #lines > 1 then
+    lines[#lines] = string.sub(lines[#lines], 1, s_end[3])
+  elseif #lines == 1 then
+    lines[1] = string.sub(lines[1], s_start[3], s_end[3])
+  end
   return lines
 end
 
