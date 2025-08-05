@@ -1400,11 +1400,11 @@ get_visual_selection_lines = function()
 end
 
 
-local augroup_id = vim.api.nvim_create_augroup("GetVisualSelection", { clear = true })
-vim.api.nvim_create_autocmd("VisualLeave", {
-  group = augroup_id,
-  callback = get_visual_selection_lines,
-})
+-- local augroup_id = vim.api.nvim_create_augroup("GetVisualSelection", { clear = true })
+-- vim.api.nvim_create_autocmd("VisualLeave", {
+--   group = augroup_id,
+--   callback = get_visual_selection_lines,
+-- })
 
 --- Sends visual selection to SendTo buffer
 -- @see register_sendto_buffer, send_line_to_buffer
