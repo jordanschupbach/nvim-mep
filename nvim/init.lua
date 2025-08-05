@@ -1245,54 +1245,17 @@ mymap({ "n", "x", "o" }, "s", function() require("flash").jump() end)
 -- mymap("c", "<c-s>", function() require("flash").toggle() end)
 
 
-function send_lines_to_buffer()
-  -- Get current cursor position and visual selection
-  local original_pos = vim.fn.getpos('.')
-  local current_bufnr = vim.api.nvim_get_current_buf()
-  local visual_lines = get_visual_selection()
-  dump(visual_lines)
-  local target_bufnr = SendTo_Bufnr
-  local win_id = vim.fn.bufwinid(target_bufnr)
-  local prior_win_id = vim.fn.bufwinid(current_bufnr)
-  -- Get the target buffer and check if it exists
-  if not vim.api.nvim_buf_is_valid(SendTo_Bufnr) then
-    print("Target buffer does not exist.")
-    return
-  end
-
-  if win_id ~= -1 then
-    vim.api.nvim_set_current_win(win_id)
-  else -- todo handle case not on screen
-    return
-  end
-
-  -- -- Enter insert mode
-  vim.cmd("startinsert")
-
-  vim.api.nvim_feedkeys('G', 'm', true)
-  vim.api.nvim_feedkeys('i', 'm', true)
-  for _, line in ipairs(visual_lines) do
-    vim.api.nvim_feedkeys(line, 'm', true)
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<cr>', true, false, true), 'm', true)
-  end
-
-
-  -- if prior_win_id ~= -1 then
-  --   vim.api.nvim_set_current_win(prior_win_id)
-  -- else -- todo handle case not on screen
-  --   return
-  -- end
-
-
-  -- -- Restore original cursor position and return to the previous buffer
-  -- vim.fn.setpos('.', original_pos)
-  -- vim.api.nvim_set_current_buf(vim.fn.bufnr('%'))  -- Switch back to the previous buffer
+---@diagnostic disable-next-line: lowercase-global
+register_sendto_buffer = function()
+  local current_bufnr = tostring(vim.fn.bufnr '%')
+  current_bufnr = vim.fn.input('SendTo bufnr: ', current_bufnr)
+  SendTo_Bufnr = tonumber(current_bufnr)
 end
 
 --- Sends current line to SendTo buffer
 -- @see register_sendto_buffer, send_lines_to_buffer
 ---@diagnostic disable-next-line: lowercase-global
-local send_line_to_buffer = function()
+send_line_to_buffer = function()
   local current_line = vim.api.nvim_get_current_line()
   local original_bufnr = vim.fn.bufnr('%')
   local original_cursor_pos = vim.api.nvim_win_get_cursor(0) -- Save cursor position
@@ -1321,6 +1284,243 @@ local send_line_to_buffer = function()
     vim.api.nvim_set_current_win(vim.fn.bufwinid(original_bufnr))
     vim.api.nvim_win_set_cursor(0, original_cursor_pos) -- Restore cursor position
   end)
+end
+
+--- Gets the text in the visual selection
+-- @return a text string of the current visual selection
+---@diagnostic disable: lowercase-global
+get_visual_selection = function()
+  local s_start = vim.fn.getpos "'<"
+  local s_end = vim.fn.getpos "'>"
+  local n_lines = math.abs(s_end[2] - s_start[2]) + 1
+  local lines = vim.api.nvim_buf_get_lines(0, s_start[2] - 1, s_end[2], false)
+  lines[1] = string.sub(lines[1], s_start[3], -1)
+  if n_lines == 1 then
+    lines[n_lines] = string.sub(lines[n_lines], 1, s_end[3] - s_start[3] + 1)
+  else
+    lines[n_lines] = string.sub(lines[n_lines], 1, s_end[3])
+  end
+  return table.concat(lines, '\n')
+end
+
+--- Gets the text in the visual selection
+-- @return a table of lines of current visual selection
+---@diagnostic disable: lowercase-global
+get_visual_selection_lines = function()
+  local s_start = vim.fn.getpos("'<")
+  local s_end = vim.fn.getpos("'>")
+  -- Adjust for zero-based indexing
+  local start_line = s_start[2] - 1
+  local end_line = s_end[2] - 1
+  local lines = vim.api.nvim_buf_get_lines(0, start_line, end_line + 1, false)
+  -- Trim the start of the first line if necessary
+  if #lines > 0 then
+    lines[1] = string.sub(lines[1], s_start[3], -1)
+  end
+
+  -- Trim the end of the last line if the selection spans multiple lines
+  if #lines > 1 then
+    lines[#lines] = string.sub(lines[#lines], 1, s_end[3])
+  elseif #lines == 1 then
+    lines[1] = string.sub(lines[1], s_start[3], s_end[3])
+  end
+
+  return lines
+end
+
+--- Sends visual selection to SendTo buffer
+-- @see register_sendto_buffer, send_line_to_buffer
+send_lines_to_buffer = function()
+  local current_lines = get_visual_selection_lines()
+  local original_bufnr = vim.fn.bufnr('%')
+  local original_cursor_pos = vim.api.nvim_win_get_cursor(0)
+  local target_bufnr = SendTo_Bufnr
+  local win_id = vim.fn.bufwinid(target_bufnr)
+  -- dump(current_lines)
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<esc>', true, false, true), 'm', true)
+  vim.api.nvim_set_current_win(win_id)
+  vim.cmd('startinsert') -- Enter insert mode
+  -- vim.api.nvim_feedkeys('i', 'm', true) -- Input the current line
+  for _, line in ipairs(current_lines) do
+    vim.api.nvim_feedkeys(line, 'm', true) -- Input the current line
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<CR>', true, false, true), 'm', true)
+  end
+  -- Use vim.schedule to ensure the following code runs after feedkeys
+  vim.schedule(function()
+    -- Return to the original window and restore the cursor position
+    vim.api.nvim_set_current_win(vim.fn.bufwinid(original_bufnr))
+    vim.api.nvim_win_set_cursor(0, original_cursor_pos) -- Restore cursor position
+  end)
+end
+
+-- function that extracts selected text
+extract_selected_text = function()
+  -- Get the start and end positions of the selected text
+  local start_line, start_col, end_line, end_col = unpack(vim.fn.getpos "'<" + vim.fn.getpos "'>")
+  -- Extract the selected text using the range
+  local selected_text = vim.fn.getline(start_line, end_line)
+  -- If the selection spans multiple lines, adjust the text
+  if start_line ~= end_line then
+    selected_text[#selected_text] = selected_text[#selected_text]:sub(1, end_col)
+    selected_text[1] = selected_text[1]:sub(start_col)
+  else
+    selected_text[1] = selected_text[1]:sub(start_col, end_col)
+  end
+  ---@diagnostic disable-next-line: discard-returns, param-type-mismatch
+  table.concat(selected_text, '\n')
+end
+
+-- Make sure to require plenary.nvim at the beginning of your Lua configuration
+-- local popup = require('plenary.popup')
+
+function extract_selected_text_and_show_popup()
+  local popup = require 'plenary.popup'
+  -- Get the start and end positions of the selected text
+  local start_line, start_col, end_line, end_col = unpack(vim.fn.getpos "'<" + vim.fn.getpos "'>")
+
+  -- Extract the selected text using the range
+  local selected_text = vim.fn.getline(start_line, end_line)
+
+  -- If the selection spans multiple lines, adjust the text
+  if start_line ~= end_line then
+    selected_text[#selected_text] = selected_text[#selected_text]:sub(1, end_col)
+    selected_text[1] = selected_text[1]:sub(start_col)
+  else
+    selected_text[1] = selected_text[1]:sub(start_col, end_col)
+  end
+
+  -- Join the lines to create a single string
+  ---@diagnostic disable-next-line: discard-returns, param-type-mismatch
+  local textstring = table.concat(selected_text, '\n')
+
+  -- Create a popup with the extracted text
+  local popup_opts = {
+    line = 10,
+    col = 10,
+    width = #textstring + 4,
+    height = #textstring + 2,
+    border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
+    padding = { 0, 1, 0, 1 },
+  }
+
+  local popup_bufnr = vim.api.nvim_create_buf(false, true)
+  ---@diagnostic disable-next-line: discard-returns, param-type-mismatch
+  vim.api.nvim_buf_set_lines(popup_bufnr, 0, -1, false, vim.fn.split(selected_text, '\n'))
+  local popup_winid = popup.create(popup_bufnr, popup_opts)
+
+  -- You can close the popup after a delay (e.g., 5 seconds) if needed
+  vim.defer_fn(function()
+    vim.api.nvim_win_close(popup_winid, true)
+  end, 5000)
+end
+
+extract_paragraph_at_cursor = function()
+  -- Get the current line number
+  local current_line = vim.fn.line '.'
+
+  -- Find the start and end lines of the paragraph
+  local start_line = current_line
+  local end_line = current_line
+
+  -- Find the start line of the paragraph
+  while start_line > 1 and vim.fn.trim(vim.fn.getline(start_line - 1)) ~= '' do
+    start_line = start_line - 1
+  end
+
+  -- Find the end line of the paragraph
+  while end_line < vim.fn.line '$' and vim.fn.trim(vim.fn.getline(end_line + 1)) ~= '' do
+    end_line = end_line + 1
+  end
+
+  -- Extract the paragraph text
+  local paragraph_lines = {}
+  for line = start_line, end_line do
+    table.insert(paragraph_lines, vim.fn.getline(line))
+  end
+
+  -- Join the lines to create a single string
+  local paragraph_text = table.concat(paragraph_lines, '\n')
+
+  -- Print or use the extracted paragraph text as needed
+  -- print(paragraph_text)
+  -- You can also return the extracted paragraph text for further use
+  return paragraph_text
+end
+
+-- utilities.readFromFile = function(file_path)
+--   local file = io.open(file_path, "r");
+--   if file then
+--     local content = file:read("*a");
+--     file:close();
+--     return content;
+--   else
+--     return nil;
+--   end
+-- end
+
+readFromFile = function(file_path)
+  local bufnr = vim.fn.bufadd(file_path)
+  if bufnr ~= 0 then
+    local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+    vim.api.nvim_buf_delete(bufnr, { force = true })
+    if #lines > 0 then
+      return table.concat(lines, '\n')
+    else
+      return 'Error: File is empty.'
+    end
+  else
+    return 'Error: Unable to open the file.'
+  end
+end
+
+run_shell_command_to_buffer = function(command)
+  local output = vim.fn.systemlist(command)
+  local bufnr = vim.api.nvim_create_buf(false, true)
+  vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, output)
+  vim.cmd 'enew | setlocal buftype=nofile bufhidden=hide noswapfile'
+  vim.cmd 'setlocal filetype=text'
+  vim.api.nvim_set_current_buf(bufnr)
+end
+
+run_shell_to_string = function(command)
+  local output = vim.fn.systemlist(command)
+  return output
+end
+
+readFromFile2 = function(file_path)
+  local file = io.open(file_path, 'r') -- Open the file in read mode
+  if file then
+    local content = file:read '*a'
+    file:close()
+    if content == '' then
+      return 'File was empty'
+    else
+      return content
+    end
+    return content
+  else
+    return 'Error: Unable to open the file.'
+  end
+end
+
+show_simple_popup = function(text)
+  local popup = require 'plenary.popup'
+  local popup_opts = {
+    line = vim.fn.line '.' + 1,
+    col = vim.fn.col '.',
+    width = 30,
+    height = 3,
+    padding = { 0, 1, 0, 1 },
+    move_on_insert = true,
+    close_on_buf_leave = true,
+  }
+  ---@diagnostic disable-next-line: discard-returns, param-type-mismatch, unused-local
+  local popup_winid, popup_bufnr = popup.create(split_string_at_newlines(text), popup_opts)
+end
+
+show_paragraph_in_popup = function()
+  local paragraph = extract_paragraph_at_cursor()
+  show_simple_popup(paragraph)
 end
 
 
@@ -1368,7 +1568,7 @@ end
 
 mymap('n', '<Space>bi', '<CMD>lua show_buffer_info()<CR>')
 mymap('n', '<A-return>', '<CMD>lua send_line_to_buffer()<CR>')
-mymap('v', '<A-return>', '<CMD>lua send_line_to_buffer()<CR>')
+mymap('v', '<A-return>', '<CMD>lua send_lines_to_buffer()<CR>')
 
 
 
