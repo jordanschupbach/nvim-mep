@@ -1388,7 +1388,7 @@ send_lines_to_buffer = function()
   end
   local target_bufnr = SendTo_Bufnr
   local win_id = vim.fn.bufwinid(target_bufnr)
-  dump(current_lines)
+  vim.print(dump(current_lines))
 
   -- vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<esc>', true, false, true), 'm', true)
   -- vim.api.nvim_set_current_win(win_id)
