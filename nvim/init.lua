@@ -1352,12 +1352,14 @@ end
 -- @return a table of lines of current visual selection
 ---@diagnostic disable: lowercase-global
 get_visual_selection_lines = function()
+  -- Yanks the current visual selection into a register
+  vim.cmd('normal! gv"vy') -- Yank the selected text into the default register
+
   -- Get the visual selection content from the 'v' register
-  local visual_content = vim.fn.getreg('v')
+  local visual_content = vim.fn.getreg('"') -- Use default register
 
   -- Split the content into lines and return as a table
   local lines = {}
-
   for line in visual_content:gmatch("[^\n]*") do
     table.insert(lines, line)
   end
