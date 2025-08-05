@@ -149,12 +149,13 @@ with final.pkgs.lib; let
       vim-slime
       which-key-nvim
       zen-mode-nvim
-      none-ls-nvim
-      conform-nvim
-      orgmode
-      nvim-jdtls
 
-      codecompanion-nvim
+      # none-ls-nvim
+      # conform-nvim
+      # nvim-jdtls
+      # orgmode
+
+      # codecompanion-nvim
 
       # # neorg
       # vim-unimpaired # predefined ] and [ navigation keymaps | https://github.com/tpope/vim-unimpaired/
