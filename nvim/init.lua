@@ -1109,6 +1109,7 @@ wrapped_slime = function()
   vim.cmd("'<,'>SlimeSend") -- Send to Slime
   vim.cmd('sleep 10m') -- Adjust the sleep as necessary
   vim.cmd("'<,'>SlimeSend") -- Send to Slime
+  vim.cmd("<CR>") -- Send to Slime
 end
 vim.api.nvim_create_user_command('WrappedSlime', wrapped_slime, {})
 -- mymap('n', '<A-return>', ':lua wrapped_slime()<CR>')

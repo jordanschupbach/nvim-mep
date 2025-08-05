@@ -7,7 +7,6 @@ a <- function(x) {
 b <- function(x) {
   x + 2
 }
-
 print(a(1))
 print(b(1))
 
