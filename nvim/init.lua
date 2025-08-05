@@ -1108,6 +1108,7 @@ wrapped_slime = function()
   -- First attempt to send to Slime
   local success, err = pcall(function()
     vim.cmd('sleep 10m') -- Adjust the sleep as necessary
+    vim.cmd('sleep 10m') -- Adjust the sleep as necessary
     vim.cmd("'<,'>SlimeSend") -- Send to Slime
     vim.cmd('sleep 10m') -- Adjust the sleep as necessary
   end)
