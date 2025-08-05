@@ -1389,20 +1389,21 @@ send_lines_to_buffer = function()
   local target_bufnr = SendTo_Bufnr
   local win_id = vim.fn.bufwinid(target_bufnr)
   dump(current_lines)
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<esc>', true, false, true), 'm', true)
-  vim.api.nvim_set_current_win(win_id)
-  vim.cmd('startinsert') -- Enter insert mode
-  -- vim.api.nvim_feedkeys('i', 'm', true) -- Input the current line
-  for _, line in ipairs(current_lines) do
-    vim.api.nvim_feedkeys(line, 'm', true) -- Input the current line
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<CR>', true, false, true), 'm', true)
-  end
-  -- Use vim.schedule to ensure the following code runs after feedkeys
-  vim.schedule(function()
-    -- Return to the original window and restore the cursor position
-    vim.api.nvim_set_current_win(vim.fn.bufwinid(original_bufnr))
-    vim.api.nvim_win_set_cursor(0, original_cursor_pos) -- Restore cursor position
-  end)
+
+  -- vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<esc>', true, false, true), 'm', true)
+  -- vim.api.nvim_set_current_win(win_id)
+  -- vim.cmd('startinsert') -- Enter insert mode
+  -- -- vim.api.nvim_feedkeys('i', 'm', true) -- Input the current line
+  -- for _, line in ipairs(current_lines) do
+  --   vim.api.nvim_feedkeys(line, 'm', true) -- Input the current line
+  --   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<CR>', true, false, true), 'm', true)
+  -- end
+  -- -- Use vim.schedule to ensure the following code runs after feedkeys
+  -- vim.schedule(function()
+  --   -- Return to the original window and restore the cursor position
+  --   vim.api.nvim_set_current_win(vim.fn.bufwinid(original_bufnr))
+  --   vim.api.nvim_win_set_cursor(0, original_cursor_pos) -- Restore cursor position
+  -- end)
 end
 
 -- function that extracts selected text
