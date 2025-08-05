@@ -1107,7 +1107,7 @@ mymap('n', '<A-l>', '<CMD>wincmd l<CR>')
 
 wrapped_slime = function()
   vim.cmd('sleep 10m') -- Adjust the sleep as necessary
-  vim.cmd("normal! <Esc>")
+  -- vim.cmd("normal! <Esc>")
   -- Redo the visual selection
   vim.cmd("normal! gv")
   vim.cmd('sleep 10m') -- Adjust the sleep as necessary
