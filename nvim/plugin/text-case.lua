@@ -1,1 +1,1 @@
-require('textcase').setup {}
+-- require('textcase').setup {}
