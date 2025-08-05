@@ -298,7 +298,7 @@ vim.opt.ignorecase = true
 vim.opt.incsearch = false
 vim.opt.joinspaces = false
 vim.opt.laststatus = 2
-vim.opt.laststatus = 2                                  -- Always show the status line
+vim.opt.laststatus = 2 -- Always show the status line
 vim.opt.statusline = '%f %y %m %r %=%-14.(%l,%c%V%) %P' -- Example status line
 vim.opt.statusline = ''
 vim.opt.list = true
@@ -819,7 +819,7 @@ parse_cpp_coverage_ouput = function()
     ---@diagnostic disable-next-line: unused-local, cast-local-type
     ntests_passing = tonumber(test_output[npass_line_idx]:match('%d+'))
     local lpercentage, lnumerator, ldenominator =
-        string.match(test_output[ntest_line_idx], '(%d+%.?%d*)%% %((%d+) of (%d+) lines%)')
+      string.match(test_output[ntest_line_idx], '(%d+%.?%d*)%% %((%d+) of (%d+) lines%)')
     if lpercentage == nil then
       lout = '100% (0/0)'
     else
@@ -827,7 +827,7 @@ parse_cpp_coverage_ouput = function()
     end
 
     local fpercentage, fnumerator, fdenominator =
-        string.match(test_output[npass_line_idx], '(%d+%.?%d*)%% %((%d+) of (%d+) functions%)')
+      string.match(test_output[npass_line_idx], '(%d+%.?%d*)%% %((%d+) of (%d+) functions%)')
     if fpercentage == nil then
       fout = '100% (0/0)'
     else
@@ -1105,10 +1105,9 @@ mymap('n', '<Space>dc', '<CMD>DapRestartFrame<CR>')
 vim.cmd('colorscheme tokyonight-night')
 mymap('n', '<A-l>', '<CMD>wincmd l<CR>')
 wrapped_slime = function()
-  vim.cmd('sleep 10m')      -- Adjust the sleep as necessary
+  vim.cmd('sleep 10m') -- Adjust the sleep as necessary
   vim.cmd("'<,'>SlimeSend") -- Send to Slime
 end
--- mymap('n', '<A-return>', '<CMD>SlimeSend<CR>')
 -- mymap('n', '<A-return>', ':lua wrapped_slime()<CR>')
 -- mymap('v', '<A-return>', ':lua wrapped_slime()<CR>')
 
@@ -1152,21 +1151,21 @@ mymap('t', '<C-9>', ':tabn 9<CR>')
 
 -- {{{ Statusline active/not_active behavior
 -- vim.cmd('highlight StatusLineNC guifg=#888888 guibg=#DFDFF1')     --  guibg=#000000'Inactive buffer colors
-vim.cmd('highlight StatusLine guifg=#FF33FF guibg=#00FFFFBB')     -- Active buffer colors
-vim.cmd('highlight StatusLineNC guifg=#888888 guibg=#88888888')   --  guibg=#000000'Inactive buffer colors
+vim.cmd('highlight StatusLine guifg=#FF33FF guibg=#00FFFFBB') -- Active buffer colors
+vim.cmd('highlight StatusLineNC guifg=#888888 guibg=#88888888') --  guibg=#000000'Inactive buffer colors
 vim.cmd('highlight StatusLineActive guifg=#FF33FF guibg=#003366') -- Different color for active buffer
-vim.cmd('highlight WinSeparatorActive guifg=#FF33FF')             -- Color for active window separator
-vim.cmd('highlight WinSeparatorNC guifg=#444444')                 -- Color for inactive window separators
+vim.cmd('highlight WinSeparatorActive guifg=#FF33FF') -- Color for active window separator
+vim.cmd('highlight WinSeparatorNC guifg=#444444') -- Color for inactive window separators
 
 -- Function to update all status lines and separators
 function UpdateAll()
   local current_win = vim.api.nvim_get_current_win()
 
-  vim.cmd('highlight StatusLine guifg=#FF33FF guibg=#00FFFFBB')     -- Active buffer colors
-  vim.cmd('highlight StatusLineNC guifg=#888888 guibg=#88888888')   --  guibg=#000000'Inactive buffer colors
+  vim.cmd('highlight StatusLine guifg=#FF33FF guibg=#00FFFFBB') -- Active buffer colors
+  vim.cmd('highlight StatusLineNC guifg=#888888 guibg=#88888888') --  guibg=#000000'Inactive buffer colors
   vim.cmd('highlight StatusLineActive guifg=#FF33FF guibg=#003366') -- Different color for active buffer
-  vim.cmd('highlight WinSeparatorActive guifg=#FF33FF')             -- Color for active window separator
-  vim.cmd('highlight WinSeparatorNC guifg=#444444')                 -- Color for inactive window separators
+  vim.cmd('highlight WinSeparatorActive guifg=#FF33FF') -- Color for active window separator
+  vim.cmd('highlight WinSeparatorNC guifg=#444444') -- Color for inactive window separators
 
   -- Update status line colors
   for _, win in ipairs(vim.api.nvim_list_wins()) do
@@ -1199,7 +1198,7 @@ vim.cmd('highlight EndOfBuffer guifg=#881188') -- Customize color as needed
 -- vim.opt.statusline = "%l/%3L:%2c %= %P"  -- Example status line
 -- vim.opt.statusline = " %= %P"  -- Example status line
 vim.opt.statusline = ' %= %l/%3L' -- Example status line
-vim.opt.statusline = '%='         -- Example status line
+vim.opt.statusline = '%=' -- Example status line
 
 mymap('n', '<A-C-h>', "<CMD>lua require('smart-splits').swap_buf_left()<CR>")
 mymap('t', '<A-C-h>', "<CMD>lua require('smart-splits').swap_buf_left()<CR>")
@@ -1331,7 +1330,7 @@ send_line_to_buffer = function()
   -- Return to the original window and restore the cursor position
   vim.api.nvim_set_current_win(vim.fn.bufwinid(original_bufnr))
   vim.api.nvim_win_set_cursor(0, original_cursor_pos) -- Restore cursor position
-  vim.cmd("normal j")
+  vim.cmd('normal j')
 end
 
 --- Gets the text in the visual selection
@@ -1772,7 +1771,9 @@ end
 
 mymap('n', '<Space>bi', '<CMD>lua show_buffer_info()<CR>')
 mymap('n', '<A-return>', '<CMD>lua send_line_to_buffer()<CR>')
-mymap('v', '<A-return>', '<CMD>lua send_lines_to_buffer()<CR>')
+-- mymap('v', '<A-return>', '<CMD>lua send_lines_to_buffer()<CR>')
+
+mymap('n', '<A-return>', "<CMD>'<'>SlimeSend<CR>")
 -- mymap('v', '<A-return>', '<CMD>lua send_visual_selection_to_first_terminal()<CR>')
 
 -- }}} Inbox
