@@ -1334,6 +1334,9 @@ send_lines_to_buffer = function()
   local current_lines = get_visual_selection_lines()
   local original_bufnr = vim.fn.bufnr('%')
   local original_cursor_pos = vim.api.nvim_win_get_cursor(0)
+  if SendTo_Bufnr == nil then
+    register_sendto_buffer()
+  end
   local target_bufnr = SendTo_Bufnr
   local win_id = vim.fn.bufwinid(target_bufnr)
   -- dump(current_lines)
