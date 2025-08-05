@@ -1775,9 +1775,16 @@ mymap('n', '<A-return>', '<CMD>lua send_line_to_buffer()<CR>')
 
 -- mymap('n', '<A-return>', "<CMD>'<,'>SlimeSend<CR>")
 
+-- vim.defer_fn(function() vim.cmd(':SlimeSend') end, 10)
+
+mymap('v', '<A-return>', function()
+  vim.cmd(':SlimeSend')
+end)
+
 mymap('x', '<A-return>', function()
   vim.cmd(':SlimeSend')
 end)
+
 -- mymap('v', '<A-return>', '<CMD>lua send_visual_selection_to_first_terminal()<CR>')
 
 -- }}} Inbox
