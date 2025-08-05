@@ -1122,7 +1122,7 @@ wrapped_slime = function()
   end)
 
   if not success then
-    print("Error in second send to Slime: " .. err) -- Handle the error gracefully
+    print("Error in second send to Slime: " .. err .. "(just try again if cause registers not set)") -- Handle the error gracefully
   end
 end
 
