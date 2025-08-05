@@ -1407,12 +1407,70 @@ end
 --   callback = get_visual_selection_lines,
 -- })
 
---- Sends visual selection to SendTo buffer
--- @see register_sendto_buffer, send_line_to_buffer
-send_lines_to_buffer = function()
-  -- local current_lines = get_visual_selection_lines()
-  local current_lines = extract_selected_text()
-  print(dump(current_lines))
+-- --- Sends visual selection to SendTo buffer
+-- -- @see register_sendto_buffer, send_line_to_buffer
+-- send_lines_to_buffer = function()
+--   -- local current_lines = get_visual_selection_lines()
+--   local current_lines = extract_selected_text()
+--   print(dump(current_lines))
+--   local original_bufnr = vim.fn.bufnr('%')
+--   local original_cursor_pos = vim.api.nvim_win_get_cursor(0)
+--
+--   if SendTo_Bufnr == nil then
+--     register_sendto_buffer()
+--   end
+--
+--   local target_bufnr = SendTo_Bufnr
+--   local win_id = vim.fn.bufwinid(target_bufnr)
+--
+--   -- vim.print(dump(current_lines))
+--
+--   if win_id ~= -1 then
+--     -- Get the terminal channel id
+--     local channel_id = vim.api.nvim_buf_get_var(target_bufnr, 'terminal_job_id')
+--     if channel_id then
+--       for _, line in ipairs(current_lines) do
+--         -- Send each line to the terminal channel
+--         vim.fn.chansend(channel_id, line .. '\n') -- Ensure each line ends with a newline
+--       end
+--     else
+--       vim.api.nvim_err_writeln('No job ID found for the terminal buffer.')
+--     end
+--
+--     -- Return to the original window and restore the cursor position
+--     vim.api.nvim_set_current_win(vim.fn.bufwinid(original_bufnr))
+--     vim.api.nvim_win_set_cursor(0, original_cursor_pos) -- Restore cursor position
+--   else
+--     vim.api.nvim_err_writeln('Target buffer not open.')
+--   end
+-- end
+
+function send_lines_to_buffer()
+  local sel_save = vim.o.selection
+  vim.o.selection = 'inclusive'
+
+  -- Store the contents of the unnamed register
+  local rv = vim.fn.getreg('"')
+  local rt = vim.fn.getregtype('"')
+
+  local selected_lines = {}
+
+  -- Check if in Visual mode (using v:register to determine this)
+  if vim.v.register == 'v' then -- Invoked from Visual mode
+    selected_lines = vim.fn.getline("'<", "'>")
+  else
+    -- If not in visual mode, assume we want the current line(s)
+    selected_lines = vim.fn.getline('.')
+  end
+
+  -- Ensure selected_lines is always a table
+  if type(selected_lines) == 'string' then
+    selected_lines = { selected_lines }
+  end
+
+  local current_lines = selected_lines
+
+  print(dump(current_lines)) -- Debugging: print the current lines
   local original_bufnr = vim.fn.bufnr('%')
   local original_cursor_pos = vim.api.nvim_win_get_cursor(0)
 
@@ -1422,8 +1480,6 @@ send_lines_to_buffer = function()
 
   local target_bufnr = SendTo_Bufnr
   local win_id = vim.fn.bufwinid(target_bufnr)
-
-  -- vim.print(dump(current_lines))
 
   if win_id ~= -1 then
     -- Get the terminal channel id
@@ -1443,6 +1499,12 @@ send_lines_to_buffer = function()
   else
     vim.api.nvim_err_writeln('Target buffer not open.')
   end
+
+  vim.o.selection = sel_save
+  vim.fn.setreg('"', rv, rt)
+
+  -- Call your function to restore cursor position if necessary
+  restore_cursor_position()
 end
 
 -- function that extracts selected text
