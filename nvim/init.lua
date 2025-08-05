@@ -1788,7 +1788,7 @@ mymap('n', '<A-return>', '<CMD>SlimeSend<CR>')
 
 mymap('v', '<A-return>', function()
   vim.defer_fn(function()
-    vim.cmd('SlimeSend<CR>')
+    vim.cmd('SlimeSend')
   end, 10)
 end)
 
