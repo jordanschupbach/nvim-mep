@@ -1355,6 +1355,10 @@ get_visual_selection_lines = function()
   vim.cmd('sleep 10m') -- Adjust the sleep as necessary
   local s_start = vim.fn.getpos("'<")
   local s_end = vim.fn.getpos("'>")
+  vim.cmd('sleep 10m') -- Adjust the sleep as necessary
+  local s_start = vim.fn.getpos("'<")
+  local s_end = vim.fn.getpos("'>")
+  vim.cmd('sleep 10m') -- Adjust the sleep as necessary
   -- Adjust for zero-based indexing
   local start_line = s_start[2] - 1
   local end_line = s_end[2] - 1
