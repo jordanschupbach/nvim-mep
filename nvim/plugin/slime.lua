@@ -8,5 +8,5 @@ local wrapped_slime = function()
   vim.cmd("'<,'>SlimeSend") -- Send to Slime
 end
 
-mymap('n', '<A-return>', ':lua wrapped_slime()<CR>')
+-- mymap('n', '<A-return>', ':lua wrapped_slime()<CR>')
 -- mymap('n', '<A-return>', '<CMD>SlimeSend<CR>')

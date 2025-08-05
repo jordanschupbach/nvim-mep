@@ -1109,8 +1109,8 @@ wrapped_slime = function()
   vim.cmd("'<,'>SlimeSend") -- Send to Slime
 end
 -- mymap('n', '<A-return>', '<CMD>SlimeSend<CR>')
-mymap('n', '<A-return>', ':lua wrapped_slime()<CR>')
-mymap('v', '<A-return>', ':lua wrapped_slime()<CR>')
+-- mymap('n', '<A-return>', ':lua wrapped_slime()<CR>')
+-- mymap('v', '<A-return>', ':lua wrapped_slime()<CR>')
 
 mymap('n', '<A-x>', ':Telescope commands<CR>')
 mymap('v', '<A-x>', ':Telescope commands<CR>')
