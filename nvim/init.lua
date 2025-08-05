@@ -1104,28 +1104,49 @@ mymap('n', '<Space>dc', '<CMD>DapRestartFrame<CR>')
 -- {{{ misc inbox
 vim.cmd('colorscheme tokyonight-night')
 mymap('n', '<A-l>', '<CMD>wincmd l<CR>')
+
 wrapped_slime = function()
-  -- First attempt to send to Slime
-  local success, err = pcall(function()
-    vim.cmd('sleep 10m') -- Adjust the sleep as necessary
-    vim.cmd('sleep 10m') -- Adjust the sleep as necessary
-    vim.cmd("") -- Send to Slime
-  end)
+  -- Undo visual selection (press Escape)
+  vim.cmd("normal! <Esc>")
 
-  if not success then
-    print("Error sending to Slime: " .. err .. "(just try again if cause registers not set)") -- Handle the error gracefully
-  end
+  -- Redo the visual selection
+  vim.cmd("normal! gv")
 
-  -- Second attempt
-  success, err = pcall(function()
-    vim.cmd('sleep 10m') -- Adjust the sleep as necessary
-    vim.cmd("'<,'>SlimeSend") -- Send to Slime
-  end)
+  -- Wait 10ms and then send to Slime
+  vim.defer_fn(function()
+    local success, err = pcall(function()
+      vim.cmd("'<,'>SlimeSend") -- Send to Slime
+    end)
 
-  if not success then
-    print("Error in second send to Slime: " .. err) -- Handle the error gracefully
-  end
+    if not success then
+      print("Error sending to Slime: " .. err) -- Handle the error gracefully
+    end
+  end, 10) -- Wait for 10 milliseconds
 end
+
+
+-- wrapped_slime = function()
+--   -- First attempt to send to Slime
+--   local success, err = pcall(function()
+--     vim.cmd('sleep 10m') -- Adjust the sleep as necessary
+--     vim.cmd('sleep 10m') -- Adjust the sleep as necessary
+--     vim.cmd("normal! gv")  -- Select last visual selection if available
+--   end)
+-- 
+--   if not success then
+--     print("Error sending to Slime: " .. err .. "(just try again if cause registers not set)") -- Handle the error gracefully
+--   end
+-- 
+--   -- Second attempt
+--   success, err = pcall(function()
+--     vim.cmd('sleep 10m') -- Adjust the sleep as necessary
+--     vim.cmd("'<,'>SlimeSend") -- Send to Slime
+--   end)
+-- 
+--   if not success then
+--     print("Error in second send to Slime: " .. err) -- Handle the error gracefully
+--   end
+-- end
 
 vim.api.nvim_create_user_command('WrappedSlime', wrapped_slime, {})
 
