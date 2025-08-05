@@ -1247,7 +1247,42 @@ mymap({ "n", "x", "o" }, "s", function() require("flash").jump() end)
 
 ---@diagnostic disable-next-line: lowercase-global
 register_sendto_buffer = function()
-  local current_bufnr = tostring(vim.fn.bufnr '%')
+  local function get_terminal_bufnr()
+    local term_bufnr = nil
+    local tabpage_buffs = vim.fn.tabpagebuflist()
+
+    for _, bufnr in ipairs(tabpage_buffs) do
+      if vim.bo[bufnr].filetype == 'terminal' then
+        term_bufnr = bufnr
+        break
+      end
+    end
+
+    return term_bufnr
+  end
+
+  local term_bufnr = get_terminal_bufnr()
+  local other_bufnr = nil
+  local current_bufnr = vim.fn.bufnr('%')
+
+  if term_bufnr then
+    current_bufnr = term_bufnr
+  else
+    local buf_list = vim.fn.getbufinfo({ buflisted = 1 })
+    if #buf_list > 1 then
+      -- Take the first non-terminal buffer
+      for _, buf in ipairs(buf_list) do
+        if buf.bufnr ~= current_bufnr and vim.bo[buf.bufnr].filetype ~= 'terminal' then
+          other_bufnr = buf.bufnr
+          break
+        end
+      end
+    end
+    -- Use the first other buffer if found, otherwise fallback to current
+    current_bufnr = other_bufnr or current_bufnr
+  end
+
+  current_bufnr = tostring(current_bufnr)
   current_bufnr = vim.fn.input('SendTo bufnr: ', current_bufnr)
   SendTo_Bufnr = tonumber(current_bufnr)
 end
