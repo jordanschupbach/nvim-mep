@@ -1106,22 +1106,13 @@ vim.cmd('colorscheme tokyonight-night')
 mymap('n', '<A-l>', '<CMD>wincmd l<CR>')
 
 wrapped_slime = function()
-  -- Undo visual selection (press Escape)
+  vim.cmd('sleep 10m') -- Adjust the sleep as necessary
   vim.cmd("normal! <Esc>")
-
   -- Redo the visual selection
   vim.cmd("normal! gv")
-
-  -- Wait 10ms and then send to Slime
-  vim.defer_fn(function()
-    local success, err = pcall(function()
-      vim.cmd("'<,'>SlimeSend") -- Send to Slime
-    end)
-
-    if not success then
-      print("Error sending to Slime: " .. err) -- Handle the error gracefully
-    end
-  end, 10) -- Wait for 10 milliseconds
+  vim.cmd('sleep 10m') -- Adjust the sleep as necessary
+  vim.cmd("'<,'>SlimeSend") -- Send to Slime
+  vim.cmd('sleep 10m') -- Adjust the sleep as necessary
 end
 
 
