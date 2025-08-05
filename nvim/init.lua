@@ -1105,11 +1105,25 @@ mymap('n', '<Space>dc', '<CMD>DapRestartFrame<CR>')
 vim.cmd('colorscheme tokyonight-night')
 mymap('n', '<A-l>', '<CMD>wincmd l<CR>')
 wrapped_slime = function()
-  vim.cmd('sleep 10m') -- Adjust the sleep as necessary
-  vim.cmd("'<,'>SlimeSend") -- Send to Slime
-  vim.cmd('sleep 10m') -- Adjust the sleep as necessary
-  vim.cmd("'<,'>SlimeSend") -- Send to Slime
-  -- vim.cmd("<CR>") -- Send to Slime
+  -- First attempt to send to Slime
+  local success, err = pcall(function()
+    vim.cmd('sleep 10m') -- Adjust the sleep as necessary
+    vim.cmd("'<,'>SlimeSend") -- Send to Slime
+  end)
+
+  if not success then
+    print("Error sending to Slime: " .. err) -- Handle the error gracefully
+  end
+
+  -- Second attempt
+  success, err = pcall(function()
+    vim.cmd('sleep 10m') -- Adjust the sleep as necessary
+    vim.cmd("'<,'>SlimeSend") -- Send to Slime
+  end)
+
+  if not success then
+    print("Error in second send to Slime: " .. err) -- Handle the error gracefully
+  end
 end
 
 vim.api.nvim_create_user_command('WrappedSlime', wrapped_slime, {})
