@@ -1108,6 +1108,7 @@ wrapped_slime = function()
   vim.cmd('sleep 10m') -- Adjust the sleep as necessary
   vim.cmd("'<,'>SlimeSend") -- Send to Slime
 end
+vim.api.nvim_create_user_command('WrappedSlime', wrapped_slime, {})
 -- mymap('n', '<A-return>', ':lua wrapped_slime()<CR>')
 -- mymap('v', '<A-return>', ':lua wrapped_slime()<CR>')
 
@@ -1774,7 +1775,8 @@ mymap('n', '<Space>bi', '<CMD>lua show_buffer_info()<CR>')
 -- mymap('n', '<A-return>', '<CMD>SlimeSend<CR>')
 mymap('v', '<A-return>', "<CMD>'<,'>SlimeSend<CR>")
 
-mymap('v', '<A-return>', "<CMD>SlimeSend<CR>")
+mymap('v', '<A-return>', "<CMD>lua wrapped_slime()<CR>")
+-- mymap('v', '<A-return>', "<CMD>WrappedSlime<CR>")
 -- mymap('v', '<A-return>', '<CMD>lua send_lines_to_buffer()<CR>')
 
 -- mymap('n', '<A-return>', "<CMD>'<,'>SlimeSend<CR>")
