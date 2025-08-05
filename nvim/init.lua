@@ -1239,9 +1239,137 @@ mymap('n', '9', '<CMD>tabn 9<CR>')
 -- {{{ Inbox
 
 mymap({ "n", "x", "o" }, "s", function() require("flash").jump() end)
-mymap({ "n", "x", "o" }, "S", function() require("flash").treesitter() end)
-mymap("o", "r", function() require("flash").remote() end)
-mymap({ "o", "x" }, "R", function() require("flash").treesitter_search() end)
+-- mymap({ "n", "x", "o" }, "S", function() require("flash").treesitter() end)
+-- mymap("o", "r", function() require("flash").remote() end)
+-- mymap({ "o", "x" }, "R", function() require("flash").treesitter_search() end)
 -- mymap("c", "<c-s>", function() require("flash").toggle() end)
+
+
+function send_lines_to_buffer()
+  -- Get current cursor position and visual selection
+  local original_pos = vim.fn.getpos('.')
+  local current_bufnr = vim.api.nvim_get_current_buf()
+  local visual_lines = get_visual_selection()
+  dump(visual_lines)
+  local target_bufnr = SendTo_Bufnr
+  local win_id = vim.fn.bufwinid(target_bufnr)
+  local prior_win_id = vim.fn.bufwinid(current_bufnr)
+  -- Get the target buffer and check if it exists
+  if not vim.api.nvim_buf_is_valid(SendTo_Bufnr) then
+    print("Target buffer does not exist.")
+    return
+  end
+
+  if win_id ~= -1 then
+    vim.api.nvim_set_current_win(win_id)
+  else -- todo handle case not on screen
+    return
+  end
+
+  -- -- Enter insert mode
+  vim.cmd("startinsert")
+
+  vim.api.nvim_feedkeys('G', 'm', true)
+  vim.api.nvim_feedkeys('i', 'm', true)
+  for _, line in ipairs(visual_lines) do
+    vim.api.nvim_feedkeys(line, 'm', true)
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<cr>', true, false, true), 'm', true)
+  end
+
+
+  -- if prior_win_id ~= -1 then
+  --   vim.api.nvim_set_current_win(prior_win_id)
+  -- else -- todo handle case not on screen
+  --   return
+  -- end
+
+
+  -- -- Restore original cursor position and return to the previous buffer
+  -- vim.fn.setpos('.', original_pos)
+  -- vim.api.nvim_set_current_buf(vim.fn.bufnr('%'))  -- Switch back to the previous buffer
+end
+
+--- Sends current line to SendTo buffer
+-- @see register_sendto_buffer, send_lines_to_buffer
+---@diagnostic disable-next-line: lowercase-global
+local send_line_to_buffer = function()
+  local current_line = vim.api.nvim_get_current_line()
+  local original_bufnr = vim.fn.bufnr('%')
+  local original_cursor_pos = vim.api.nvim_win_get_cursor(0) -- Save cursor position
+
+  if SendTo_Bufnr == nil then
+    register_sendto_buffer()
+  end
+
+  local target_bufnr = SendTo_Bufnr
+  local win_id = vim.fn.bufwinid(target_bufnr)
+
+  if win_id ~= -1 then
+    vim.api.nvim_set_current_win(win_id)
+    vim.cmd('startinsert') -- Enter insert mode
+  else
+    return
+  end
+
+  -- Move to the bottom and insert the line.
+  vim.api.nvim_feedkeys(current_line, 'm', true)                                              -- Input the current line
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<CR>', true, false, true), 'm', true) -- Press Enter
+
+  -- Use vim.schedule to ensure the following code runs after feedkeys
+  vim.schedule(function()
+    -- Return to the original window and restore the cursor position
+    vim.api.nvim_set_current_win(vim.fn.bufwinid(original_bufnr))
+    vim.api.nvim_win_set_cursor(0, original_cursor_pos) -- Restore cursor position
+  end)
+end
+
+
+
+local show_buffer_info = function()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local winid = vim.api.nvim_get_current_win()
+  local bufname = vim.api.nvim_buf_get_name(bufnr)
+  local buflines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+  local line_count = #buflines
+  local modified = vim.api.nvim_buf_get_option(bufnr, 'modified')
+  local filetype = vim.api.nvim_buf_get_option(bufnr, 'filetype')
+  local readonly = vim.api.nvim_buf_get_option(bufnr, 'readonly')
+  local info = {
+    "Buffer Information:",
+    "Buffer Number: " .. bufnr,
+    "Window Number: " .. winid,
+    "Name: " .. bufname,
+    "Line Count: " .. line_count,
+    "Modified: " .. tostring(modified),
+    "Filetype: " .. (filetype ~= '' and filetype or 'none'),
+    "Read-only: " .. tostring(readonly),
+  }
+
+  local width = 50
+  local height = #info + 2
+
+  local opts = {
+    title = 'Buffer Info',
+    border = true,
+    style = 'minimal',
+    relative = 'editor',
+    width = width,
+    height = height,
+    row = 5,
+    col = 5,
+  }
+
+  local bufnr_info = vim.api.nvim_create_buf(false, true)
+  vim.api.nvim_buf_set_lines(bufnr_info, 0, -1, false, info)
+
+  local win_id = popup.create(bufnr_info, opts)
+  vim.api.nvim_win_set_option(win_id, 'winhighlight', 'Normal:Normal')
+end
+
+mymap('n', '<Space>bi', '<CMD>lua show_buffer_info()<CR>')
+mymap('n', '<A-return>', '<CMD>lua send_line_to_buffer()<CR>')
+mymap('v', '<A-return>', '<CMD>lua send_line_to_buffer()<CR>')
+
+
 
 -- }}} Inbox
