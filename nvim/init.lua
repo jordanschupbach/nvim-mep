@@ -1604,9 +1604,61 @@ local show_buffer_info = function()
   vim.api.nvim_win_set_option(win_id, 'winhighlight', 'Normal:Normal')
 end
 
+
+function send_visual_selection_to_first_terminal()
+  -- Get the start and end positions of the visual selection
+  local s_start = vim.fn.getpos("'<")
+  local s_end = vim.fn.getpos("'>")
+
+  -- Extract selected lines from the buffer
+  local lines = vim.api.nvim_buf_get_lines(0, s_start[2] - 1, s_end[2], false)
+
+  -- Adjust first and last lines based on selection columns
+  if #lines > 0 then
+    lines[1] = string.sub(lines[1], s_start[3])              -- Trim start of the first line
+    if #lines > 1 then
+      lines[#lines] = string.sub(lines[#lines], 1, s_end[3]) -- Trim end of the last line
+    else
+      lines[1] = string.sub(lines[1], 1, s_end[3])           -- Handle single line selection
+    end
+  end
+
+  -- Find the first terminal buffer
+  local term_bufnr = nil
+  local tabpage_buffs = vim.fn.tabpagebuflist()
+  for _, bufnr in ipairs(tabpage_buffs) do
+    if vim.bo[bufnr].buftype == 'terminal' then
+      term_bufnr = bufnr
+      break
+    end
+  end
+
+  -- If a terminal buffer is found, send the lines
+  if term_bufnr then
+    local win_id = vim.fn.bufwinid(term_bufnr)
+    if win_id ~= -1 then
+      -- Switch to the terminal buffer
+      vim.api.nvim_set_current_win(win_id)
+      vim.cmd('startinsert') -- Enter insert mode
+
+      -- Send each line to the terminal buffer
+      for _, line in ipairs(lines) do
+        vim.api.nvim_feedkeys(line, 'n', true)
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<CR>', true, false, true), 'n', true) -- Press Enter
+      end
+      -- Return to the original window
+      vim.api.nvim_set_current_win(0) -- Switch back to the previous window
+    else
+      print("Terminal buffer not found.")
+    end
+  else
+    print("No terminal buffer available.")
+  end
+end
+
 mymap('n', '<Space>bi', '<CMD>lua show_buffer_info()<CR>')
 mymap('n', '<A-return>', '<CMD>lua send_line_to_buffer()<CR>')
-mymap('v', '<A-return>', '<CMD>lua send_lines_to_buffer()<CR>')
+mymap('v', '<A-return>', '<CMD>lua send_visual_selection_to_first_terminal()<CR>')
 
 
 
