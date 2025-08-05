@@ -1504,7 +1504,7 @@ function send_lines_to_buffer()
   vim.fn.setreg('"', rv, rt)
 
   -- Call your function to restore cursor position if necessary
-  restore_cursor_position()
+  -- restore_cursor_position()
 end
 
 -- function that extracts selected text
