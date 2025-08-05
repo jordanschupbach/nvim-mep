@@ -1252,7 +1252,7 @@ register_sendto_buffer = function()
     local tabpage_buffs = vim.fn.tabpagebuflist()
 
     for _, bufnr in ipairs(tabpage_buffs) do
-      if vim.bo[bufnr].filetype == 'terminal' then
+      if vim.bo[bufnr].buftype == 'terminal' then
         term_bufnr = bufnr
         break
       end
@@ -1272,7 +1272,7 @@ register_sendto_buffer = function()
     if #buf_list > 1 then
       -- Take the first non-terminal buffer
       for _, buf in ipairs(buf_list) do
-        if buf.bufnr ~= current_bufnr and vim.bo[buf.bufnr].filetype ~= 'terminal' then
+        if buf.bufnr ~= current_bufnr and vim.bo[buf.bufnr].buftype ~= 'terminal' then
           other_bufnr = buf.bufnr
           break
         end
