@@ -150,12 +150,12 @@ with final.pkgs.lib; let
       which-key-nvim
       zen-mode-nvim
 
-      # none-ls-nvim
-      # conform-nvim
-      # nvim-jdtls
-      # orgmode
+      none-ls-nvim
+      conform-nvim
+      nvim-jdtls
+      orgmode
 
-      # codecompanion-nvim
+      codecompanion-nvim
 
       # # neorg
       # vim-unimpaired # predefined ] and [ navigation keymaps | https://github.com/tpope/vim-unimpaired/
