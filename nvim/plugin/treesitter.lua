@@ -81,19 +81,19 @@ configs.setup {
       enable = true,
       set_jumps = true,
       goto_next_start = {
-        [']m'] = '@function.outer',
-        [']P'] = '@parameter.outer',
+        [']f'] = '@function.outer',
+        [']p'] = '@parameter.outer',
       },
       goto_next_end = {
-        [']m'] = '@function.outer',
+        [']F'] = '@function.outer',
         [']P'] = '@parameter.outer',
       },
       goto_previous_start = {
-        ['[m'] = '@function.outer',
-        ['[P'] = '@parameter.outer',
+        ['[f'] = '@function.outer',
+        ['[p'] = '@parameter.outer',
       },
       goto_previous_end = {
-        ['[m'] = '@function.outer',
+        ['[F'] = '@function.outer',
         ['[P'] = '@parameter.outer',
       },
     },
