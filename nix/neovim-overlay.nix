@@ -93,6 +93,8 @@ with final.pkgs.lib; let
       cmp-nvim-lua # neovim lua API as completion source | https://github.com/hrsh7th/cmp-nvim-lua/
       cmp-path # file paths as completion source | https://github.com/hrsh7th/cmp-path/
       cmp_luasnip # snippets autocompletion extension for nvim-cmp | https://github.com/saadparwaiz1/cmp_luasnip/
+      refactoring-nvim
+      nvim-treesitter-refactor
       copilot-vim # https://github.com/github/copilot.vim/
       dashboard-nvim # https://github.com/nvimdev/dashboard-nvim/
       diffview-nvim # https://github.com/sindrets/diffview.nvim/

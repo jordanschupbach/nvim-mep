@@ -23,6 +23,14 @@ configs.setup {
     end,
   },
   textobjects = {
+
+    refactor = {
+      highlight_definitions = {
+        enable = true,
+        -- Set to false if you have an `updatetime` of ~100.
+        clear_on_cursor_move = true,
+      },
+    },
     select = {
       enable = true,
       -- Automatically jump forward to textobject, similar to targets.vim
@@ -45,7 +53,7 @@ configs.setup {
       },
       selection_modes = {
         ['@parameter.outer'] = 'v', -- charwise
-        ['@function.outer'] = 'V',  -- linewise
+        ['@function.outer'] = 'V', -- linewise
         ['@class.outer'] = '<c-v>', -- blockwise
       },
     },
@@ -93,8 +101,6 @@ configs.setup {
 -- }
 
 require('ts_context_commentstring').setup()
-
-
 
 -- Tree-sitter based folding
 -- vim.opt.foldmethod = 'expr'
