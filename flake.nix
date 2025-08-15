@@ -91,6 +91,8 @@
           ln -fs ${pkgs.nvim-luarc-json} .luarc.json
           # allow quick iteration of lua configs
           ln -Tfns $PWD/nvim ~/.config/nvim-dev
+          # set the locale to UTF-8 (b/c issues inheriting  locale on arch machine...)
+          LANG=en_US.UTF-8
         '';
       };
     in {
