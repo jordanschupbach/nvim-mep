@@ -119,7 +119,7 @@ with final.pkgs.lib; let
       nvim-dap-ui
       nvim-highlight-colors
       nvim-luadev
-      nvim-navic # https://github.com/SmiteshP/nvim-navic
+      # nvim-navic # https://github.com/SmiteshP/nvim-navic
       nvim-surround # https://github.com/kylechui/nvim-surround/
       nvim-tree-lua #
       nvim-treesitter
