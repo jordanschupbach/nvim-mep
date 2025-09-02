@@ -1,22 +1,22 @@
-local function mymap(mode, key, value)
-  vim.keymap.set(mode, key, value, { silent = true, remap = true })
-end
-
-local root_files = {
-  '.git',
-}
-
-mymap('n', '<A-S-return>', '<CMD>RunJust<CR>')
-mymap('n', '<Space>rr', '<CMD>RunJust<CR>')
-
-vim.lsp.start {
-  name = 'cpp',
-  root_dir = vim.fs.dirname(vim.fs.find(root_files, { upward = true })[1]),
-  cmd = { 'clangd' },
-  root_markers = { '.clangd', 'compile_commands.json' },
-  filetypes = { 'c', 'cpp' },
-  capabilities = require('user.lsp').make_client_capabilities(),
-}
+-- local function mymap(mode, key, value)
+--   vim.keymap.set(mode, key, value, { silent = true, remap = true })
+-- end
+--
+-- local root_files = {
+--   '.git',
+-- }
+--
+-- mymap('n', '<A-S-return>', '<CMD>RunJust<CR>')
+-- mymap('n', '<Space>rr', '<CMD>RunJust<CR>')
+--
+-- vim.lsp.start {
+--   name = 'cpp',
+--   root_dir = vim.fs.dirname(vim.fs.find(root_files, { upward = true })[1]),
+--   cmd = { 'clangd' },
+--   root_markers = { '.clangd', 'compile_commands.json' },
+--   filetypes = { 'c', 'cpp' },
+--   capabilities = require('user.lsp').make_client_capabilities(),
+-- }
 
 -- local dap = require("dap")
 -- dap.adapters.gdb = {
