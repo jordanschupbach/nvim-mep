@@ -14,17 +14,16 @@ local actions = require('telescope.actions')
 local builtin = require('telescope.builtin')
 
 -- local utilities = require 'utilities'
-local actions = require 'telescope.actions'
+local actions = require('telescope.actions')
 -- local finders = require 'telescope.finders'
 -- local pickers = require 'telescope.pickers'
-local actions_state = require 'telescope.actions.state'
+local actions_state = require('telescope.actions.state')
 
-local telescope = require("telescope")
+local telescope = require('telescope')
 
 -- }}} imports
 
 -- {{{ Utility functions
-
 
 local layout_config = {
   vertical = {
@@ -87,11 +86,6 @@ local function fuzzy_grep_current_file_type()
   grep_current_file_type(fuzzy_grep)
 end
 
-
-
-
-
-
 ---@diagnostic disable-next-line: unused-function
 local function file_exists(filename)
   local file = io.open(filename, 'r')
@@ -109,7 +103,7 @@ local function on_project_selected(prompt_bufnr)
   -- print("Hello from project selected")
   actions.close(prompt_bufnr)
   -- print(entry['value']:gsub("/+$", ""))
-  if entry['value']:gsub("/+$", ""):match("([^/]+)$") == "nvim-playground" then
+  if entry['value']:gsub('/+$', ''):match('([^/]+)$') == 'nvim-playground' then
     vim.cmd('edit ' .. entry['value'] .. '/init.lua')
   else
     if file_exists('' .. entry['value'] .. '/README.org') then
@@ -121,17 +115,17 @@ local function on_project_selected(prompt_bufnr)
   -- Toggle the NvimTree buffer
   -- vim.cmd 'split'
   -- vim.cmd 'terminal'
-  vim.cmd 'NvimTreeToggle'
+  vim.cmd('NvimTreeToggle')
   -- vim.cmd 'Neotree toggle'
   -- vim.cmd 'Workspace LeftPanelToggle'
-  vim.cmd 'wincmd l'
+  vim.cmd('wincmd l')
   -- vim.print('about to cd ' .. entry["value"]) -- test out
-  vim.cmd('cd ' .. entry["value"])
+  vim.cmd('cd ' .. entry['value'])
   vim.cmd('split')
-  vim.cmd 'wincmd j'
-  vim.cmd 'term'
+  vim.cmd('wincmd j')
+  vim.cmd('term')
   vim.api.nvim_win_set_height(0, 8)
-  vim.cmd 'wincmd k'
+  vim.cmd('wincmd k')
   -- -- vim.cmd 'SidebarNvimToggle'
   -- if file_exists('' .. entry['value'] .. '/TODO.org') then
   --   vim.cmd 'vsplit'
@@ -160,13 +154,13 @@ end
 
 -- {{{ Setup
 
-local project_actions = require("telescope._extensions.project.actions")
+local project_actions = require('telescope._extensions.project.actions')
 require('telescope').setup {
   defaults = {
-    mappings = {
-      i = { ['<C-d>'] = require('telescope.actions').delete_buffer },
-      n = { ['<C-d>'] = require('telescope.actions').delete_buffer },
-    },
+    -- mappings = {
+    --   i = { ['<C-d>'] = require('telescope.actions').delete_buffer },
+    --   n = { ['<C-d>'] = require('telescope.actions').delete_buffer },
+    -- },
   },
   prompt_prefix = ' ',
   selection_caret = '* ',
@@ -204,35 +198,33 @@ require('telescope').setup {
         on_project_selected(prompt_bufnr)
       end,
 
-      mappings = {
-        n = {
-          ['d'] = project_actions.delete_project,
-          ['r'] = project_actions.rename_project,
-          ['c'] = project_actions.add_project,
-          ['C'] = project_actions.add_project_cwd,
-          ['f'] = project_actions.find_project_files,
-          ['b'] = project_actions.browse_project_files,
-          ['s'] = project_actions.search_in_project_files,
-          ['R'] = project_actions.recent_project_files,
-          ['w'] = project_actions.change_working_directory,
-          ['o'] = project_actions.next_cd_scope,
-        },
-        i = {
-          ['<c-d>'] = project_actions.delete_project,
-          ['<c-v>'] = project_actions.rename_project,
-          ['<c-i>'] = project_actions.add_project,
-          ['<c-A>'] = project_actions.add_project_cwd,
-          ['<c-f>'] = project_actions.find_project_files,
-          ['<c-b>'] = project_actions.browse_project_files,
-          ['<c-s>'] = project_actions.search_in_project_files,
-          ['<c-r>'] = project_actions.recent_project_files,
-          ['<c-l>'] = project_actions.change_working_directory,
-          ['<c-o>'] = project_actions.next_cd_scope,
-        }
-      }
-
+      -- mappings = {
+      --   n = {
+      --     ['d'] = project_actions.delete_project,
+      --     ['r'] = project_actions.rename_project,
+      --     ['c'] = project_actions.add_project,
+      --     ['C'] = project_actions.add_project_cwd,
+      --     ['f'] = project_actions.find_project_files,
+      --     ['b'] = project_actions.browse_project_files,
+      --     ['s'] = project_actions.search_in_project_files,
+      --     ['R'] = project_actions.recent_project_files,
+      --     ['w'] = project_actions.change_working_directory,
+      --     ['o'] = project_actions.next_cd_scope,
+      --   },
+      --   i = {
+      --     ['<c-d>'] = project_actions.delete_project,
+      --     ['<c-v>'] = project_actions.rename_project,
+      --     ['<c-i>'] = project_actions.add_project,
+      --     ['<c-A>'] = project_actions.add_project_cwd,
+      --     ['<c-f>'] = project_actions.find_project_files,
+      --     ['<c-b>'] = project_actions.browse_project_files,
+      --     ['<c-s>'] = project_actions.search_in_project_files,
+      --     ['<c-r>'] = project_actions.recent_project_files,
+      --     ['<c-l>'] = project_actions.change_working_directory,
+      --     ['<c-o>'] = project_actions.next_cd_scope,
+      --   },
+      -- },
     },
-
 
     -- This configuration only affects this extension.
     telescope_words = {
@@ -245,27 +237,23 @@ require('telescope').setup {
         -- i = {
         --   ["<CR>"] = word_actions.replace_word_under_cursor,
         -- },
-
       },
 
       -- Default pointers define the lexical relations listed under each definition,
       -- see Pointer Symbols below.
       -- Default is as below ("antonyms", "similar to" and "also see").
-      pointer_symbols = { "!", "&", "^" },
+      pointer_symbols = { '!', '&', '^' },
 
       -- The number of characters entered before fuzzy searching is used. Raise this
       -- if results are slow. Default is 3.
       fzy_char_threshold = 3,
 
       -- Choose the layout strategy. Default is as below.
-      layout_strategy = "horizontal",
+      layout_strategy = 'horizontal',
 
       -- And your layout config. Default is as below.
       layout_config = { height = 0.75, width = 0.75, preview_width = 0.65 },
     },
-
-
-
   },
 }
 

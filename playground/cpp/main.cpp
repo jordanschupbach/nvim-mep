@@ -12,3 +12,5 @@ int main() {
   printHelloWorld(repetitions);
   return 0;
 }
+
+// vim: set ft=cpp:
