@@ -557,6 +557,28 @@ ls.add_snippets("all", {
 
 -- }}} All snippets
 
+
+
+-- {{{ lua snippets
+ls.add_snippets("cmake", {
+  -- Very long example for a java class.
+  s("basic-cmake", {
+    t({
+      "cmake_minimum_required(VERSION 3.10)  # Minimum CMake version required",
+      "# Project name and version",
+      "project(MyProject VERSION 1.0)",
+      "# Specify the C++ standard",
+      "set(CMAKE_CXX_STANDARD 17)",
+      "set(CMAKE_CXX_STANDARD_REQUIRED True)",
+      "# Add an executable",
+      "add_executable(MyExecutable main.cpp)",
+      }),
+    }, {
+      key = "cmake",
+})
+-- }}} lua snippets
+
+
 -- {{{ lua snippets
 ls.add_snippets("lua", {
   -- Very long example for a java class.
@@ -788,12 +810,6 @@ ls.add_snippets("nix", {
   key = "nix",
 })
 -- }}} Cpp snippets
-
-
-
-
-
-
 
 -- {{{ autotrigger snippets?
 -- set type to "autosnippets" for adding autotriggered snippets.
