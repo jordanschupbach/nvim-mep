@@ -540,7 +540,7 @@ ls.add_snippets('cmake', {
     },
   }),
 }, {
-  key = 'lua',
+  key = 'cmake',
 })
 
 -- }}} cmake snippets
